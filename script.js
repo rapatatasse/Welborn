@@ -41,6 +41,7 @@ function ajouterLigne(button) {
     var puissanceCumuleeCell = newRow.querySelector('.puissance_cumulee');
     var nombrecharge = parseInt(input.value);
 
+    var prixtotal = parseInt.value;
 
     var nombreBornes = parseInt(input.value);
     calculerNombreBornesTotal();
@@ -51,6 +52,7 @@ function ajouterLigne(button) {
     totalPuissanceCell.innerText = (nombreBornes * puissanceCumulee).toString();
   });
   calculerNombreBornesTotal();
+  calcultotalprix();
 }
  // bouton - sur tableau Nombre de bornes souhaités ?
 function supprimerLigne(button) {
@@ -68,6 +70,24 @@ for (let btn of document.getElementsByClassName('addrow')) {
     ajouterLigne(btn);
   });
 }
+function calcultotalprix() {
+  var elementsPrix = document.getElementsByClassName("prix");
+  var totalPrix = 0;
+
+  for (var i = 0; i < elementsPrix.length; i++) {
+    var valeur = parseFloat(elementsPrix[i].innerText);
+    if (!isNaN(valeur)) {
+      totalPrix += valeur;
+    }
+  }
+
+  var baliseTotal = document.getElementById("prixtotal");
+  baliseTotal.textContent = totalPrix.toFixed(2).toString();
+}
+
+
+  // Mettre à jour la valeur dans la balise th
+
 
 
 //calcul ligne des total
@@ -75,6 +95,7 @@ function calculerNombreBornesTotal() {
   // Récupérer tous les éléments input avec name="nombrebornes"
   var elements = document.getElementsByName("nombrebornes");
   var total = 0;
+
 
   // Parcourir les éléments et additionner leurs valeurs
   for (var i = 0; i < elements.length; i++) {
@@ -101,10 +122,64 @@ function calculerNombreBornesTotal() {
       totalpointdecharges += valeur;
     }
   }
-  console.log(totalpointdecharges)
+
+
 
   var baliseTotal = document.getElementById("nombrechargetotal");
+  var baliseTotalAC = document.getElementById("nombrechargeAC");
+  var baliseTotalDC = document.getElementById("nombrechargeDC");
+  var baliseTotalACDC = document.getElementById("nombrechargeACDC");
+  totalpointdechargesAC = 0
+  totalpointdechargesDC = 0
+  totalpointdechargesACDC = 0
+
+  var rows = document.querySelectorAll("#bornes-souhaitees .marine");
+  for (var i = 0; i < rows.length; i += 6) {
+    var type = rows[i + 3].textContent;
+    var points = parseInt(rows[i + 2].textContent);
+
+    if (type === "AC") {
+      totalpointdechargesAC += points;
+    }
+  }
+
+
+  console.log(totalpointdecharges)
+
   baliseTotal.textContent = totalpointdecharges.toString();
+  baliseTotalAC.textContent = totalpointdechargesAC.toString();
+
+
+
+  var rows = document.querySelectorAll("#bornes-souhaitees .marine");
+  for (var i = 0; i < rows.length; i += 6) {
+    var type = rows[i + 3].textContent;
+    var points = parseInt(rows[i + 2].textContent);
+
+    if (type === "DC") {
+      totalpointdechargesDC += points;
+    }
+  }
+  baliseTotal.textContent = totalpointdecharges.toString();
+  baliseTotalDC.textContent = totalpointdechargesDC.toString();
+
+
+
+
+
+  var rows = document.querySelectorAll("#bornes-souhaitees .marine");
+  for (var i = 0; i < rows.length; i += 6) {
+    var type = rows[i + 3].textContent;
+    var points = parseInt(rows[i + 2].textContent);
+
+    if (type === "AC + DC") {
+      totalpointdechargesACDC += points;
+    }
+  }
+  baliseTotal.textContent = totalpointdecharges.toString();
+  baliseTotalACDC.textContent = totalpointdechargesACDC.toString();
+
+
 }
 function totalpuissancecumulee() {
   var elementsPuissanceCumulee = document.getElementsByClassName("puissance_cumulee");
@@ -185,4 +260,25 @@ prixvente2023Input.addEventListener("change", updateMarge2023);
 
 
 
-updateMarge2023();
+
+
+function displayTarifValue() {
+      var tarifSelect = document.getElementById("tarif");
+      var tarifValue = document.getElementById("tarifJauneValue");
+      var texttarif = document.getElementById("texttarif");
+
+      if (tarifSelect.value === "8000") {
+        tarifValue.innerHTML = "8000 €";
+        texttarif.innerHTML = "PDL ENEDIS Tarif Jaune";
+      } else if (tarifSelect.value === "15000") {
+        tarifValue.innerHTML = "15000";
+        texttarif.innerHTML = "PDL ENEDIS Tarif Bleu";
+      } else {
+        tarifJauneValue.innerHTML = "";
+        tarifBleuValue.innerHTML = "";
+      }
+}
+
+
+    updateMarge2023();
+    displayTarifValue();

@@ -21,13 +21,13 @@
           <tr>
             <th rowspan="2" class="titretableau">Site type</th>
             <td class="gris">Nombre de clients mensuels</td>
-            <td class="clair"><input type="number" id="nbclients" name="nbclients">
+            <td class="clair"><input type="number" value="27000" id="nbclients" name="nbclients">
               </td>
             <label for="nbclients" ></label>
           </tr>
           <tr>
             <td>Temps moyen d'un client (min)</td>
-            <td class="marine"> <input type="number" id="tempsclient" name="tempsclient"></td>
+            <td class="marine"> <input type="number" value="30" id="tempsclient" name="tempsclient"></td>
           </td>
           <label for="tempsclient" ></label>
           </tr>
@@ -35,19 +35,21 @@
 
         <table>
           <tr>
-            <th rowspan="2" class="titretableau">Abonnement électrique</th>
+            <th rowspan="3" class="titretableau">Abonnement électrique</th>
             <td class="gris">Type tarif actuel</td>
             <td class="clair"><label for="tarif">Choisissez un tarif</label>
 
-              <select name="tarif" id="tarf">
-                  <option value="">Quel tarif</option>
-                  <option value="jaune">Tarif jaune</option>
-                  <option value="bleu">Tarif bleu</option></td>
+              <select name="tarif" id="tarif" onchange="displayTarifValue()">
+                  <option value="8000"  >Tarif jaune</option>
+                  <option value="15000" >Tarif bleu</option></td>
           </tr>
+
+
           <tr>
             <td>Prix kWh</td>
             <td class="marine"> <input type="number" id="PrixKwh" value="0.160"  name="PrixKwh"></td>
           </tr>
+
         </table>
       </div>
 
@@ -135,10 +137,15 @@
       <tr>
         <th class="gris">Total</th>
         <th class="gris" id="nombrebornestotal">0</th>
-        <th class="gris" id="nombrechargetotal">0</th>
+        <th class="gris">
+            <div>Total <span id="nombrechargetotal"></span></div>
+            <div>Total AC <span id="nombrechargeAC"></span></div>
+            <div>Total DC <span id="nombrechargeDC"></span></div>
+            <div>Total AC DC <span id="nombrechargeACDC"></span></div>
+        </th>
         <th class="gris" id=""></th>
         <th class="gris" id="puissancecumuleetotal">0</th>
-        <th class="gris" id=""></th>
+        <th class="gris" id="prixtotal">0</th>
 
 
 
@@ -471,10 +478,74 @@
         </td>
       </tr>
     </table>
+<br>
+   <h2 class="titretableau">ENEDIS</h2>
+    <table>
+      <tr>
+        <th rowspan="4" class="titretableau">Abonnement électrique</th>
+        <td class="gris">Type tarif actuel</td>
+        <td class="clair">
 
 
+          </select>
+        </td>
+      </tr>
 
+      <tr>
+        <td id="texttarif"></td>
+        <td id="tarifJauneValue" class="marine"></td>
+      </tr>
 
+    </table>
+    <br>
+    <h2 class="titretableau">Installation IRVE</h2>
+
+    <table>
+      <tr>
+        <td id="genie" class="gris">Genie civil - dalle, tranchée, percement</td>
+        <td id="genie2"></td>
+      </tr>
+      <tr>
+        <td id="moe"class="gris">MOE électrique - raccordement, ajout armoire électrique, MES</td>
+        <td id="moe1"></td>
+      </tr>
+      <tr>
+        <td id="etude"class="gris">Etude, signalisation des places, DOE, déplacement…</td>
+        <td id="etude2"></td>
+      </tr>
+      <tr>
+        <td id="attestation"class="gris">Attestation de conformité bureau de contrôle</td>
+        <td id="attestation1"></td>
+      </tr>
+      <tr>
+        <td id="contrat"class="gris">Contrat de maintenance annuel (300€/borne AC - 500€/borne DC) - pour 4 ans</td>
+        <td id="contrat1">4,400 €</td>
+      </tr>
+      </tr>
+    </table>
+    <hr>
+
+    <table>
+      <tr>
+        <td id="EV"class="titretableau">EV MAP - SERVICES + MONETISATION</td>
+      </tr>
+      <tr>
+        <td id="DC"class="gris">Service monétisation EVmap (16€/mois/PDC DC) - pour 4 ans</td>
+        <td id="DC">1,536 €</td>
+      </tr>
+      <tr>
+        <td id="AD"class="gris">Service monétisation EVmap (16€/mois/PDC AC) - pour 4 ans</td>
+        <td id="AD">3,072 €</td>
+      </tr>
+      <tr>
+        <td id="frais"class="gris">Frais activation (60€/ point de charge)</td>
+        <td id="frais">360 €</td>
+      </tr>
+    </table>
+<br>
+<br>
+
+    <h1 id=invglobal>Investissement global (magasin type)</h1>
 
 
 
