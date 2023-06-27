@@ -482,7 +482,7 @@
    <h2 class="titretableau">ENEDIS</h2>
     <table>
       <tr>
-        <th rowspan="4" class="titretableau">Abonnement électrique</th>
+
         <td class="gris">Type tarif actuel</td>
         <td class="clair">
 
@@ -503,23 +503,23 @@
     <table>
       <tr>
         <td id="genie" class="gris">Genie civil - dalle, tranchée, percement</td>
-        <td id="genie2"></td>
+        <td><input onchange="calculglobal()" id="IRVE1" ></td>
       </tr>
       <tr>
-        <td id="moe"class="gris">MOE électrique - raccordement, ajout armoire électrique, MES</td>
-        <td id="moe1"></td>
+        <td id="moe" class="gris">MOE électrique - raccordement, ajout armoire électrique, MES</td>
+        <td><input onchange="calculglobal()" id="IRVE2" ></td>
       </tr>
       <tr>
-        <td id="etude"class="gris">Etude, signalisation des places, DOE, déplacement…</td>
-        <td id="etude2"></td>
+        <td id="etude" class="gris">Etude, signalisation des places, DOE, déplacement…</td>
+        <td><input onchange="calculglobal()" id="IRVE3"></td>
       </tr>
       <tr>
-        <td id="attestation"class="gris">Attestation de conformité bureau de contrôle</td>
-        <td id="attestation1"></td>
+        <td id="attestation" class="gris">Attestation de conformité bureau de contrôle</td>
+        <td><input onchange="calculglobal()" id="IRVE4"></td>
       </tr>
       <tr>
         <td id="contrat"class="gris">Contrat de maintenance annuel (300€/borne AC - 500€/borne DC) - pour 4 ans</td>
-        <td id="contrat1">4,400 €</td>
+        <td id="contrat1"></td>
       </tr>
       </tr>
     </table>
@@ -530,22 +530,37 @@
         <td id="EV"class="titretableau">EV MAP - SERVICES + MONETISATION</td>
       </tr>
       <tr>
-        <td id="DC"class="gris">Service monétisation EVmap (16€/mois/PDC DC) - pour 4 ans</td>
-        <td id="DC">1,536 €</td>
+        <td id="D1"class="gris">Service monétisation EVmap (16€/mois/PDC DC) - pour 4 ans</td>
+        <td id="DC"></td>
       </tr>
       <tr>
         <td id="AD"class="gris">Service monétisation EVmap (16€/mois/PDC AC) - pour 4 ans</td>
-        <td id="AD">3,072 €</td>
+        <td id="AC"></td>
+      </tr>
+      <tr>
+        <td id="AS"class="gris">Service monétisation EVmap (16€/mois/PDC ACDC) - pour 4 ans</td>
+        <td id="AC DC"></td>
       </tr>
       <tr>
         <td id="frais"class="gris">Frais activation (60€/ point de charge)</td>
-        <td id="frais">360 €</td>
+        <td id="Totaltout"></td>
       </tr>
     </table>
 <br>
 <br>
+<table>
+  <thead>
+      <tr>
+          <th colspan="2">Total</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td id=invglobal>  </td>
 
-    <h1 id=invglobal>Investissement global (magasin type)</h1>
+      </tr>
+  </tbody>
+</table>
 
 
 

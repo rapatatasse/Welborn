@@ -45,6 +45,7 @@ function ajouterLigne(button) {
 
     var nombreBornes = parseInt(input.value);
     calculerNombreBornesTotal();
+    calculglobal();
 
 
     var puissanceCumulee = parseInt(puissanceCumuleeCell.innerText);
@@ -53,6 +54,8 @@ function ajouterLigne(button) {
   });
   calculerNombreBornesTotal();
   calcultotalprix();
+  calculglobal();
+
 }
  // bouton - sur tableau Nombre de bornes souhaités ?
 function supprimerLigne(button) {
@@ -83,6 +86,8 @@ function calcultotalprix() {
 
   var baliseTotal = document.getElementById("prixtotal");
   baliseTotal.textContent = totalPrix.toFixed(2).toString();
+  calculglobal();
+
 }
 
 
@@ -109,6 +114,7 @@ function calculerNombreBornesTotal() {
   var baliseTotal = document.getElementById("nombrebornestotal");
   baliseTotal.textContent = total.toString();
   totalpuissancecumulee();
+  calculglobal();
 
 
 
@@ -178,9 +184,21 @@ function calculerNombreBornesTotal() {
   }
   baliseTotal.textContent = totalpointdecharges.toString();
   baliseTotalACDC.textContent = totalpointdechargesACDC.toString();
+  var contrat1 = document.getElementById("contrat1");
+  contrat1.innerText = ((totalpointdechargesAC * 300) + (totalpointdechargesDC * 500) + (totalpointdechargesACDC))*3 .toString();
+  var DC = document.getElementById("DC");
+  DC.innerText = (totalpointdechargesDC*16*12*4).toString();
+  var AC = document.getElementById("AC");
+  AC.innerText = (totalpointdechargesAC*16*12*4).toString();
+  var ACDC = document.getElementById("AC DC");
+  ACDC.innerText = (totalpointdechargesACDC*16*12*4).toString();
+  var Totaltout = document.getElementById("Totaltout");
+  Totaltout.innerText = (totalpointdecharges*60).toString();
+  calculglobal();
 
 
 }
+
 function totalpuissancecumulee() {
   var elementsPuissanceCumulee = document.getElementsByClassName("puissance_cumulee");
   var totalPuissanceCumulee = 0;
@@ -194,6 +212,9 @@ function totalpuissancecumulee() {
 
   var baliseTotal = document.getElementById("puissancecumuleetotal");
   baliseTotal.textContent = totalPuissanceCumulee.toString();
+  calculglobal();
+
+
 }
 
 
@@ -246,7 +267,7 @@ function updateMarge2023() {
     marge2026Cell.innerText = marge2026.toFixed(2);
     prixkwh2026Cell.innerText = prixkwh2026.toFixed(2);
   }
-
+  calculglobal();
 }
 //12/15/20
 
@@ -255,6 +276,8 @@ var prixkwhInput = document.getElementById("PrixKwh");
 var prixvente2023Input = document.getElementById("Prixvente2023");
 prixkwhInput.addEventListener("change", updateMarge2023);
 prixvente2023Input.addEventListener("change", updateMarge2023);
+calculglobal();
+
 
 
 
@@ -277,8 +300,38 @@ function displayTarifValue() {
         tarifJauneValue.innerHTML = "";
         tarifBleuValue.innerHTML = "";
       }
+      calculglobal();
+}
+
+
+function calculglobal() {
+
+  var elements = [
+    document.getElementById("IRVE1").value,
+    document.getElementById("IRVE2").value,
+    document.getElementById("IRVE3").value,
+    document.getElementById("IRVE4").value,
+    document.getElementById("prixtotal").innerText,
+    document.getElementById("Totaltout").innerText,
+    document.getElementById("tarif").value,
+    document.getElementById("DC").innerText,
+    document.getElementById("AC").innerText,
+    document.getElementById("AC DC").innerText,
+    document.getElementById("contrat1").innerText
+  ]
+
+  let total = 0;
+  for (let elm of elements) {
+    const val = parseFloat(elm)
+    if (isNaN(val)) continue;
+    total += val;
+  }
+
+  var invglobal= document.getElementById("invglobal");
+  invglobal.innerText = total+"€";
 }
 
 
     updateMarge2023();
     displayTarifValue();
+    calculglobal();
