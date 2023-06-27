@@ -14,11 +14,12 @@ function ajouterLigne(button) {
 
   newRow.innerHTML =
     '<td class="marine">' + reference + '</td>' +
-    '<td class="marine"><input type="number" name="nombrebornes" min="0" max="10" value="1"  onKeyDown="return false"></td>' +
-    '<td class="marine totalpoint" name="nombredecharge">' + nombrecharge + '</td>' +
-    '<td class="marine">' + typecharge + '</td>' +
-    '<td class="marine puissance_cumulee">' + puissanceCumulee + '</td>' +
-    '<td class="marine prix">' + prix + '</td>';
+    '<td class="marine textright"><input type="number" name="nombrebornes" min="0" max="10" value="1"  onKeyDown="return false"></td>' +
+    '<td class="marine textright totalpoint" name="nombredecharge">' + nombrecharge + '</td>' +
+    '<td class="marine ">' + typecharge + '</td>' +
+    '<td class="marine ">  <select name="typechargeprix" id="typechargeprix" onchange="displayTarifValue()"> <option value="Payant"  >Payant</option><option value="Abonnement" >Abonnement</option></select> </td>' +
+    '<td class="marine  textright puissance_cumulee ">' + puissanceCumulee + '</td>' +
+    '<td class="marine textright prix">' + prix + '</td>';
 
 
 
@@ -142,6 +143,7 @@ function calculerNombreBornesTotal() {
   var rows = document.querySelectorAll("#bornes-souhaitees .marine");
   for (var i = 0; i < rows.length; i += 6) {
     var type = rows[i + 3].textContent;
+    console.log(type)
     var points = parseInt(rows[i + 2].textContent);
 
     if (type === "AC") {
