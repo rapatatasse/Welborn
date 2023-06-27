@@ -75,6 +75,10 @@ color:rgb(0, 0, 0)
 
 .titretableau {
   background-color: rgb(31, 128, 255);
+  color: azure;
+  padding: 1%;
+  font-style: normal;
+  font-size: larger;
 }
 .marine {
 
@@ -98,4 +102,22 @@ label {
 input,
 label {
   margin: 0.4rem 0;
+  text-align: right;
+}
+.textright
+{
+  text-align: right;
+}
+.vertth {
+background-color: rgb(156, 255, 136);
+
+}
+.vertclair {
+background-color: rgb(204, 247, 232);
+}
+.verneutre {
+  background-color: rgb(10, 182, 10);
+}
+.vertfonce {
+  background-color: rgb(1, 141, 1);
 }
