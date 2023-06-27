@@ -21,8 +21,6 @@ function ajouterLigne(button) {
     '<td class="marine  textright puissance_cumulee ">' + puissanceCumulee + '</td>' +
     '<td class="marine textright prix">' + prix + '</td>';
 
-
-
   tableContainer.scrollTop = tableContainer.scrollHeight;
 
   // Ajouter le bouton de suppression à la nouvelle ligne
@@ -41,9 +39,6 @@ function ajouterLigne(button) {
     var totalPuissanceCell = totalPointCell.nextElementSibling.nextElementSibling;
     var puissanceCumuleeCell = newRow.querySelector('.puissance_cumulee');
     var nombrecharge = parseInt(input.value);
-
-    var prixtotal = parseInt.value;
-
     var nombreBornes = parseInt(input.value);
     calculerNombreBornesTotal();
     calculglobal();
@@ -66,10 +61,22 @@ function supprimerLigne(button) {
   calculerNombreBornesTotal();
   ;
 }
+//affichage du tableau des bornes a choisir
+function toggleDiv() {
+  var div = document.getElementById("myDiv");
+  var arrowIcon = document.getElementById("arrowIcon");
 
+  if (arrowIcon.innerHTML === "v") {
+    arrowIcon.innerHTML = "&#62;";
+    div.style.display = "none";
+  } else {
+    arrowIcon.innerHTML = "v";
+    div.style.display = "block";
+  }
+}
+ 
 // ecoutes des bouron + du tableau QUELLE TYPE DE BORNE CHOISIR ? ?
 for (let btn of document.getElementsByClassName('addrow')) {
-
   btn.addEventListener('click', function() {
     ajouterLigne(btn);
   });
@@ -77,15 +84,13 @@ for (let btn of document.getElementsByClassName('addrow')) {
 function calcultotalprix() {
   var elementsPrix = document.getElementsByClassName("prix");
   var totalPrix = 0;
-
+  var baliseTotal = document.getElementById("prixtotal");
   for (var i = 0; i < elementsPrix.length; i++) {
     var valeur = parseFloat(elementsPrix[i].innerText);
     if (!isNaN(valeur)) {
       totalPrix += valeur;
     }
   }
-
-  var baliseTotal = document.getElementById("prixtotal");
   baliseTotal.textContent = totalPrix.toFixed(2).toString();
   calculglobal();
 
@@ -106,7 +111,6 @@ function calculerNombreBornesTotal() {
   // Parcourir les éléments et additionner leurs valeurs
   for (var i = 0; i < elements.length; i++) {
     var valeur = parseInt(elements[i].value);
-
     if (!isNaN(valeur)) {
       total += valeur;
     }
@@ -141,51 +145,26 @@ function calculerNombreBornesTotal() {
   totalpointdechargesACDC = 0
 
   var rows = document.querySelectorAll("#bornes-souhaitees .marine");
-  for (var i = 0; i < rows.length; i += 6) {
-    var type = rows[i + 3].textContent;
-    console.log(type)
-    var points = parseInt(rows[i + 2].textContent);
-
+  for (var i = 0; i < rows.length; i += 7) {
+    type = rows[i + 3].textContent;
+    points = parseInt(rows[i + 2].textContent);
     if (type === "AC") {
       totalpointdechargesAC += points;
     }
-  }
-
-
-  console.log(totalpointdecharges)
-
-  baliseTotal.textContent = totalpointdecharges.toString();
-  baliseTotalAC.textContent = totalpointdechargesAC.toString();
-
-
-
-  var rows = document.querySelectorAll("#bornes-souhaitees .marine");
-  for (var i = 0; i < rows.length; i += 6) {
-    var type = rows[i + 3].textContent;
-    var points = parseInt(rows[i + 2].textContent);
-
     if (type === "DC") {
       totalpointdechargesDC += points;
     }
-  }
-  baliseTotal.textContent = totalpointdecharges.toString();
-  baliseTotalDC.textContent = totalpointdechargesDC.toString();
-
-
-
-
-
-  var rows = document.querySelectorAll("#bornes-souhaitees .marine");
-  for (var i = 0; i < rows.length; i += 6) {
-    var type = rows[i + 3].textContent;
-    var points = parseInt(rows[i + 2].textContent);
-
     if (type === "AC + DC") {
       totalpointdechargesACDC += points;
     }
   }
+  console.log(totalpointdecharges)
   baliseTotal.textContent = totalpointdecharges.toString();
+  baliseTotalAC.textContent = totalpointdechargesAC.toString();
+  baliseTotalDC.textContent = totalpointdechargesDC.toString();
   baliseTotalACDC.textContent = totalpointdechargesACDC.toString();
+
+
   var contrat1 = document.getElementById("contrat1");
   contrat1.innerText = ((totalpointdechargesAC * 300) + (totalpointdechargesDC * 500) + (totalpointdechargesACDC))*3 .toString();
   var DC = document.getElementById("DC");
@@ -294,10 +273,10 @@ function displayTarifValue() {
 
       if (tarifSelect.value === "8000") {
         tarifValue.innerHTML = "8000 €";
-        texttarif.innerHTML = "PDL ENEDIS Tarif Jaune";
+        texttarif.innerHTML = "PDL ENEDIS Tarif Jaune *";
       } else if (tarifSelect.value === "15000") {
         tarifValue.innerHTML = "15000";
-        texttarif.innerHTML = "PDL ENEDIS Tarif Bleu";
+        texttarif.innerHTML = "PDL ENEDIS Tarif Bleu *";
       } else {
         tarifJauneValue.innerHTML = "";
         tarifBleuValue.innerHTML = "";

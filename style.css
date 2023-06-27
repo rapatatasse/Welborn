@@ -7,6 +7,10 @@ body {
   max-width: 1080px;
   padding-top: calc(128px + 64px);
 }
+.content {
+  display: none;
+}
+
 
 .encadrer-un-contenu {
   border: 2px solid black;
@@ -16,6 +20,20 @@ body {
   font-size: 32px;
   font-weight: bold;
   padding: 5px 15px;
+}
+input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+select {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
 .table-container {
@@ -66,10 +84,6 @@ color:rgb(0, 0, 0)
 
 }
 
-.flex-tablehaut {
-  display: flex;
-  justify-content: space-between;
-}
 
 
 
@@ -91,8 +105,16 @@ background-color:rgb(184, 217, 255);
 
 
 }
+td {
+  min-width: 60px;
+}
 .info {
   background-color: orange;
+  color: azure;
+  padding: 1%;
+  font-style: normal;
+  font-size: larger;
+
 }
 label {
   display: block;
