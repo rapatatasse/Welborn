@@ -1,6 +1,6 @@
 
  // bouton + sur tableau QUELLE TYPE DE BORNE CHOISIR ?
-function ajouterLigne(button) {
+ function ajouterLigne(button) {
   var row = button.parentNode.parentNode ;
   var reference = row.cells[0].innerText;
   var nombrecharge = row.cells[4].innerText;
@@ -11,6 +11,7 @@ function ajouterLigne(button) {
   var tableContainer = document.querySelector('.choixborne');
   var table = tableContainer.querySelector('#bornes-souhaitees');
   var newRow = table.insertRow();
+  newRow.classList.add("selectedRows")
 
   newRow.innerHTML =
     '<td class="marine">' + reference + '</td>' +
@@ -20,8 +21,6 @@ function ajouterLigne(button) {
     '<td class="marine ">  <select name="typechargeprix" id="typechargeprix" onchange="displayTarifValue()"> <option value="Payant"  >Payant</option><option value="Abonnement" >Abonnement</option></select> </td>' +
     '<td class="marine  textright puissance_cumulee ">' + puissanceCumulee + '</td>' +
     '<td class="marine textright prix">' + prix + '</td>';
-
-
 
   tableContainer.scrollTop = tableContainer.scrollHeight;
 
@@ -41,12 +40,10 @@ function ajouterLigne(button) {
     var totalPuissanceCell = totalPointCell.nextElementSibling.nextElementSibling;
     var puissanceCumuleeCell = newRow.querySelector('.puissance_cumulee');
     var nombrecharge = parseInt(input.value);
-
-    var prixtotal = parseInt.value;
-
     var nombreBornes = parseInt(input.value);
     calculerNombreBornesTotal();
     calculglobal();
+    calculerTempsCharge();
 
 
     var puissanceCumulee = parseInt(puissanceCumuleeCell.innerText);
@@ -56,7 +53,8 @@ function ajouterLigne(button) {
   calculerNombreBornesTotal();
   calcultotalprix();
   calculglobal();
-
+  initTypeCharge(newRow);
+  setChargeValue();
 }
  // bouton - sur tableau Nombre de bornes souhaités ?
 function supprimerLigne(button) {
@@ -66,10 +64,22 @@ function supprimerLigne(button) {
   calculerNombreBornesTotal();
   ;
 }
+//affichage du tableau des bornes a choisir
+function toggleDiv() {
+  var div = document.getElementById("myDiv");
+  var arrowIcon = document.getElementById("arrowIcon");
+
+  if (arrowIcon.innerHTML === "v") {
+    arrowIcon.innerHTML = "&#62;";
+    div.style.display = "none";
+  } else {
+    arrowIcon.innerHTML = "v";
+    div.style.display = "block";
+  }
+}
 
 // ecoutes des bouron + du tableau QUELLE TYPE DE BORNE CHOISIR ? ?
 for (let btn of document.getElementsByClassName('addrow')) {
-
   btn.addEventListener('click', function() {
     ajouterLigne(btn);
   });
@@ -77,15 +87,13 @@ for (let btn of document.getElementsByClassName('addrow')) {
 function calcultotalprix() {
   var elementsPrix = document.getElementsByClassName("prix");
   var totalPrix = 0;
-
+  var baliseTotal = document.getElementById("prixtotal");
   for (var i = 0; i < elementsPrix.length; i++) {
     var valeur = parseFloat(elementsPrix[i].innerText);
     if (!isNaN(valeur)) {
       totalPrix += valeur;
     }
   }
-
-  var baliseTotal = document.getElementById("prixtotal");
   baliseTotal.textContent = totalPrix.toFixed(2).toString();
   calculglobal();
 
@@ -106,7 +114,6 @@ function calculerNombreBornesTotal() {
   // Parcourir les éléments et additionner leurs valeurs
   for (var i = 0; i < elements.length; i++) {
     var valeur = parseInt(elements[i].value);
-
     if (!isNaN(valeur)) {
       total += valeur;
     }
@@ -141,51 +148,26 @@ function calculerNombreBornesTotal() {
   totalpointdechargesACDC = 0
 
   var rows = document.querySelectorAll("#bornes-souhaitees .marine");
-  for (var i = 0; i < rows.length; i += 6) {
-    var type = rows[i + 3].textContent;
-    console.log(type)
-    var points = parseInt(rows[i + 2].textContent);
-
+  for (var i = 0; i < rows.length; i += 7) {
+    type = rows[i + 3].textContent;
+    points = parseInt(rows[i + 2].textContent);
     if (type === "AC") {
       totalpointdechargesAC += points;
     }
-  }
-
-
-  console.log(totalpointdecharges)
-
-  baliseTotal.textContent = totalpointdecharges.toString();
-  baliseTotalAC.textContent = totalpointdechargesAC.toString();
-
-
-
-  var rows = document.querySelectorAll("#bornes-souhaitees .marine");
-  for (var i = 0; i < rows.length; i += 6) {
-    var type = rows[i + 3].textContent;
-    var points = parseInt(rows[i + 2].textContent);
-
     if (type === "DC") {
       totalpointdechargesDC += points;
     }
-  }
-  baliseTotal.textContent = totalpointdecharges.toString();
-  baliseTotalDC.textContent = totalpointdechargesDC.toString();
-
-
-
-
-
-  var rows = document.querySelectorAll("#bornes-souhaitees .marine");
-  for (var i = 0; i < rows.length; i += 6) {
-    var type = rows[i + 3].textContent;
-    var points = parseInt(rows[i + 2].textContent);
-
     if (type === "AC + DC") {
       totalpointdechargesACDC += points;
     }
   }
+  console.log(totalpointdecharges)
   baliseTotal.textContent = totalpointdecharges.toString();
+  baliseTotalAC.textContent = totalpointdechargesAC.toString();
+  baliseTotalDC.textContent = totalpointdechargesDC.toString();
   baliseTotalACDC.textContent = totalpointdechargesACDC.toString();
+
+
   var contrat1 = document.getElementById("contrat1");
   contrat1.innerText = ((totalpointdechargesAC * 300) + (totalpointdechargesDC * 500) + (totalpointdechargesACDC))*3 .toString();
   var DC = document.getElementById("DC");
@@ -197,6 +179,7 @@ function calculerNombreBornesTotal() {
   var Totaltout = document.getElementById("Totaltout");
   Totaltout.innerText = (totalpointdecharges*60).toString();
   calculglobal();
+  calculerTempsCharge();
 
 
 }
@@ -280,24 +263,17 @@ prixkwhInput.addEventListener("change", updateMarge2023);
 prixvente2023Input.addEventListener("change", updateMarge2023);
 calculglobal();
 
-
-
-
-
-
-
-
 function displayTarifValue() {
-      var tarifSelect = document.getElementById("tarif");
-      var tarifValue = document.getElementById("tarifJauneValue");
+      var tarifSelect = document.getElementById("typechargeprix");
+      var tarifValue = document.getElementById("payant");
       var texttarif = document.getElementById("texttarif");
 
       if (tarifSelect.value === "8000") {
         tarifValue.innerHTML = "8000 €";
-        texttarif.innerHTML = "PDL ENEDIS Tarif Jaune";
+        texttarif.innerHTML = "PDL ENEDIS Tarif Jaune *";
       } else if (tarifSelect.value === "15000") {
         tarifValue.innerHTML = "15000";
-        texttarif.innerHTML = "PDL ENEDIS Tarif Bleu";
+        texttarif.innerHTML = "PDL ENEDIS Tarif Bleu *";
       } else {
         tarifJauneValue.innerHTML = "";
         tarifBleuValue.innerHTML = "";
@@ -332,8 +308,112 @@ function calculglobal() {
   var invglobal= document.getElementById("invglobal");
   invglobal.innerText = total+"€";
 }
+function calculerTempsCharge() {
+  var tempscharge2023Cell = document.getElementById("tempscharge2023");
+  var tempscharge2024Cell = document.getElementById("tempscharge2024");
+  var tempscharge2025Cell = document.getElementById("tempscharge2025");
+  var tempscharge2026Cell = document.getElementById("tempscharge2026");
+
+  var tempsclientCell = document.getElementById("tempsclient");
+  var tempsclient = parseFloat(tempsclientCell.value);
+  var tempscharge2023  = tempsclient / 60;
+  var tempscharge2024  = tempsclient / 60;
+  var tempscharge2025  = tempsclient / 60;
+  var tempscharge2026  = tempsclient / 60;
 
 
-    updateMarge2023();
-    displayTarifValue();
-    calculglobal();
+  tempscharge2023Cell.innerHTML = tempscharge2023.toFixed(2);
+  tempscharge2024Cell.innerHTML = tempscharge2024.toFixed(2);
+  tempscharge2025Cell.innerHTML = tempscharge2025.toFixed(2);
+  tempscharge2026Cell.innerHTML = tempscharge2026.toFixed(2);
+
+}
+
+
+
+function old_initTypeCharge() {
+  let typechargeprix = document.getElementById("typechargeprix");
+  let nb_point_charges = document.querySelector(".nbpointcharges");
+  let nombrechargetotal = document.getElementById("nombrechargetotal");
+
+  typechargeprix.addEventListener("change", function(e) {
+    let choice = e.target.value;
+
+    if (choice == "Abonnement") {
+      nb_point_charges.forEach(element => {
+        element.innerText = 0
+      });
+    } else {
+      nb_point_charges.forEach(element => {
+        element.innerText = nombrechargetotal.innerText;
+      });
+    }
+  })
+
+}
+
+function initTypeCharge(row) {
+  let inputs = row.querySelectorAll("input, select");
+  let choice = row.querySelector("[name='typechargeprix']")
+
+  let totalpoints = parseInt(row.querySelector(".totalpoint").innerText);
+  row.dataset.chargeVal = totalpoints;
+
+  for (let input of inputs) {
+    input.addEventListener("change", function(e) {
+      setChargeValue(row,choice.value);
+      getTotalCharges();
+    })
+  }
+
+  getTotalCharges();
+}
+
+function setChargeValue(row,choice) {
+  let totalpoints = parseInt(row.querySelector(".totalpoint").innerText);
+  if (choice == "Abonnement") {
+    row.dataset.chargeVal = 0;
+  } else {
+    row.dataset.chargeVal = totalpoints;
+  }
+}
+
+function getTotalCharges() {
+  let nb_point_charges = document.querySelectorAll(".nbpointcharges");
+  let selectedRows = document.querySelectorAll(".selectedRows");
+  let total = 0;
+  for (let row of selectedRows) {
+    total+= parseInt(row.dataset.chargeVal);
+  }
+
+  nb_point_charges.forEach(element => {
+    element.innerText = total;
+  })
+}
+function calculernbsession() {
+  //EN COURS
+  var tempscharge2023Cell = document.getElementById("tempscharge2023");
+  var nbpointchargesCell = document.getElementById("nbpointcharges");
+  var nbsession2024 = document.getElementById("nbsession2024");
+  var tempscharge2026Cell = document.getElementById("tempscharge2026");
+
+  var tempsclientCell = document.getElementById("tempsclient");
+  var tempsclient = parseFloat(tempsclientCell.value);
+  var tempscharge2023  = tempscharge2023 / 60;
+  var nbsession2024 = nbpointcharges / tempscharge2023
+  var tempscharge2025  = tempsclient / 60;
+  var tempscharge2026  = tempsclient / 60;
+
+
+  tempscharge2023Cell.innerHTML = tempscharge2023.toFixed(2);
+  tempscharge2024Cell.innerHTML = tempscharge2024.toFixed(2);
+  tempscharge2025Cell.innerHTML = tempscharge2025.toFixed(2);
+  tempscharge2026Cell.innerHTML = tempscharge2026.toFixed(2);
+
+
+}
+updateMarge2023();
+displayTarifValue();
+calculglobal();
+calculerTempsCharge();
+initTypeCharge();

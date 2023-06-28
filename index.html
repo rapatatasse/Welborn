@@ -12,15 +12,12 @@
   </head>
   <body>
 
-
-
-
     <div class="banner">
       <img src="./logo" alt="Wellborne">
     </div>
 
-    <div class="flex-tablehaut">
-      <div class="table-container">
+    <div class="row ">
+      <div class="table-container m-3 col-4">
         <div class="encadrer-un-contenu">Données entrée client</div>
         <table class="">
           <tr>
@@ -32,7 +29,7 @@
           </tr>
           <tr>
             <td>Temps moyen d'un client (min)</td>
-            <td class="marine"> <input type="number" value="30" id="tempsclient" name="tempsclient"></td>
+            <td class="marine"> <input type="number" value="30" id="tempsclient" name="tempsclient" onchange="calculerTempsCharge()"  ></td>
           </td>
           <label for="tempsclient" ></label>
           </tr>
@@ -60,7 +57,7 @@
         </table>
       </div>
 
-      <div class="table-container">
+      <div class="table-container m-3 col-4">
         <div class="encadrer-un-contenu">Proposition de revente</div>
         <table class="">
           <thead>
@@ -101,415 +98,356 @@
       </div>
     </div>
 
-<!-- SUITE -->
-<!-- SUITE -->
-<!-- SUITE -->
-<!-- SUITE -->
-<!-- SUITE -->
-<!-- SUITE -->
-<!-- SUITE -->
-<!-- SUITE -->
-<!-- SUITE -->
-<!-- SUITE -->
-<!-- SUITE -->
-<!-- SUITE -->
-<!-- SUITE -->
-<!-- SUITE -->
-<!-- SUITE -->
-<!-- SUITE -->
-<!-- SUITE -->
-<!-- SUITE -->
-<!-- SUITE -->
-
-<br>
-<div class="choixborne">
-  <h2 class="titretableau">Nombre de bornes souhaités</h2>
-
-  <table>
-    <thead>
-
-      <tr>
-        <th class="gris">Référence</th>
-        <th class="gris" id="nombrebornes">Nombre de bornes</th>
-        <th class="gris" id="nombredecharge">Nombre de point par charge</th>
-        <th class="gris">Type courant</th>
-        <th class="gris">Type charge</th>
-        <th class="gris">Puissance cumulée</th>
-        <th class="gris">Prix</th>
 
 
-      </tr>
+    <br>
+    <div class="choixborne">
+      <h2 class="titretableau">Nombre de bornes souhaités</h2>
+      <table>
+        <thead>
+          <tr>
+            <th class="gris">Référence</th>
+            <th class="gris" id="nombrebornes">Nombre de bornes</th>
+            <th class="gris" id="nombredecharge">Nombre de point par charge</th>
+            <th class="gris">Type courant</th>
+            <th class="gris">Type charge</th>
+            <th class="gris">Puissance cumulée</th>
+            <th class="gris">Prix</th>
+          </tr>
+          <!--Ici va s'inserer les ligne choisi avec la fonction JS-->
+          <tbody id="bornes-souhaitees">
 
-    <tfoot>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th class="gris">Total</th>
+              <th class="gris textright" id="nombrebornestotal">0</th>
+              <th class="gris">
+                  <div>Total <span id="nombrechargetotal"></span></div>
+                  <div>Total AC <span id="nombrechargeAC"></span></div>
+                  <div>Total DC <span id="nombrechargeDC"></span></div>
+                  <div>Total AC DC <span id="nombrechargeACDC"></span></div>
+              </th>
+              <th class="gris textright" id=""></th>
+              <th class="gris textright" id=""></th>
+              <th class="gris textright" id="puissancecumuleetotal">0</th>
+              <th class="gris textright" id="prixtotal">0</th>
+            </tr>
+          </tfoot>
 
-      <tr>
-        <th class="gris">Total</th>
-        <th class="gris textright" id="nombrebornestotal">0</th>
-        <th class="gris">
-            <div>Total <span id="nombrechargetotal"></span></div>
-            <div>Total AC <span id="nombrechargeAC"></span></div>
-            <div>Total DC <span id="nombrechargeDC"></span></div>
-            <div>Total AC DC <span id="nombrechargeACDC"></span></div>
-        </th>
-        <th class="gris textright" id=""></th>
-        <th class="gris textright" id=""></th>
-        <th class="gris textright" id="puissancecumuleetotal">0</th>
-        <th class="gris textright" id="prixtotal">0</th>
+        </thead>
+      </table>
+    </div>
+
+    <br><br>
+
+    <h2 class="titretableau">Choisir votre borne   <button id="toggleButton" class="btn btn-info" onclick="toggleDiv()">
+      <span id="arrowIcon" class=" ">&#62;</span>
+
+    </button></h2>
+    <!-- bouto collspace pour afficher ou masquer le tableau -->
 
 
 
-      </tfoot>
-      </tr>
-      <p>
+    <div id="myDiv" class="content">
+      <table>
 
-    </thead>
-    <tbody id="bornes-souhaitees">
-
-    </tbody>
-  </table>
-
-  <table>
-</div>
-<br><br>
-  <p class="info">Choisir votre borne</p>
-  <tr>
-    <th class="gris">Descriptif</th>
-    <th class="gris">Référence</th>
-    <th class="gris">type charge</th>
-    <th class="gris">Installation</th>
-    <th class="gris">Nombre de points de charge</th>
-    <th class="gris">Puissance cumulée kW</th>
-    <th class="gris">Prix</th>
-
-  </tr>
+          <th class="gris">Descriptif</th>
+          <th class="gris">Référence</th>
+          <th class="gris">type charge</th>
+          <th class="gris">Installation</th>
+          <th class="gris">Nombre de points de charge</th>
+          <th class="gris">Puissance cumulée kW</th>
+          <th class="gris">Prix</th>
+        </tr>
 
 
 
-  <tr>
-    <td>BORNE 7 KW</td>
-        <td>WB-07S-SS/W</td>
-        <td>AC</td>
-        <td>mural ou sol (pied en sus)</td>
-
-        <td class="textright"> 1</td>
-        <td class="textright">7</td>
-        <td class="textright">891.67</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      </tr>
-      <tr>
-        <td>BORNE 7 KW RFID</td>
-        <td>WB-07S-SS/WR</td>
-        <td>AC</td>
-        <td>mural ou sol (pied en sus)</td>
-        <td class="textright" >1  </td>
-        <td class="textright">7</td>
-        <td class="textright">1041.67</td>
-
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>BORNE 7 KW AVEC PISTOLET</td>
-        <td>WB-07S-P/WR</td>
-        <td>AC</td>
-        <td>mural ou sol (pied en sus)</td>
-        <td class="textright" >1</td>
-        <td class="textright" >7</td>
-        <td class="textright" >1183.33</td>
-        <td><button class="addrow btn btn-success">+</button>
-
-
-        </td>
-      </tr>
-      <tr>
-        <td>BORNE 11KW</td>
-        <td>WB-11S-SS/WRL</td>
-        <td>AC</td>
-        <td>mural ou sol (pied en sus)</td>
-        <td class="textright" >1</td>
-        <td class="textright">11</td>
-        <td class="textright" >1341.67</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>BORNE 22KW</td>
-        <td>WB-22S-SS/WRL</td>
-        <td>AC</td>
-        <td>mural ou sol (pied en sus)</td>
-        <td class="textright" >1</td>
-        <td class="textright" >22</td>
-        <td class="textright" >1341.67</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>BORNE 22 KW AVEC PISTOLET</td>
-        <td>WB-22S-P/WRL</td>
-        <td>AC</td>
-        <td>mural ou sol (pied en sus)</td>
-        <td class="textright" >1</td>
-        <td class="textright" >22</td>
-        <td class="textright" >1441.66</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>BORNE 44 KW AVEC PISTOLET</td>
-        <td>WB-44S-P/WRL</td>
-        <td>AC</td>
-        <td>mural ou sol (pied en sus)</td>
-        <td class="textright" >1</td>
-        <td class="textright" >44</td>
-        <td class="textright" >2533.33</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>STATION DOUBLE 22KW</td>
-        <td>WB-22D-SS/WRL</td>
-        <td>AC</td>
-        <td>sol</td>
-        <td class="textright" >2</td>
-        <td class="textright" >44</td>
-        <td class="textright" >4491.67</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>STATION DOUBLE 22KW AVEC PISTOLET</td>
-        <td>WB-22D-P/WRL</td>
-        <td>AC</td>
-        <td>sol</td>
-        <td class="textright">2</td>
-        <td class="textright">44</td>
-        <td class="textright">4800</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>BORNE DOUBLE 7KW</td>
-        <td>WB-07D-SSW/WRL</td>
-        <td>AC</td>
-        <td>mural ou sol (pied en sus)</td>
-        <td class="textright" >2</td>
-        <td class="textright" >14</td>
-        <td class="textright" >2775</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>BORNE DOUBLE 22KW</td>
-        <td>WB-22D-SSW/WRL</td>
-        <td>AC</td>
-        <td>mural ou sol (pied en sus)</td>
-        <td class="textright" >2</td>
-        <td class="textright" >44</td>
-        <td class="textright" >4083.33</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>BORNE DC 20KW</td>
-        <td>WB-DC-20S/WRL-ECO</td>
-        <td>DC</td>
-        <td>mural ou sol (pied en sus)</td>
-        <td class="textright" >1</td>
-        <td class="textright" >20</td>
-        <td class="textright" >6578.64</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>BORNE DC 40KW</td>
-        <td>WB-DC-40S/WRL</td>
-        <td>DC</td>
-        <td>mural ou sol (pied en sus)</td>
-        <td class="textright" >1</td>
-        <td class="textright" >40</td>
-        <td class="textright" >9750</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>BORNE DC DOUBLE 40KW</td>
-        <td>WB-DC-40D/WRLC</td>
-        <td>DC</td>
-        <td>mural ou sol (pied en sus)</td>
-        <td class="textright" >2</td>
-        <td class="textright">40</td>
-        <td class="textright" >13550</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>SUPERCHARGEUR 150KW</td>
-        <td>WB-DC-150D/WC</td>
-        <td>DC</td>
-        <td>sol</td>
-        <td class="textright" >2</td>
-        <td class="textright" >150</td>
-        <td class="textright" >58500</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>SUPERCHARGEUR 180KW</td>
-        <td>WB-DC-180D/WC</td>
-        <td>DC</td>
-        <td>sol</td>
-        <td class="textright">2</td>
-        <td class="textright" >180</td>
-        <td class="textright" >64000</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>SUPERCHARGEUR 300KW</td>
-        <td>WB-DC-300D/WC</td>
-        <td>DC</td>
-        <td>sol</td>
-        <td class="textright" >2</td>
-        <td class="textright" >300</td>
-        <td class="textright" >80000</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>SUPERCHARGEUR 360KW</td>
-        <td>WB-DC-360D/WC</td>
-        <td>DC</td>
-        <td>sol</td>
-        <td class="textright" >2</td>
-        <td class="textright" >360</td>
-        <td class="textright" >90000</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>STATION COMBO 44AC + 60 DC DOUBLE</td>
-        <td>WB-DC-AC44S/DC60D/WC</td>
-        <td>AC + DC</td>
-        <td>sol</td>
-        <td class="textright" >3</td>
-        <td class="textright" >124</td>
-        <td class="textright" >27916.67</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>BORNE DC DOUBLE 160KW</td>
-        <td>WB-DC-160D/WC</td>
-        <td>DC</td>
-        <td>sol</td>
-        <td class="textright" >2</td>
-        <td class="textright" >160</td>
-        <td class="textright">51250</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>STATION COMBO 22 DC + 150 DC DOUBLE</td>
-        <td>WB-DC-AC22D-SS/DC150D/WC</td>
-        <td>AC + DC</td>
-        <td>sol</td>
-        <td class="textright" >3</td>
-        <td class="textright" >172</td>
-        <td class="textright" >60000</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>BORNE DC DOUBLE 60KW</td>
-        <td>WB-DC-60D/WC</td>
-        <td>DC</td>
-        <td>sol</td>
-        <td class="textright" >2</td>
-        <td class="textright" >60</td>
-        <td class="textright" >25500</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>BORNE DC DOUBLE 80KW</td>
-        <td>WB-DC-80D/WC</td>
-        <td>DC</td>
-        <td>sol</td>
-        <td class="textright" >2</td>
-        <td class="textright" >80</td>
-        <td class="textright" >31625</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>BORNE DC DOUBLE 100KW</td>
-        <td>WB-DC-100D/WC</td>
-        <td>DC</td>
-        <td>sol</td>
-        <td class="textright" >2</td>
-        <td class="textright" >100</td>
-        <td class="textright" >37750</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>BORNE DC DOUBLE 120KW</td>
-        <td>WB-DC-120D/WC</td>
-        <td>DC</td>
-        <td>sol</td>
-        <td class="textright" >2</td>
-        <td class="textright">120</td>
-        <td class="textright">43875</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>BORNE DC DOUBLE 140KW</td>
-        <td>WB-DC-140D/WC</td>
-        <td>DC</td>
-        <td>sol</td>
-        <td class="textright" >2</td>
-        <td class="textright" >140</td>
-        <td class="textright" >50000</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td>BORNE DC DOUBLE 160KW</td>
-        <td>WB-DC-160D/WC</td>
-        <td>DC</td>
-        <td>sol</td>
-        <td class="textright" >2</td>
-        <td class="textright" >160</td>
-        <td class="textright" >56000</td>
-        <td><button class="addrow btn btn-success">+</button>
-        </td>
-      </tr>
-    </table>
-<br>
-   <h2 class="titretableau">ENEDIS</h2>
+        <tr>
+          <td>BORNE 7 KW</td>
+          <td>WB-07S-SS/W</td>
+          <td>AC</td>
+          <td>mural ou sol (pied en sus)</td>
+          <td class="textright"> 1</td>
+          <td class="textright">7</td>
+          <td class="textright">891.67</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>BORNE 7 KW RFID</td>
+          <td>WB-07S-SS/WR</td>
+          <td>AC</td>
+          <td>mural ou sol (pied en sus)</td>
+          <td class="textright" >1  </td>
+          <td class="textright">7</td>
+          <td class="textright">1041.67</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>BORNE 7 KW AVEC PISTOLET</td>
+          <td>WB-07S-P/WR</td>
+          <td>AC</td>
+          <td>mural ou sol (pied en sus)</td>
+          <td class="textright" >1</td>
+          <td class="textright" >7</td>
+          <td class="textright" >1183.33</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>BORNE 11KW</td>
+          <td>WB-11S-SS/WRL</td>
+          <td>AC</td>
+          <td>mural ou sol (pied en sus)</td>
+          <td class="textright" >1</td>
+          <td class="textright">11</td>
+          <td class="textright" >1341.67</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>BORNE 22KW</td>
+          <td>WB-22S-SS/WRL</td>
+          <td>AC</td>
+          <td>mural ou sol (pied en sus)</td>
+          <td class="textright" >1</td>
+          <td class="textright" >22</td>
+          <td class="textright" >1341.67</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>BORNE 22 KW AVEC PISTOLET</td>
+          <td>WB-22S-P/WRL</td>
+          <td>AC</td>
+          <td>mural ou sol (pied en sus)</td>
+          <td class="textright" >1</td>
+          <td class="textright" >22</td>
+          <td class="textright" >1441.66</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>BORNE 44 KW AVEC PISTOLET</td>
+          <td>WB-44S-P/WRL</td>
+          <td>AC</td>
+          <td>mural ou sol (pied en sus)</td>
+          <td class="textright" >1</td>
+          <td class="textright" >44</td>
+          <td class="textright" >2533.33</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>STATION DOUBLE 22KW</td>
+          <td>WB-22D-SS/WRL</td>
+          <td>AC</td>
+          <td>sol</td>
+          <td class="textright" >2</td>
+          <td class="textright" >44</td>
+          <td class="textright" >4491.67</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>STATION DOUBLE 22KW AVEC PISTOLET</td>
+          <td>WB-22D-P/WRL</td>
+          <td>AC</td>
+          <td>sol</td>
+          <td class="textright">2</td>
+          <td class="textright">44</td>
+          <td class="textright">4800</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>BORNE DOUBLE 7KW</td>
+          <td>WB-07D-SSW/WRL</td>
+          <td>AC</td>
+          <td>mural ou sol (pied en sus)</td>
+          <td class="textright" >2</td>
+          <td class="textright" >14</td>
+          <td class="textright" >2775</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>BORNE DOUBLE 22KW</td>
+          <td>WB-22D-SSW/WRL</td>
+          <td>AC</td>
+          <td>mural ou sol (pied en sus)</td>
+          <td class="textright" >2</td>
+          <td class="textright" >44</td>
+          <td class="textright" >4083.33</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>BORNE DC 20KW</td>
+          <td>WB-DC-20S/WRL-ECO</td>
+          <td>DC</td>
+          <td>mural ou sol (pied en sus)</td>
+          <td class="textright" >1</td>
+          <td class="textright" >20</td>
+          <td class="textright" >6578.64</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>BORNE DC 40KW</td>
+          <td>WB-DC-40S/WRL</td>
+          <td>DC</td>
+          <td>mural ou sol (pied en sus)</td>
+          <td class="textright" >1</td>
+          <td class="textright" >40</td>
+          <td class="textright" >9750</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>BORNE DC DOUBLE 40KW</td>
+          <td>WB-DC-40D/WRLC</td>
+          <td>DC</td>
+          <td>mural ou sol (pied en sus)</td>
+          <td class="textright" >2</td>
+          <td class="textright">40</td>
+          <td class="textright" >13550</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>SUPERCHARGEUR 150KW</td>
+          <td>WB-DC-150D/WC</td>
+          <td>DC</td>
+          <td>sol</td>
+          <td class="textright" >2</td>
+          <td class="textright" >150</td>
+          <td class="textright" >58500</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>SUPERCHARGEUR 180KW</td>
+          <td>WB-DC-180D/WC</td>
+          <td>DC</td>
+          <td>sol</td>
+          <td class="textright">2</td>
+          <td class="textright" >180</td>
+          <td class="textright" >64000</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>SUPERCHARGEUR 300KW</td>
+          <td>WB-DC-300D/WC</td>
+          <td>DC</td>
+          <td>sol</td>
+          <td class="textright" >2</td>
+          <td class="textright" >300</td>
+          <td class="textright" >80000</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>SUPERCHARGEUR 360KW</td>
+          <td>WB-DC-360D/WC</td>
+          <td>DC</td>
+          <td>sol</td>
+          <td class="textright" >2</td>
+          <td class="textright" >360</td>
+          <td class="textright" >90000</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>STATION COMBO 44AC + 60 DC DOUBLE</td>
+          <td>WB-DC-AC44S/DC60D/WC</td>
+          <td>AC + DC</td>
+          <td>sol</td>
+          <td class="textright" >3</td>
+          <td class="textright" >124</td>
+          <td class="textright" >27916.67</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>BORNE DC DOUBLE 160KW</td>
+          <td>WB-DC-160D/WC</td>
+          <td>DC</td>
+          <td>sol</td>
+          <td class="textright" >2</td>
+          <td class="textright" >160</td>
+          <td class="textright">51250</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>STATION COMBO 22 DC + 150 DC DOUBLE</td>
+          <td>WB-DC-AC22D-SS/DC150D/WC</td>
+          <td>AC + DC</td>
+          <td>sol</td>
+          <td class="textright" >3</td>
+          <td class="textright" >172</td>
+          <td class="textright" >60000</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>BORNE DC DOUBLE 60KW</td>
+          <td>WB-DC-60D/WC</td>
+          <td>DC</td>
+          <td>sol</td>
+          <td class="textright" >2</td>
+          <td class="textright" >60</td>
+          <td class="textright" >25500</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>BORNE DC DOUBLE 80KW</td>
+          <td>WB-DC-80D/WC</td>
+          <td>DC</td>
+          <td>sol</td>
+          <td class="textright" >2</td>
+          <td class="textright" >80</td>
+          <td class="textright" >31625</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>BORNE DC DOUBLE 100KW</td>
+          <td>WB-DC-100D/WC</td>
+          <td>DC</td>
+          <td>sol</td>
+          <td class="textright" >2</td>
+          <td class="textright" >100</td>
+          <td class="textright" >37750</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>BORNE DC DOUBLE 120KW</td>
+          <td>WB-DC-120D/WC</td>
+          <td>DC</td>
+          <td>sol</td>
+          <td class="textright" >2</td>
+          <td class="textright">120</td>
+          <td class="textright">43875</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>BORNE DC DOUBLE 140KW</td>
+          <td>WB-DC-140D/WC</td>
+          <td>DC</td>
+          <td>sol</td>
+          <td class="textright" >2</td>
+          <td class="textright" >140</td>
+          <td class="textright" >50000</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+        <tr>
+          <td>BORNE DC DOUBLE 160KW</td>
+          <td>WB-DC-160D/WC</td>
+          <td>DC</td>
+          <td>sol</td>
+          <td class="textright" >2</td>
+          <td class="textright" >160</td>
+          <td class="textright" >56000</td>
+          <td><button class="addrow btn btn-success">+</button></td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <h2 class="titretableau" style="background-color: #fbe600;">ENEDIS</h2>
     <table>
-      <tr>
-
-        <td class="gris">Type tarif actuel</td>
-        <td class="clair">
-
-
-          </select>
-        </td>
-      </tr>
-
       <tr>
         <td id="texttarif"></td>
         <td id="tarifJauneValue" class="marine"></td>
       </tr>
 
     </table>
-    <br>
-    <h2 class="titretableau">Installation IRVE</h2>
+    <i>* tarif estimé sur la base de plusieurs devis ENEDIS</i>
+    <hr>
 
+    <h2 class="titretableau">Installation IRVE</h2>
     <table>
       <tr>
         <td id="genie" class="gris">Genie civil - dalle, tranchée, percement</td>
@@ -534,11 +472,8 @@
       </tr>
     </table>
     <hr>
-
+    <h2 class="titretableau">EV MAP - SERVICES + MONETISATION</h2>
     <table>
-      <tr>
-        <td id="EV"class="titretableau">EV MAP - SERVICES + MONETISATION</td>
-      </tr>
       <tr>
         <td id="D1"class="gris">Service monétisation EVmap (16€/mois/PDC DC) - pour 4 ans</td>
         <td class="textright" id="DC"></td>
@@ -556,21 +491,17 @@
         <td class="textright" id="Totaltout"></td>
       </tr>
     </table>
-<br>
-<br>
-<table>
-  <thead>
-      <tr>
-          <th colspan="2" class="titretableau">Total</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td id=invglobal>  </td>
+    <hr>
+    <table>
+      <thead>
+          <tr>
+              <th colspan="1" class="titretableau">Total</th>
+              <td id="invglobal" class="textright titretableau" >  </td>
+          </tr>
 
-      </tr>
-  </tbody>
-</table>
+      </thead>
+
+    </table>
 <br>
 <br>
 <table>
@@ -589,36 +520,35 @@
   <tbody>
     <tr>
       <td class="vertclair">2023</td>
-      <td>0.50</td>
-      <td>6</td>
-      <td>12</td>
-      <td>23</td>
+      <td class="textright" id="tempscharge2023"></td>
+      <td class="textright nbpointcharges"></td>
+      <td class="textright" id="nbsession2023"></td>
       <td>16</td>
       <td>50</td>
     </tr>
     <tr>
       <td class ="vertth">2024</td>
-      <td>0.50</td>
-      <td>6</td>
-      <td>12</td>
+      <td class="textright" id="tempscharge2024"></td>
+      <td class="textright nbpointcharges"></td>
+      <td class="textright" id="nbsession2024"></td>
       <td>45</td>
       <td>32</td>
       <td>50</td>
     </tr>
     <tr>
       <td class ="verneutre" >2025</td>
-      <td>0.50</td>
-      <td>6</td>
-      <td>12</td>
+      <td class="textright" id="tempscharge2025"></td>
+      <td class="textright nbpointcharges"></td>
+      <td class="textright" id="nbsession2025"></td>
       <td>68</td>
       <td>47</td>
       <td>50</td>
     </tr>
     <tr>
       <td class ="vertfonce">2026</td>
-      <td>0.50</td>
-      <td>6</td>
-      <td>12</td>
+      <td class="textright" id="tempscharge2026"></td>
+      <td class="textright nbpointcharges"></td>
+      <td class="textright" id="nbsession2026"></td>
       <td>101</td>
       <td>71</td>
       <td>50</td>
