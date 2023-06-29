@@ -17,7 +17,7 @@
     '<td class="marine textright" ><input type="number" name="nombrebornes" min="0" max="10" value="1" data-point-charge="'+nombrecharge+'" data-puissance="'+puissanceCumulee+'" data-prix="'+prix+'" onKeyDown="return false"></td>' +
     '<td class="marine textright totalpoint" name="nombredecharge">' + nombrecharge + '</td>' +
     '<td class="marine ">' + typecharge + '</td>' +
-    '<td class="marine ">  <select name="typechargeprix" id="typechargeprix" onchange="displayTarifValue()"> <option value="Payant"  >Payant</option><option value="Abonnement" >Abonnement</option></select> </td>' +
+    '<td class="marine ">  <select name="typechargeprix" id="typechargeprix" onchange="displayTarifValue()"> <option value="Payant">Payant</option><option value="Abonnement" >Abonnement</option></select> </td>' +
     '<td class="marine  textright puissance_cumulee ">' + puissanceCumulee + '</td>' +
     '<td class="marine textright prix">' + prix + '</td>';
 
@@ -51,27 +51,73 @@
     puissanceCumuleeCell.innerText = nombreBornes * puissanceCumulee;
     totalprixCell.innerText =  (rowprix * nombreBornes).toFixed(2)
 
-    calcultotalprix();
-    calculerNombreBornesTotal();
-    calculglobal();
-    setChargeValue();
+    reload();
+
   });
 
-  calcultotalprix();
-  calculerNombreBornesTotal();
-  calculglobal();
+  reload();
   initTypeCharge(newRow);
-  setChargeValue();
+
 }
+
+
  // bouton - sur tableau Nombre de bornes souhaités ?
 function supprimerLigne(button) {
   var row = button.parentNode.parentNode;
   var table = row.parentNode;
   table.removeChild(row);
-  calculerNombreBornesTotal();
+  reload();
+
+}
+
+function setChargeValue(row,choice) {
+  let totalpoints = parseInt(row.querySelector(".totalpoint").innerText);
+  if (choice == "Abonnement") {
+    row.dataset.chargeVal = 0;
+  } else {
+    //calcul si "Payant"
+    row.dataset.chargeVal = totalpoints;
+  }
+
+}
+function initTypeCharge(row) {
+  let inputs = row.querySelectorAll("input, select");
+  let choice = row.querySelector("[name='typechargeprix']")
+
+  let totalpoints = parseInt(row.querySelector(".totalpoint").innerText);
+  row.dataset.chargeVal = totalpoints;
+
+  for (let input of inputs) {
+    input.addEventListener("change", function(e) {
+      setChargeValue(row,choice.value);
+      getTotalCharges();
+    })
+  }
+
+  getTotalCharges();
+}
+
+function getTotalCharges() {
+  let nb_point_charges = document.querySelectorAll(".nbpointcharges");
+  let selectedRows = document.querySelectorAll(".selectedRows");
+  let total = 0;
+  for (let row of selectedRows) {
+    total+= parseInt(row.dataset.chargeVal);
+  }
+
+  nb_point_charges.forEach(element => {
+    element.innerText = total;
+  })
+}
+
+
+function reload() {
   calcultotalprix();
   calculerNombreBornesTotal();
   calculglobal();
-  setChargeValue();
-  ;
+  remplissagetableaupotentielannuel();
+  displayTarifValue()
+
 }
+
+reload();
