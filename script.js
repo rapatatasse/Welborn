@@ -35,6 +35,7 @@
 
   newRow.querySelector("input").addEventListener("change", function() {
     var input = this;
+
     var nombreBornes = parseInt(input.value);
     rowpointdecharge = parseInt(input.getAttribute("data-point-charge"));
     rowpuissance = parseInt(input.getAttribute("data-point-charge"));
@@ -51,6 +52,7 @@
     puissanceCumuleeCell.innerText = nombreBornes * puissanceCumulee;
     totalprixCell.innerText =  (rowprix * nombreBornes).toFixed(2)
 
+
     reload();
 
   });
@@ -66,6 +68,7 @@ function supprimerLigne(button) {
   var row = button.parentNode.parentNode;
   var table = row.parentNode;
   table.removeChild(row);
+
   reload();
 
 }
@@ -95,6 +98,7 @@ function initTypeCharge(row) {
   }
 
   getTotalCharges();
+
 }
 
 function getTotalCharges() {
@@ -123,7 +127,7 @@ function reload() {
   remplissageTBLMargesAnnuelle();
 
 
-}
+
 
 
 
