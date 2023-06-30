@@ -23,13 +23,13 @@
           <tr>
             <th rowspan="2" class="titretableau">Site type</th>
             <td class="gris">Nombre de clients mensuels</td>
-            <td class="clair"><input type="number" value="27000" id="nbclients" name="nbclients">
+            <td class="clair"><input type="number" value="27000" id="nbclients" name="nbclients" onchange="reload()">
               </td>
             <label for="nbclients" ></label>
           </tr>
           <tr>
             <td>Temps moyen d'un client (min)</td>
-            <td class="marine"> <input type="number" value="30" id="tempsclient" name="tempsclient"></td>
+            <td class="marine"> <input type="number" value="30" id="tempsclient" name="tempsclient" onchange="reload()"  ></td>
           </td>
           <label for="tempsclient" ></label>
           </tr>
@@ -41,7 +41,7 @@
             <td class="gris">Type tarif actuel</td>
             <td class="clair"><label for="tarif">Choisissez un tarif</label>
 
-              <select name="tarif" id="tarif" onchange="displayTarifValue()">
+              <select name="tarif" id="tarif" onchange="reload()">
                   <option value="8000"  >Tarif jaune</option>
                   <option value="15000" >Tarif bleu</option>
               </select>
@@ -51,7 +51,7 @@
 
           <tr>
             <td>Prix kWh</td>
-            <td class="marine"> <input type="number" id="PrixKwh" value="0.160"  name="PrixKwh"></td>
+            <td class="marine"> <input type="number" id="PrixKwh" value="0.160"  name="PrixKwh" onchange="reload()"></td>
           </tr>
 
         </table>
@@ -71,7 +71,7 @@
             <tr>
               <td class="titretableau">Prix kWh moyen 2023</td>
               <td class="textright" id=prixkwh2023 >   </td>
-              <td class="marine"> <input type="number" value="0.38" id="Prixvente2023" name="Prixvente2023"></td>
+              <td class="marine"> <input type="number" value="0.38" id="prixvente2023" name="prixvente2023" onchange="reload()"></td>
               <td class="textright"  id=marge2023></td>
             </tr>
             <tr>
@@ -100,6 +100,7 @@
 
 
 
+
     <br>
     <div class="choixborne">
       <h2 class="titretableau">Nombre de bornes souhaités</h2>
@@ -116,7 +117,8 @@
           </tr>
           <!--Ici va s'inserer les ligne choisi avec la fonction JS-->
           <tbody id="bornes-souhaitees">
-  
+
+
           </tbody>
           <tfoot>
             <tr>
@@ -142,16 +144,17 @@
     <br><br>
 
     <h2 class="titretableau">Choisir votre borne   <button id="toggleButton" class="btn btn-info" onclick="toggleDiv()">
-      <span id="arrowIcon" class=" ">&#62;</span>
-      
+
+      <span id="arrowIcon" class=" ">v</span>
+
     </button></h2>
     <!-- bouto collspace pour afficher ou masquer le tableau -->
-    
 
-   
+
+
     <div id="myDiv" class="content">
       <table>
-        <tr>
+
           <th class="gris">Descriptif</th>
           <th class="gris">Référence</th>
           <th class="gris">type charge</th>
@@ -440,7 +443,7 @@
     <table>
       <tr>
         <td id="texttarif"></td>
-        <td id="tarifJauneValue" class="marine"></td>
+        <td id="tarifValue" class="marine"></td>
       </tr>
       
     </table>
@@ -466,7 +469,7 @@
         <td><input type = number onchange="calculglobal()" id="IRVE4"></td>
       </tr>
       <tr>
-        <td id="contrat"class="gris">Contrat de maintenance annuel (300€/borne AC - 500€/borne DC) - pour 4 ans</td>
+        <td id="contrat"class="gris">Contrat de maintenance annuel (300€/borne AC - 500€/borne DC -600€/ borne AC/DC) - pour 4 ans</td>
         <td class="textright" id="contrat1"></td>
       </tr>
       </tr>
@@ -495,22 +498,24 @@
     <table>
       <thead>
           <tr>
-              <th colspan="1" class="titretableau">Total</th>
-              <td id="invglobal" class="textright titretableau" >  </td>
+
+              <th colspan="1" class="titretableau fw-bold">Total</th>
+              <td id="totalglobal" class="textright titretableau fw-bold" >  </td>
           </tr>
 
       </thead>
-      
+
+
     </table>
 <br>
 <br>
+<caption>POTENTIEL ANNUEL DE VENTE KWH pour Borne par type "PAYANT"</caption>
 <table>
-  <caption>POTENTIEL ANNUEL DE VENTE KWH</caption>
   <thead>
     <tr>
       <th class ="vertth" >Année</th>
       <th class ="vertth" >Temps de charge (heure) par utilisateur</th>
-      <th class ="vertth" >Nombre de points de charges monétisables</th>
+      <th class ="vertth" >Nombre de points de charges monétisables (Payant)</th>
       <th class ="vertth" >Nombre de sessions max par heure</th>
       <th class ="vertth" >Frequentation quotidienne (nbre passages jourx %EV national)</th>
       <th class ="vertth" >Nombre de clients 100%EV par jour (9h-19h)</th>
@@ -520,45 +525,45 @@
   <tbody>
     <tr>
       <td class="vertclair">2023</td>
-      <td>0.50</td>
-      <td>6</td>
-      <td>12</td>
-      <td>23</td>
-      <td>16</td>
-      <td>50</td>
+      <td class="textright" id="tempscharge2023"></td>
+      <td class="textright totalpointdechargesPayant" id="totalpointdechargesPayant"></td>
+      <td class="textright" id="nbsession2023"></td>
+      <td class="textright" id="frequentation2023"></td>
+      <td class="textright" id="nombredeclientjour2023"></td>
+      <td class="chargemoyenne textright" id="chargemoyenne"></td>
     </tr>
     <tr>
       <td class ="vertth">2024</td>
-      <td>0.50</td>
-      <td>6</td>
-      <td>12</td>
-      <td>45</td>
-      <td>32</td>
-      <td>50</td>
+      <td class="textright" id="tempscharge2024"></td>
+      <td class="textright totalpointdechargesPayant"></td>
+      <td class="textright" id="nbsession2024"></td>
+      <td class="textright" id="frequentation2024"></td>
+      <td class="textright" id="nombredeclientjour2024"></td>
+      <td class="chargemoyenne textright"></td>
     </tr>
     <tr>
       <td class ="verneutre" >2025</td>
-      <td>0.50</td>
-      <td>6</td>
-      <td>12</td>
-      <td>68</td>
-      <td>47</td>
-      <td>50</td>
+      <td class="textright" id="tempscharge2025"></td>
+      <td class="textright totalpointdechargesPayant"></td>
+      <td class="textright" id="nbsession2025"></td>
+      <td class="textright" id="frequentation2025"></td>
+      <td class="textright" id="nombredeclientjour2025"></td>
+      <td class="chargemoyenne textright"></td>
     </tr>
     <tr>
       <td class ="vertfonce">2026</td>
-      <td>0.50</td>
-      <td>6</td>
-      <td>12</td>
-      <td>101</td>
-      <td>71</td>
-      <td>50</td>
+      <td class="textright" id="tempscharge2026"></td>
+      <td class="textright totalpointdechargesPayant"></td>
+      <td class="textright" id="nbsession2026"></td>
+      <td class="textright" id="frequentation2026"></td>
+      <td class="textright" id="nombredeclientjour2026"></td>
+      <td class="chargemoyenne textright"></td>
     </tr>
   </tbody>
 </table>
 
+<caption>Marges €HT par charge unitaire</caption>
 <table>
-  <caption>Marges €HT par charge unitaire</caption>
   <thead>
     <tr>
       <th class ="vertth" >Année</th>
@@ -570,33 +575,33 @@
   <tbody>
     <tr>
       <td class="vertclair" >2023</td>
-      <td>8.00 €</td>
-      <td>19.00 €</td>
-      <td>11.0 €</td>
+      <td class="textright" id="prixrevient2023"></td>
+      <td class="textright" id="prixrevente2023"></td>
+      <td class="textright" id="margeunit2023"></td>
     </tr>
     <tr>
       <td class ="vertth">2024</td>
-      <td>8.96 €</td>
-      <td>19.00 €</td>
-      <td>10.0 €</td>
+      <td class="textright" id="prixrevient2024"></td>
+      <td class="textright" id="prixrevente2024"></td>
+      <td class="textright" id="margeunit2024"></td>
     </tr>
     <tr>
       <td class="verneutre" >2025</td>
-      <td>10.30 €</td>
-      <td>19.00 €</td>
-      <td>8.7 €</td>
+      <td class="textright" id="prixrevient2025"></td>
+      <td class="textright" id="prixrevente2025"></td>
+      <td class="textright" id="margeunit2025"></td>
     </tr>
     <tr>
       <td class="vertfonce" >2026</td>
-      <td>12.36 €</td>
-      <td>19.00 €</td>
-      <td>6.6 €</td>
+      <td class="textright" id="prixrevient2026"></td>
+      <td class="textright" id="prixrevente2026"></td>
+      <td class="textright" id="margeunit2026"></td>
     </tr>
   </tbody>
 </table>
 
+<caption>Marges €HT annuelles</caption>
 <table>
-  <caption>Marges €HT annuelles</caption>
   <thead>
     <tr>
       <th class ="vertth" >Année</th>
@@ -608,68 +613,67 @@
   <tbody>
     <tr>
       <td class="vertclair" >2023</td>
-      <td>49,896.00 €</td>
-      <td>7,325.64 €</td>
-      <td>42,570.36 €</td>
+      <td class="textright" id="margeopera2023"></td>
+      <td class="textright" id="coutevmap2023"></td>
+      <td class="textright" id="margebrute2023"></td>
     </tr>
     <tr>
       <td class ="vertth">2024</td>
-      <td>91,082.88 €</td>
-      <td>14,651.28 €</td>
-      <td>76,431.60 €</td>
+      <td class="textright" id="margeopera2024"></td>
+      <td class="textright" id="coutevmap2024"></td>
+      <td class="textright" id="margebrute2024"></td>
     </tr>
     <tr>
       <td class="verneutre" >2025</td>
-      <td>118,335.17 €</td>
-      <td>21,976.92 €</td>
-      <td>96,358.25 €</td>
+      <td class="textright" id="margeopera2025"></td>
+      <td class="textright" id="coutevmap2025"></td>
+      <td class="textright" id="margebrute2025"></td>
     </tr>
     <tr>
       <td class="vertfonce" >2026</td>
-      <td>135,437.70 €</td>
-      <td>32,965.38 €</td>
-      <td>102,472.32 €</td>
+      <td class="textright" id="margeopera2026"></td>
+      <td class="textright" id="coutevmap2026"></td>
+      <td class="textright" id="margebrute2026"></td>
     </tr>
   </tbody>
 </table>
 
+<caption>RETOUR SUR INVESTISSEMENT</caption>
 <table>
-  <caption>RETOUR SUR INVESTISSEMENT</caption>
   <thead>
     <tr>
       <th class ="vertth" >Année</th>
-      <th class="vertfonce">Marge annuelle brute cumulée €HT</th>
+      <th class="vertth">Marge annuelle brute cumulée €HT</th>
       <th class ="vertth">Coût €HT cumulé des travaux (amortissement 48 mois)</th>
-      <th class="vertfonce">Marge nette €HT cumulée</th>
+      <th class="vertth">Marge nette €HT cumulée</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td class="vertclair" >2023</td>
-      <td>42,570.36 €</td>
-      <td>#VALUE!</td>
-      <td>#VALUE!</td>
+      <td class="textright" id="margebrutcumule2023"></td>
+      <td class="textright" id="travauxcumulee2023"></td>
+      <td class="textright" id="magenetcumulee2023"></td>
     </tr>
     <tr>
       <td class ="vertth" >2024</td>
-      <td>119,001.96 €</td>
-      <td>#VALUE!</td>
-      <td>#VALUE!</td>
-    </tr>
+      <td class="textright" id="margebrutcumule2024"></td>
+      <td class="textright" id="travauxcumulee2024"></td>
+      <td class="textright" id="magenetcumulee2024"></td>    </tr>
     <tr>
       <td class="verneutre">2025</td>
-      <td>215,360.21 €</td>
-      <td>#VALUE!</td>
-      <td>#VALUE!</td>
-    </tr>
+      <td class="textright" id="margebrutcumule2025"></td>
+      <td class="textright" id="travauxcumulee2025"></td>
+      <td class="textright" id="magenetcumulee2025"></td>    </tr>
     <tr>
       <td class="vertfonce">2026</td>
-      <td>317,832.53 €</td>
-      <td>#VALUE!</td>
-      <td>#VALUE!</td>
-    </tr>
+      <td class="textright" id="margebrutcumule2026"></td>
+      <td class="textright" id="travauxcumulee2026"></td>
+      <td class="textright" id="magenetcumulee2026"></td>    </tr>
   </tbody>
 </table>
+<hr>
+<h1 class="d-flex d-flex justify-content-between bg-black text-white p-3"><div>Temps de retour sur investissement : </div><span class="textright" id="tempsretour">  </span>mois</h1>
 <br>
 <br>
 
@@ -680,6 +684,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+    <script src="script2.js"></script>
     <script src="script.js"></script>
 
   </body>
