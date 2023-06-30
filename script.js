@@ -112,12 +112,19 @@ function getTotalCharges() {
 
 
 function reload() {
+  console.log("reload function")
+  updateMarge2023();
   calcultotalprix();
   calculerNombreBornesTotal();
   calculglobal();
-  remplissagetableaupotentielannuel();
-  displayTarifValue()
+  remplissageTBLpotentielannuel();
+  displayTarifValue();
+  remplissageTBLMargesParChargeUnitaire();
+  remplissageTBLMargesAnnuelle();
+
 
 }
+
+
 
 reload();
