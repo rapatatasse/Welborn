@@ -114,6 +114,24 @@ function getTotalCharges() {
   })
 }
 
+function displaybtnemail() {
+    // Sélection de l'élément du bouton et de l'élément tbody
+  var emailButton = document.getElementById("emailButton");
+  var tbodyElement = document.getElementById("bornes-souhaitees");
+
+  // Vérification du nombre d'éléments tr dans le tbody lors du chargement de la page
+  
+    var trElements = tbodyElement.getElementsByTagName("tr");
+    if (trElements.length === 0) {
+      emailButton.style.display = "none"; // Masquer le bouton s'il n'y a pas d'éléments tr
+    }
+    else  {
+      emailButton.style.display = "block"; // Afficher le bouton s'il y a des éléments tr
+    }
+    console.log("trElements.length", trElements.length);
+
+}
+
 
 function reload() {
   console.log("reload function")
@@ -125,10 +143,8 @@ function reload() {
   displayTarifValue();
   remplissageTBLMargesParChargeUnitaire();
   remplissageTBLMargesAnnuelle();
-
+  displaybtnemail();
 
 }
-
-
 
 reload();

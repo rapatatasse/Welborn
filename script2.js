@@ -28,7 +28,7 @@ function calcultotalprix() {
     var valeur = parseFloat(elementsPrix[i].innerText);
     if (!isNaN(valeur)) {
       totalPrix += valeur;
-      console.log(valeur)
+      
     }
   }
   baliseTotal.textContent = totalPrix.toFixed(2).toString();
@@ -94,7 +94,7 @@ function calculerNombreBornesTotal() {
       typecontrat = rows[i + 4].querySelector("select").value;
       nombredeborne = parseInt(rows[i + 2].textContent)
       puissanceCumule  = parseInt(rows[i + 5].textContent)
-      console.log(rows)
+      
       if (type === "AC") {
         totalpointdechargesAC += points;
       }
