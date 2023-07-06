@@ -14,12 +14,12 @@
       <img src="./logo" alt="Wellborne">
     </div>
 
-    <div class="d-flex flex-wrap ">
-      <div class="table-container m-3 col-3">
-        <h2 class="">Données entrée client</h2>
+    <div class="d-flex flex-wrap gap-3">
+      <div class="   mb-3">
+        <h2 class="mb-0">Données entrée client</h2>
         <table class=" ">
           <tr>
-            <th rowspan="2" class="titretableau">Site type</th>
+            <th rowspan="2" class="bleu1">Site type</th>
             <td class="gris">Nombre de clients mensuels</td>
             <td class="clair"><input type="number" value="27000" id="nbclients" name="nbclients" onchange="reload()"></td>
           </tr>
@@ -27,11 +27,9 @@
               <td>Temps moyen d'un client (min)</td>
               <td class="marine"> <input type="number" value="30" id="tempsclient" name="tempsclient" onchange="reload()"  ></td>
           </tr>
-        </table>
-
-        <table class="">
+      
           <tr>
-            <th rowspan="3" class="titretableau">Abonnement électrique</th>
+            <th rowspan="3" class="bleu2">Abonnement <br> électrique</th>
             <td class="gris">Type tarif actuel</td>
             <td class="clair"><label for="tarif">Choisissez un tarif</label>
 
@@ -44,14 +42,14 @@
 
 
           <tr>
-            <td>Prix kWh</td>
+            <td>Prix kWh en €</td>
             <td class="marine"> <input type="number" id="PrixKwh" value="0.160"  name="PrixKwh" onchange="reload()"></td>
           </tr>
 
         </table>
       </div>
 
-      <div class="table-container m-3 col-3">
+      <div class=" ">
         <h2 class="">Proposition de revente</h2>
         <table class="">
           <thead>
@@ -63,25 +61,25 @@
           <tbody>
             <!-- Marge de revente = Prix vente Kwh / Prix achats KWH-->
             <tr>
-              <td class="titretableau">2023</td>
+              <td class="bleu1">2023</td>
               <td class="textright" id=prixkwh2023 >   </td>
-              <td class="marine"> <input type="number" value="0.38" id="prixvente2023" name="prixvente2023" onchange="reload()"></td>
+              <td class="marine" style="width: 70px;"> <input type="number" value="0.38" id="prixvente2023" class="w-100"  onchange="reload()"></td>
               <td class="textright"  id=marge2023></td>
             </tr>
             <tr>
-              <td class="titretableau">2024 (+9%)*</td>
+              <td class="bleu2">2024 (+9%)*</td>
               <td  class="textright" id=prixkwh2024>   </td>
               <td class="textright"  id="prixvente2024"></td>
               <td class="textright" id=marge2024></td>
             </tr>
             <tr>
-              <td class="titretableau">2025 (+12%)*</td>
+              <td class="bleu3">2025 (+12%)*</td>
               <td class="textright" id=prixkwh2025>   </td>
               <td  class="textright" id="prixvente2025"></td>
               <td class="textright" id=marge2025></td>
             </tr>
             <tr>
-              <td class="titretableau">2026 (+15%)*</td>
+              <td class="bleu4">2026 (+15%)*</td>
               <td class="textright" id=prixkwh2026>   </td>
               <td  class="textright"id="prixvente2026"></td>
               <td class="textright" id=marge2026></td>
@@ -92,12 +90,12 @@
       </div>
     </div>
 
+    <hr>
 
 
-
-    <br>
+    
     <div class="choixborne">
-      <h2 class="titretableau">Nombre de bornes souhaités</h2>
+      <h2 class="">Nombre de bornes souhaités</h2>
       <table>
         <thead>
           <tr>
@@ -137,7 +135,7 @@
 
     <br><br>
 
-    <h2 class="titretableau">Choisir votre borne   <button id="toggleButton" class="btn btn-light" onclick="toggleDiv()">
+    <h2 class="">Choisir votre borne   <button id="toggleButton" class="btn btn-light" onclick="toggleDiv()">
 
       <span id="arrowIcon" class=" ">v</span>
 
@@ -148,8 +146,8 @@
 
     <div id="myDiv" class="content">
       <table class="table  table-striped table-hover table-borderless">
-        <thead class="text-center">
-          <th class="bg-black text-white">Descriptif</th>
+        <thead class="">
+          <th class="bg-black text-white ">Descriptif</th>
           <th class="bg-black text-white">Référence</th>
           <th class="bg-black text-white">type charge</th>
           <th class="bg-black text-white">Installation</th>
@@ -168,7 +166,7 @@
           <td>mural ou sol (pied en sus)</td>
           <td class="textright"> 1</td>
           <td class="textright">7</td>
-          <td class="textright">891.67</td>
+          <td class="textright">891.67€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -178,7 +176,7 @@
           <td>mural ou sol (pied en sus)</td>
           <td class="textright" >1  </td>
           <td class="textright">7</td>
-          <td class="textright">1041.67</td>
+          <td class="textright">1041.6€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -188,7 +186,7 @@
           <td>mural ou sol (pied en sus)</td>
           <td class="textright" >1</td>
           <td class="textright" >7</td>
-          <td class="textright" >1183.33</td>
+          <td class="textright" >1183.33€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -198,7 +196,7 @@
           <td>mural ou sol (pied en sus)</td>
           <td class="textright" >1</td>
           <td class="textright">11</td>
-          <td class="textright" >1341.67</td>
+          <td class="textright" >1341.67€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -208,7 +206,7 @@
           <td>mural ou sol (pied en sus)</td>
           <td class="textright" >1</td>
           <td class="textright" >22</td>
-          <td class="textright" >1341.67</td>
+          <td class="textright" >1341.67€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -218,7 +216,7 @@
           <td>mural ou sol (pied en sus)</td>
           <td class="textright" >1</td>
           <td class="textright" >22</td>
-          <td class="textright" >1441.66</td>
+          <td class="textright" >1441.66€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -228,7 +226,7 @@
           <td>mural ou sol (pied en sus)</td>
           <td class="textright" >1</td>
           <td class="textright" >44</td>
-          <td class="textright" >2533.33</td>
+          <td class="textright" >2533.33€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -238,7 +236,7 @@
           <td>sol</td>
           <td class="textright" >2</td>
           <td class="textright" >44</td>
-          <td class="textright" >4491.67</td>
+          <td class="textright" >4491.67€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -248,7 +246,7 @@
           <td>sol</td>
           <td class="textright">2</td>
           <td class="textright">44</td>
-          <td class="textright">4800</td>
+          <td class="textright">4800€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -258,7 +256,7 @@
           <td>mural ou sol (pied en sus)</td>
           <td class="textright" >2</td>
           <td class="textright" >14</td>
-          <td class="textright" >2775</td>
+          <td class="textright" >2775€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -268,7 +266,7 @@
           <td>mural ou sol (pied en sus)</td>
           <td class="textright" >2</td>
           <td class="textright" >44</td>
-          <td class="textright" >4083.33</td>
+          <td class="textright" >4083.33€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -278,7 +276,7 @@
           <td>mural ou sol (pied en sus)</td>
           <td class="textright" >1</td>
           <td class="textright" >20</td>
-          <td class="textright" >6578.64</td>
+          <td class="textright" >6578.64€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -288,7 +286,7 @@
           <td>mural ou sol (pied en sus)</td>
           <td class="textright" >1</td>
           <td class="textright" >40</td>
-          <td class="textright" >9750</td>
+          <td class="textright" >9750€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -298,7 +296,7 @@
           <td>mural ou sol (pied en sus)</td>
           <td class="textright" >2</td>
           <td class="textright">40</td>
-          <td class="textright" >13550</td>
+          <td class="textright" >13550€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -308,7 +306,7 @@
           <td>sol</td>
           <td class="textright" >2</td>
           <td class="textright" >150</td>
-          <td class="textright" >58500</td>
+          <td class="textright" >58500€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -318,7 +316,7 @@
           <td>sol</td>
           <td class="textright">2</td>
           <td class="textright" >180</td>
-          <td class="textright" >64000</td>
+          <td class="textright" >64000€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -328,7 +326,7 @@
           <td>sol</td>
           <td class="textright" >2</td>
           <td class="textright" >300</td>
-          <td class="textright" >80000</td>
+          <td class="textright" >80000€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -338,7 +336,7 @@
           <td>sol</td>
           <td class="textright" >2</td>
           <td class="textright" >360</td>
-          <td class="textright" >90000</td>
+          <td class="textright" >90000€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -348,7 +346,7 @@
           <td>sol</td>
           <td class="textright" >3</td>
           <td class="textright" >124</td>
-          <td class="textright" >27916.67</td>
+          <td class="textright" >27916.67€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -358,7 +356,7 @@
           <td>sol</td>
           <td class="textright" >2</td>
           <td class="textright" >160</td>
-          <td class="textright">51250</td>
+          <td class="textright">51250€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -368,7 +366,7 @@
           <td>sol</td>
           <td class="textright" >3</td>
           <td class="textright" >172</td>
-          <td class="textright" >60000</td>
+          <td class="textright" >60000€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -378,7 +376,7 @@
           <td>sol</td>
           <td class="textright" >2</td>
           <td class="textright" >60</td>
-          <td class="textright" >25500</td>
+          <td class="textright" >25500€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -388,7 +386,7 @@
           <td>sol</td>
           <td class="textright" >2</td>
           <td class="textright" >80</td>
-          <td class="textright" >31625</td>
+          <td class="textright" >31625€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -398,7 +396,7 @@
           <td>sol</td>
           <td class="textright" >2</td>
           <td class="textright" >100</td>
-          <td class="textright" >37750</td>
+          <td class="textright" >37750€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -408,7 +406,7 @@
           <td>sol</td>
           <td class="textright" >2</td>
           <td class="textright">120</td>
-          <td class="textright">43875</td>
+          <td class="textright">43875€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -418,7 +416,7 @@
           <td>sol</td>
           <td class="textright" >2</td>
           <td class="textright" >140</td>
-          <td class="textright" >50000</td>
+          <td class="textright" >50000€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -428,21 +426,21 @@
           <td>sol</td>
           <td class="textright" >2</td>
           <td class="textright" >160</td>
-          <td class="textright" >56000</td>
+          <td class="textright" >56000€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
       </table>
     </div>
     <br>
-    <h2 class="titretableau" style="background-color: #e8d503;">ENEDIS</h2>
+    <h2 class="titretableau" style="background-color: #F55517;">ENEDIS</h2>
     <table>
       <tr>
         <td id="texttarif"></td>
-        <td id="tarifValue" class="marine  textright"></td>
+        <td id="tarifValue" class="textright" style="background-color: #fb743e;"></td>
       </tr>
       
     </table>
-    <i>* tarif estimé sur la base de plusieurs devis ENEDIS</i>
+    <i>* tarif estimé sur la base de plusieurs devis ENEDIS, très approximatif, ne peux être pris en compte de façon sûr</i>
     <hr>
 
     <h2 class="titretableau">Installation IRVE</h2>
@@ -490,21 +488,14 @@
       </tr>
     </table>
     <hr>
-    <table>
-      <thead>
-          <tr>
 
-              <th colspan="1" class="titretableau fw-bold">Total</th>
-              <td id="totalglobal" class="textright titretableau fw-bold" >  </td>
-          </tr>
-
-      </thead>
-
-
-    </table>
+    <h2 class="d-flex d-flex justify-content-between bg-black text-white p-3">
+      <div>Total </div>
+      <div><span class="textright" id="totalglobal">  </span> </div>
+    </h2>
 <br>
 <br>
-<caption>POTENTIEL ANNUEL DE VENTE KWH pour Borne par type "PAYANT"</caption>
+<h2>POTENTIEL ANNUEL DE VENTE KWH pour Borne par type "PAYANT"</h2>
 <table>
   <thead>
     <tr>
@@ -525,7 +516,7 @@
       <td class="textright" id="nbsession2023"></td>
       <td class="textright" id="frequentation2023"></td>
       <td class="textright" id="nombredeclientjour2023"></td>
-      <td class="chargemoyenne textright" id="chargemoyenne"></td>
+      <td class="chargemoyenne textright" id="chargemoyenne2023"></td>
     </tr>
     <tr>
       <td class ="vertth">2024</td>
@@ -534,7 +525,7 @@
       <td class="textright" id="nbsession2024"></td>
       <td class="textright" id="frequentation2024"></td>
       <td class="textright" id="nombredeclientjour2024"></td>
-      <td class="chargemoyenne textright"></td>
+      <td class="chargemoyenne textright" id="chargemoyenne2024"></td>
     </tr>
     <tr>
       <td class ="verneutre" >2025</td>
@@ -543,7 +534,7 @@
       <td class="textright" id="nbsession2025"></td>
       <td class="textright" id="frequentation2025"></td>
       <td class="textright" id="nombredeclientjour2025"></td>
-      <td class="chargemoyenne textright"></td>
+      <td class="chargemoyenne textright" id="chargemoyenne2025"></td>
     </tr>
     <tr>
       <td class ="vertfonce">2026</td>
@@ -552,12 +543,12 @@
       <td class="textright" id="nbsession2026"></td>
       <td class="textright" id="frequentation2026"></td>
       <td class="textright" id="nombredeclientjour2026"></td>
-      <td class="chargemoyenne textright"></td>
+      <td class="chargemoyenne textright" id="chargemoyenne2026"></td>
     </tr>
   </tbody>
 </table>
 
-<caption>Marges €HT par charge unitaire</caption>
+<h2>Marges €HT par charge unitaire</h2>
 <table>
   <thead>
     <tr>
@@ -595,7 +586,7 @@
   </tbody>
 </table>
 
-<caption>Marges €HT annuelles</caption>
+<h2>Marges €HT annuelles</h2>
 <table>
   <thead>
     <tr>
@@ -633,7 +624,7 @@
   </tbody>
 </table>
 
-<caption>RETOUR SUR INVESTISSEMENT</caption>
+<h2>RETOUR SUR INVESTISSEMENT</h2>
 <table>
   <thead>
     <tr>

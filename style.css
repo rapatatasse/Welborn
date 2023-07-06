@@ -6,6 +6,7 @@ html {
 body {
   max-width: 1080px;
   padding-top: calc(128px + 64px);
+  font-size: 14px;
 }
 .content {
   display: block;
@@ -15,9 +16,9 @@ h2 {
   color: rgb(250, 250, 250);
   font-size: 1.5rem;
   font-weight: 400;
-  margin: 0;
+  margin-top: 5px;
   padding: 5px;
-  background-color: rgb(31, 128, 255);
+  background-color: rgb(35, 92, 167);
 }
 
 
@@ -37,12 +38,7 @@ select {
   box-sizing: border-box;
 }
 
-.table-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: fit-content;
-}
+
 
 table {
   width: 100%;
@@ -153,6 +149,22 @@ background-color: rgb(204, 247, 232);
 }
 .vertfonce {
   background-color: rgb(1, 141, 1);
+}
+.bleu1 {
+  background-color: rgb(25, 133, 240);
+  color: white;
+}
+.bleu2 {
+  background-color: rgb(5, 123, 197);
+  color: white;
+}
+.bleu3 {
+  background-color: rgb(7, 76, 186);
+  color: white;
+}
+.bleu4 {
+  background-color: rgb(4, 50, 124);
+  color: white;
 }
 
 @media print {

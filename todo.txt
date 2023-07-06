@@ -1,32 +1,19 @@
-Nombre de bornes lors de l'ajout mettre un default a 1 et changer   : ok
-supprimer nom colonne annuler ok
-bouton annuler style btn btn-danger ok
-ajoutrer btn btn-success ok
+Fonctionnalités :
 
-une ligne des total sous tableau
-"Nombre de bornes souhaités"
-nb borne / point de charge / puissance cumulé
+« Nombre de clients EV estimés par jour », laisser les cellules modifiables par l’utilisateur
+Fréquentation quotidienne : arrondir à l'unité supérieure, pour éviter un nombre de client = 0
+
+Ajouter bouton "imprimer le résumé de l'étude" et ouvrir une page supplémentaire d'impression
+Ajouter au fichier pdf imprimé les tableaux suivants :
+Données entrée client
+Proposition de revent
+Nombre de bornes souhaités
+Enedis
+Installation IRVE
+EV MAP – Services + Monetisation
+Total
+Retour sur investissement
+Temps de retour sur investissement
 
 
-
-"Nombre de bornes souhaités" hors tabl eau en h2
-
-----------------------------------
-
-Proposition de revente
-
-
-gérer les liaison avec l'input "Prix KWH"
-mettre l'input en value par default a 0.16
-
-"Prix vente €/kWh" est un input les autre au dessous sont identique.
-
-pas oublier  :
-REmplir les input defaut
-AJouter les prix
-faire les tableaux manquants
-
-git add .
-git commit -m "mon travail"
-git push origin thomas
-        <td><button class="addrow btn btn-success">+</button>
+Il manque la devise sur beaucoup de cellules (Ajouter donc le symbole « € » quand il s’agit d’un prix)
