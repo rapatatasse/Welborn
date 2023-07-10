@@ -1,7 +1,7 @@
  // bouton + sur tableau QUELLE TYPE DE BORNE CHOISIR ?
  function ajouterLigne(button) {
   var row = button.parentNode.parentNode ;
-  var reference = row.cells[0].innerText;
+  var reference = row.cells[0].innerText + " [" + row.cells[1].innerText + "]";
   var nombrecharge = row.cells[4].innerText;
   var puissanceCumulee = row.cells[5].innerText;
   var typecharge = row.cells[2].innerText;

@@ -20,7 +20,12 @@ h2 {
   padding: 5px;
   background-color: rgb(35, 92, 167);
 }
-
+.titre_IRV {
+  background-color: rgb(175, 21, 49);
+}
+*, ::after, ::before {
+  box-sizing: content-box;; 
+}
 
 
 input {
@@ -137,7 +142,7 @@ label {
 {
   text-align: right;
 }
-.vertth {
+.vert1 {
 background-color: rgb(156, 255, 136);
 
 }

@@ -8,11 +8,14 @@
     <link href="style.css" rel="stylesheet">
 
   </head>
-  <body>
-
+  <header>
     <div class="banner">
-      <img src="./logo" alt="Wellborne">
+      <img src="./logo" alt="Welleborne">
     </div>
+  </header>
+  <body>
+    <div class="container">
+
 
     <div class="d-flex flex-wrap gap-3">
       <div class="   mb-3">
@@ -117,10 +120,10 @@
               <th class="gris">Total</th>
               <th class="gris textright" id="nombrebornestotal">0</th>
               <th class="gris">
-                  <div>Total <span id="nombrechargetotal"></span></div>
-                  <div>Total AC <span id="nombrechargeAC"></span></div>
-                  <div>Total DC <span id="nombrechargeDC"></span></div>
-                  <div>Total AC DC <span id="nombrechargeACDC"></span></div>
+                <div class="text-muted">Total AC <span id="nombrechargeAC"></span></div>
+                <div class="text-muted">Total DC <span id="nombrechargeDC"></span></div>
+                <div class="text-muted">Total AC DC <span id="nombrechargeACDC"></span></div>
+                <div>Total <span id="nombrechargetotal"></span></div>
               </th>
               <th class="gris textright" id=""></th>
               <th class="gris textright" id=""></th>
@@ -443,7 +446,7 @@
     <i>* tarif estimé sur la base de plusieurs devis ENEDIS, très approximatif, ne peux être pris en compte de façon sûr</i>
     <hr>
 
-    <h2 class="titretableau">Installation IRVE</h2>
+    <h2 class="titre_IRV">Installation IRVE</h2>
     <table class="table table-striped">
       <tr>
         <td id="genie" class="gris">Genie civil - dalle, tranchée, percement</td>
@@ -495,17 +498,17 @@
     </h2>
 <br>
 <br>
-<h2>POTENTIEL ANNUEL DE VENTE KWH pour Borne par type "PAYANT"</h2>
+<h2 class="verneutre">POTENTIEL ANNUEL DE VENTE KWH pour Borne par type "PAYANT"</h2>
 <table>
   <thead>
     <tr>
-      <th class ="vertth" >Année</th>
-      <th class ="vertth" >Temps de charge (heure) par utilisateur</th>
-      <th class ="vertth" >Nombre de points de charges monétisables (Payant)</th>
-      <th class ="vertth" >Nombre de sessions max par heure</th>
-      <th class ="vertth" >Frequentation quotidienne (nbre passages jourx %EV national)</th>
-      <th class ="vertth" >Nombre de clients 100%EV par jour (9h-19h)</th>
-      <th class ="vertth" >Charge moyenne vendue kWh/utilisateur</th>
+      <th class ="vert1" >Année</th>
+      <th class ="vert1" >Temps de charge (heure) par utilisateur</th>
+      <th class ="vert1" >Nombre de points de charges monétisables (Payant)</th>
+      <th class ="vert1" >Nombre de sessions max par heure</th>
+      <th class ="vert1" >Frequentation quotidienne (Nombre de clients mensuels / 24 jour X %EV national)</th>
+      <th class ="vert1" >Nombre de clients 100%EV par jour (9h-19h)</th>
+      <th class ="vert1" >Charge moyenne vendue kWh/utilisateur</th>
     </tr>
   </thead>
   <tbody>
@@ -519,7 +522,7 @@
       <td class="chargemoyenne textright" id="chargemoyenne2023"></td>
     </tr>
     <tr>
-      <td class ="vertth">2024</td>
+      <td class ="vert1">2024</td>
       <td class="textright" id="tempscharge2024"></td>
       <td class="textright totalpointdechargesPayant"></td>
       <td class="textright" id="nbsession2024"></td>
@@ -547,15 +550,15 @@
     </tr>
   </tbody>
 </table>
-
-<h2>Marges €HT par charge unitaire</h2>
+<br>
+<h2 class="verneutre">Marges €HT par charge unitaire</h2>
 <table>
   <thead>
     <tr>
-      <th class ="vertth" >Année</th>
-      <th class ="vertth" >Prix de revient €HT par charge unitaire</th>
-      <th class ="vertth" >Prix revente €HT/charge unitaire</th>
-      <th class ="vertth" >Marge €HT/charge unitaire</th>
+      <th class ="vert1" >Année</th>
+      <th class ="vert1" >Prix de revient €HT par charge unitaire</th>
+      <th class ="vert1" >Prix revente €HT/charge unitaire</th>
+      <th class ="vert1" >Marge €HT/charge unitaire</th>
     </tr>
   </thead>
   <tbody>
@@ -566,7 +569,7 @@
       <td class="textright" id="margeunit2023"></td>
     </tr>
     <tr>
-      <td class ="vertth">2024</td>
+      <td class ="vert1">2024</td>
       <td class="textright" id="prixrevient2024"></td>
       <td class="textright" id="prixrevente2024"></td>
       <td class="textright" id="margeunit2024"></td>
@@ -585,15 +588,15 @@
     </tr>
   </tbody>
 </table>
-
-<h2>Marges €HT annuelles</h2>
+<br>
+<h2 class="verneutre">Marges €HT annuelles</h2>
 <table>
   <thead>
     <tr>
-      <th class ="vertth" >Année</th>
-      <th class ="vertth" >Marge annuelle opérationnelle brute €HT</th>
-      <th class ="vertth" >Coût EV map €HT (8,5% sur volume de vente)</th>
-      <th class ="vertth" >Marge brute annuelle €HT</th>
+      <th class ="vert1" >Année</th>
+      <th class ="vert1" >Marge annuelle opérationnelle brute €HT</th>
+      <th class ="vert1" >Coût EV map €HT (8,5% sur volume de vente)</th>
+      <th class ="vert1" >Marge brute annuelle €HT</th>
     </tr>
   </thead>
   <tbody>
@@ -604,7 +607,7 @@
       <td class="textright" id="margebrute2023"></td>
     </tr>
     <tr>
-      <td class ="vertth">2024</td>
+      <td class ="vert1">2024</td>
       <td class="textright" id="margeopera2024"></td>
       <td class="textright" id="coutevmap2024"></td>
       <td class="textright" id="margebrute2024"></td>
@@ -623,15 +626,15 @@
     </tr>
   </tbody>
 </table>
-
-<h2>RETOUR SUR INVESTISSEMENT</h2>
+<br>
+<h2 class="verneutre">RETOUR SUR INVESTISSEMENT</h2>
 <table>
   <thead>
     <tr>
-      <th class ="vertth" >Année</th>
-      <th class="vertth">Marge annuelle brute cumulée €HT</th>
-      <th class ="vertth">Coût €HT cumulé des travaux (amortissement 48 mois)</th>
-      <th class="vertth">Marge nette €HT cumulée</th>
+      <th class ="vert1" >Année</th>
+      <th class="vert1">Marge annuelle brute cumulée €HT</th>
+      <th class ="vert1">Coût €HT cumulé des travaux (amortissement 48 mois)</th>
+      <th class="vert1">Marge nette €HT cumulée</th>
     </tr>
   </thead>
   <tbody>
@@ -642,7 +645,7 @@
       <td class="textright" id="magenetcumulee2023"></td>
     </tr>
     <tr>
-      <td class ="vertth" >2024</td>
+      <td class ="vert1" >2024</td>
       <td class="textright" id="margebrutcumule2024"></td>
       <td class="textright" id="travauxcumulee2024"></td>
       <td class="textright" id="magenetcumulee2024"></td>    </tr>
@@ -681,5 +684,6 @@
     <script src="script.js"></script>
     <script src="scriptemail.js"></script>
 
+  </div>
   </body>
 </html>
