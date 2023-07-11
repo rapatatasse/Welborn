@@ -196,3 +196,28 @@ background-color: rgb(204, 247, 232);
     background-color: none;
   }
 }
+
+@media print {
+  .no-print {
+    display: none;
+  }
+  .no-page-break {
+    page-break-inside: avoid;
+  }
+  .container {
+    max-width: 98%;
+    margin-top: 10px;
+  }
+
+  .pack > div > input {
+    max-width: 80%;
+    font-size: 80%;
+    border: none;
+    background-color: #ffffff00;
+  }
+  .pack > div > select {
+    max-width: 80%;
+    font-size: 80%;
+    border: none;
+    background-color: none;
+  }

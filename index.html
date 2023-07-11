@@ -7,6 +7,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link href="style.css" rel="stylesheet">
 
+    <!-- pdfmake files: -->
+    <script src='https://cdn.jsdelivr.net/npm/pdfmake@latest/build/pdfmake.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/pdfmake@latest/build/vfs_fonts.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.3/purify.min.js"></script>
+    <script src="./jspdf.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+
   </head>
   <header>
     <div class="banner">
@@ -138,7 +147,7 @@
 
     <br><br>
 
-    <h2 class="">Choisir votre borne   <button id="toggleButton" class="btn btn-light" onclick="toggleDiv()">
+    <h2 class=" no-print">Choisir votre borne   <button id="toggleButton" class="btn btn-light" onclick="toggleDiv()">
 
       <span id="arrowIcon" class=" ">v</span>
 
@@ -147,7 +156,7 @@
 
 
 
-    <div id="myDiv" class="content">
+    <div id="myDiv" class="content no-print">
       <table class="table  table-striped table-hover table-borderless">
         <thead class="">
           <th class="bg-black text-white ">Descriptif</th>
@@ -671,6 +680,7 @@
 <div class="d-flex d-flex justify-content-center no-print m-3 text-center"> 
   <button id="emailButton" class="btn btn btn-info m-3">Envoyer demande par email</button>
   <br>
+  <button class="btn btn-info m-3" onclick="window.print()">Imprimer</button>
 </div>
 
 
@@ -683,6 +693,7 @@
     <script src="script2.js"></script>
     <script src="script.js"></script>
     <script src="scriptemail.js"></script>
+  
 
   </div>
   </body>
