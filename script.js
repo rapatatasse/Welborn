@@ -26,7 +26,7 @@
   // Ajouter le bouton de suppression à la nouvelle ligne
   var deleteButtonCell = newRow.insertCell();
   var deleteButton = document.createElement('button');
-  deleteButton.className = 'delrow btn btn-danger';
+  deleteButton.className = 'delrow btn btn-danger no-print';
   deleteButton.textContent = '-';
   deleteButton.addEventListener('click', function() {
     supprimerLigne(this);
