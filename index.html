@@ -18,7 +18,7 @@
 
   </head>
   <header>
-    <div class="banner">
+    <div class="banner ">
       <img src="./logo" alt="Welleborne">
     </div>
   </header>
@@ -145,7 +145,7 @@
       </table>
     </div>
 
-    <br><br>
+    <br class="no-print"><br class="no-print">
 
     <h2 class=" no-print">Choisir votre borne   <button id="toggleButton" class="btn btn-light" onclick="toggleDiv()">
 
@@ -455,7 +455,7 @@
     <i>* tarif estimé sur la base de plusieurs devis ENEDIS, très approximatif, ne peux être pris en compte de façon sûr</i>
     <hr>
 
-    <h2 class="titre_IRV">Installation IRVE</h2>
+    <h2 class="titre_IRV no-page-break">Installation IRVE</h2>
     <table class="table table-striped">
       <tr>
         <td id="genie" class="gris">Genie civil - dalle, tranchée, percement</td>
@@ -501,14 +501,14 @@
     </table>
     <hr>
 
-    <h2 class="d-flex d-flex justify-content-between bg-black text-white p-3">
+    <h2 class="d-flex d-flex justify-content-between bg-black text-white">
       <div>Total </div>
       <div><span class="textright" id="totalglobal">  </span> </div>
     </h2>
-<br>
-<br>
-<h2 class="verneutre">POTENTIEL ANNUEL DE VENTE KWH pour Borne par type "PAYANT"</h2>
-<table>
+<br class=" no-print">
+<br class=" no-print">
+<h2 class="verneutre no-print">POTENTIEL ANNUEL DE VENTE KWH pour Borne par type "PAYANT"</h2>
+<table class=" no-print">
   <thead>
     <tr>
       <th class ="vert1" >Année</th>
@@ -560,8 +560,8 @@
   </tbody>
 </table>
 <br>
-<h2 class="verneutre">Marges €HT par charge unitaire</h2>
-<table>
+<h2 class="verneutre no-print">Marges €HT par charge unitaire</h2>
+<table class="no-print">
   <thead>
     <tr>
       <th class ="vert1" >Année</th>
@@ -597,9 +597,9 @@
     </tr>
   </tbody>
 </table>
-<br>
-<h2 class="verneutre">Marges €HT annuelles</h2>
-<table>
+<br class="no-print">
+<h2 class="verneutre no-print">Marges €HT annuelles</h2>
+<table class="no-print">
   <thead>
     <tr>
       <th class ="vert1" >Année</th>
@@ -635,7 +635,7 @@
     </tr>
   </tbody>
 </table>
-<br>
+<br class="no-print">
 <h2 class="verneutre">RETOUR SUR INVESTISSEMENT</h2>
 <table>
   <thead>
@@ -671,14 +671,14 @@
   </tbody>
 </table>
 <hr>
-<h2 class="d-flex d-flex justify-content-between bg-black text-white p-3">
-  <div>Temps de retour sur investissement : </div>
+<h2 class="d-flex d-flex justify-content-between bg-black text-white ">
+  <div>Temps de retour sur investissement  </div>
   <div><span class="textright" id="tempsretour">  </span> mois</div>
 </h2>
-<br>
-<br>
+<br class="no-print">
+<br class="no-print">
 <div class="d-flex d-flex justify-content-center no-print m-3 text-center no-print"> 
-  <button id="emailButton" class="btn btn btn-info m-3">Envoyer demande par email</button>
+  <button id="emailButton" class="btn btn btn-info m-3 no-print">Envoyer demande par email</button>
   <br>
   <button class="btn btn-info m-3 no-print" onclick="window.print()">Imprimer</button>
 </div>
