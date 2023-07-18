@@ -1,3 +1,16 @@
+function formatNumber(value, decimals) {
+  // Utiliser la fonction toLocaleString pour ajouter le séparateur des milliers
+  let formattedValue = value.toLocaleString(undefined, {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  });
+
+  // Ajouter le symbole "€" à la fin
+  formattedValue += "€";
+
+  return formattedValue;
+}
+ 
  // bouton + sur tableau QUELLE TYPE DE BORNE CHOISIR ?
  function ajouterLigne(button) {
   var row = button.parentNode.parentNode ;
@@ -147,4 +160,5 @@ function reload() {
 
 }
 
-reload();
+
+refrechfrequentation_nbdeclientparjours();

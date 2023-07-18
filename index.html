@@ -32,18 +32,28 @@
         <table class=" ">
           <tr>
             <th rowspan="2" class="bleu1">Site type</th>
-            <td class="gris">Nombre de clients mensuels</td>
-            <td class="clair"><input type="number" value="27000" id="nbclients" name="nbclients" onchange="reload()"></td>
+            <td >Nombre de clients mensuels</td>
+            <td class="clair"><input type="number" value="27000" id="nbclients" name="nbclients" onchange="refrechfrequentation_nbdeclientparjours()"></td>
           </tr>
           <tr>
-              <td>Temps moyen d'un client (min)</td>
+              <td class="gris">Temps moyen d'un client (min)</td>
               <td class="marine"> <input type="number" value="30" id="tempsclient" name="tempsclient" onchange="reload()"  ></td>
           </tr>
       
           <tr>
-            <th rowspan="3" class="bleu2">Abonnement <br> électrique</th>
+            <th rowspan="4" class="bleu2">Abonnement <br> électrique</th>
+            <td class="">Ajout d'un tarif jaune</td>
+            <td class="clair"><label for="ajouttarif"></label>
+              <select name="ajouttarif" id="ajouttarif" onchange="reload()">
+                  <option value="OUI"  >OUI</option>
+                  <option value="NON" >NON</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+           
             <td class="gris">Type tarif actuel</td>
-            <td class="clair"><label for="tarif">Choisissez un tarif</label>
+            <td class="clair"><label for="tarif"></label>
 
               <select name="tarif" id="tarif" onchange="reload()">
                   <option value="8000"  >Tarif jaune</option>
@@ -178,7 +188,7 @@
           <td>mural ou sol (pied en sus)</td>
           <td class="textright"> 1</td>
           <td class="textright">7</td>
-          <td class="textright">891.67€</td>
+          <td class="textright">891,67€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -188,7 +198,7 @@
           <td>mural ou sol (pied en sus)</td>
           <td class="textright" >1  </td>
           <td class="textright">7</td>
-          <td class="textright">1041.6€</td>
+          <td class="textright">1041,6€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -198,7 +208,7 @@
           <td>mural ou sol (pied en sus)</td>
           <td class="textright" >1</td>
           <td class="textright" >7</td>
-          <td class="textright" >1183.33€</td>
+          <td class="textright" >1183,33€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -208,7 +218,7 @@
           <td>mural ou sol (pied en sus)</td>
           <td class="textright" >1</td>
           <td class="textright">11</td>
-          <td class="textright" >1341.67€</td>
+          <td class="textright" >1341,67€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -218,7 +228,7 @@
           <td>mural ou sol (pied en sus)</td>
           <td class="textright" >1</td>
           <td class="textright" >22</td>
-          <td class="textright" >1341.67€</td>
+          <td class="textright" >1341,67€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -228,7 +238,7 @@
           <td>mural ou sol (pied en sus)</td>
           <td class="textright" >1</td>
           <td class="textright" >22</td>
-          <td class="textright" >1441.66€</td>
+          <td class="textright" >1441,66€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -238,7 +248,7 @@
           <td>mural ou sol (pied en sus)</td>
           <td class="textright" >1</td>
           <td class="textright" >44</td>
-          <td class="textright" >2533.33€</td>
+          <td class="textright" >2533,33€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -248,7 +258,7 @@
           <td>sol</td>
           <td class="textright" >2</td>
           <td class="textright" >44</td>
-          <td class="textright" >4491.67€</td>
+          <td class="textright" >4491,67€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -278,7 +288,7 @@
           <td>mural ou sol (pied en sus)</td>
           <td class="textright" >2</td>
           <td class="textright" >44</td>
-          <td class="textright" >4083.33€</td>
+          <td class="textright" >4083,33€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -288,7 +298,7 @@
           <td>mural ou sol (pied en sus)</td>
           <td class="textright" >1</td>
           <td class="textright" >20</td>
-          <td class="textright" >6578.64€</td>
+          <td class="textright" >6578,64€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -358,7 +368,7 @@
           <td>sol</td>
           <td class="textright" >3</td>
           <td class="textright" >124</td>
-          <td class="textright" >27916.67€</td>
+          <td class="textright" >27916,67€</td>
           <td><button class="addrow btn btn-success">+</button></td>
         </tr>
         <tr>
@@ -452,7 +462,7 @@
       </tr>
       
     </table>
-    <i>* tarif estimé sur la base de plusieurs devis ENEDIS, très approximatif, ne peux être pris en compte de façon sûr</i>
+    <i>* coût moyen 2023 estimé sur la base de plusieurs devis ENEDIS. Peu varier selon la complexité du chantier</i>
     <hr>
 
     <h2 class="titre_IRV no-page-break">Installation IRVE</h2>
@@ -527,7 +537,9 @@
       <td class="textright totalpointdechargesPayant" id="totalpointdechargesPayant"></td>
       <td class="textright" id="nbsession2023"></td>
       <td class="textright" id="frequentation2023"></td>
-      <td class="textright" id="nombredeclientjour2023"></td>
+      <td class="textright" id="">
+        <input type="number" id="nombredeclientjour2023" onchange="reload()">
+      </td>
       <td class="chargemoyenne textright" id="chargemoyenne2023"></td>
     </tr>
     <tr>
@@ -536,7 +548,9 @@
       <td class="textright totalpointdechargesPayant"></td>
       <td class="textright" id="nbsession2024"></td>
       <td class="textright" id="frequentation2024"></td>
-      <td class="textright" id="nombredeclientjour2024"></td>
+      <td class="textright" id="">
+        <input type="number" id="nombredeclientjour2024" onchange="reload()">
+      </td>
       <td class="chargemoyenne textright" id="chargemoyenne2024"></td>
     </tr>
     <tr>
@@ -545,7 +559,9 @@
       <td class="textright totalpointdechargesPayant"></td>
       <td class="textright" id="nbsession2025"></td>
       <td class="textright" id="frequentation2025"></td>
-      <td class="textright" id="nombredeclientjour2025"></td>
+      <td class="textright" id="">
+        <input type="number" id="nombredeclientjour2025" onchange="reload()">
+      </td>
       <td class="chargemoyenne textright" id="chargemoyenne2025"></td>
     </tr>
     <tr>
@@ -554,7 +570,9 @@
       <td class="textright totalpointdechargesPayant"></td>
       <td class="textright" id="nbsession2026"></td>
       <td class="textright" id="frequentation2026"></td>
-      <td class="textright" id="nombredeclientjour2026"></td>
+      <td class="textright" id="">
+        <input type="number" id="nombredeclientjour2026" onchange="calculglobal()">
+      </td>
       <td class="chargemoyenne textright" id="chargemoyenne2026"></td>
     </tr>
   </tbody>
