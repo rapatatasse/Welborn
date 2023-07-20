@@ -22,17 +22,18 @@ for (let btn of document.getElementsByClassName('addrow')) {
 }
 function calcultotalprix() {
   var elementsPrix = document.getElementsByClassName("prix");
-  var totalPrix = 0;
-  var baliseTotal = document.getElementById("prixtotal");
+  var totalPrix = 0.00;
+  var valeur = 0.00;
+  var prixtotalcell = document.getElementById("prixtotal");
   for (var i = 0; i < elementsPrix.length; i++) {
-    var valeur = parseFloat(elementsPrix[i].innerText);
+     valeur = parseFloat(elementsPrix[i].innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+     console.log("valeur", valeur); 
     if (!isNaN(valeur)) {
       totalPrix += valeur;
       
     }
   }
-  baliseTotal.textContent = totalPrix.toFixed(2);
-  calculglobal();
+  prixtotalcell.textContent = formatNumber(totalPrix,2);
 
 }
 
@@ -58,10 +59,6 @@ function calculerNombreBornesTotal() {
   // Mettre à jour la valeur dans la balise th
   var baliseTotal = document.getElementById("nombrebornestotal");
   baliseTotal.textContent = total;
-  totalpuissancecumulee();
-  calculglobal();
-
-
 
   // Mettre à jour le nombre total charges
   var elementspointdecharges = document.getElementsByName("nombredecharge");
@@ -131,10 +128,10 @@ function calculerNombreBornesTotal() {
       var totalpuissancecumulePayant2025 = totalpuissancecumulePayant * tempsclient /60
       var totalpuissancecumulePayant2026 = totalpuissancecumulePayant * tempsclient /60
     }
-    document.getElementById("chargemoyenne2023").innerText = totalpuissancecumulePayant2023.toFixed(0);
-    document.getElementById("chargemoyenne2024").innerText = totalpuissancecumulePayant2024.toFixed(0);
-    document.getElementById("chargemoyenne2025").innerText = totalpuissancecumulePayant2025.toFixed(0);
-    document.getElementById("chargemoyenne2026").innerText = totalpuissancecumulePayant2026.toFixed(0);
+    document.getElementById("chargemoyenne2023").innerText = totalpuissancecumulePayant2023.toFixed(2);
+    document.getElementById("chargemoyenne2024").innerText = totalpuissancecumulePayant2024.toFixed(2);
+    document.getElementById("chargemoyenne2025").innerText = totalpuissancecumulePayant2025.toFixed(2);
+    document.getElementById("chargemoyenne2026").innerText = totalpuissancecumulePayant2026.toFixed(2);
 
 
 
@@ -169,7 +166,7 @@ function totalpuissancecumulee() {
   }
   var baliseTotal = document.getElementById("puissancecumuleetotal");
   baliseTotal.textContent = totalPuissanceCumulee;
-  calculglobal();
+  
 }
 
 
@@ -252,24 +249,24 @@ function displayTarifValue() {
         tarifValue.innerHTML = "errore select tarif";
         texttarif.innerHTML = "errore select tarif";
       }
-      calculglobal();
+      
 }
 
 
 function calculglobal() {
 
   var elements = [
-    document.getElementById("IRVE1").value,
-    document.getElementById("IRVE2").value,
-    document.getElementById("IRVE3").value,
-    document.getElementById("IRVE4").value,
-    document.getElementById("prixtotal").innerText,
-    document.getElementById("Totaltout").innerText,
-    document.getElementById("tarif").value,
-    document.getElementById("DC").innerText,
-    document.getElementById("AC").innerText,
-    document.getElementById("AC DC").innerText,
-    document.getElementById("contrat1").innerText
+    parseFloat(document.getElementById("prixtotal").innerText.replace(/[^\d,.-]/g, '').replace(",", ".")),
+    parseFloat(document.getElementById("tarifValue").innerText.replace(/[^\d,.-]/g, '').replace(",", ".")),
+    parseFloat(document.getElementById("IRVE1").value),
+    parseFloat(document.getElementById("IRVE2").value),
+    parseFloat(document.getElementById("IRVE3").value),
+    parseFloat(document.getElementById("IRVE4").value),
+    parseFloat(document.getElementById("contrat1").innerText.replace(/[^\d,.-]/g, '').replace(",", ".")),
+    parseFloat(document.getElementById("DC").innerText.replace(/[^\d,.-]/g, '').replace(",", ".")),
+    parseFloat(document.getElementById("AC").innerText.replace(/[^\d,.-]/g, '').replace(",", ".")),
+    parseFloat(document.getElementById("AC DC").innerText.replace(/[^\d,.-]/g, '').replace(",", ".")),
+    parseFloat(document.getElementById("Totaltout").innerText.replace(/[^\d,.-]/g, '').replace(",", ".")),
   ]
 
   let total = 0;
@@ -277,10 +274,10 @@ function calculglobal() {
     const val = parseFloat(elm)
     if (isNaN(val)) continue;
     total += val;
+    console.log(total + " " + val);
   }
 
-  var totalglobal= document.getElementById("totalglobal");
-  totalglobal.innerText = total+"€";
+  document.getElementById("totalglobal").innerText = formatNumber(total,2);
 }
 
 
@@ -351,14 +348,14 @@ function remplissageTBLMargesParChargeUnitaire() {
   var prixrevient2026Cell = document.getElementById("prixrevient2026");
 
   // Cellules utilisées pour le calcul
-  var prixkwh2023 = parseFloat(document.getElementById("prixkwh2023").innerText.replace("€", "").replace(",", "."));
-  var prixkwh2024 = parseFloat(document.getElementById("prixkwh2024").innerText.replace("€", "").replace(",", "."));
-  var prixkwh2025 = parseFloat(document.getElementById("prixkwh2025").innerText.replace("€", "").replace(",", "."));
-  var prixkwh2026 = parseFloat(document.getElementById("prixkwh2026").innerText.replace("€", "").replace(",", "."));
-  var chargemoyenne2023 = parseFloat(document.getElementById("chargemoyenne2023").innerText.replace("€", "").replace(",", "."));
-  var chargemoyenne2024 = parseFloat(document.getElementById("chargemoyenne2024").innerText.replace("€", "").replace(",", "."));
-  var chargemoyenne2025 = parseFloat(document.getElementById("chargemoyenne2025").innerText.replace("€", "").replace(",", "."));
-  var chargemoyenne2026 = parseFloat(document.getElementById("chargemoyenne2026").innerText.replace("€", "").replace(",", "."));
+  var prixkwh2023 = parseFloat(document.getElementById("prixkwh2023").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+  var prixkwh2024 = parseFloat(document.getElementById("prixkwh2024").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+  var prixkwh2025 = parseFloat(document.getElementById("prixkwh2025").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+  var prixkwh2026 = parseFloat(document.getElementById("prixkwh2026").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+  var chargemoyenne2023 = parseFloat(document.getElementById("chargemoyenne2023").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+  var chargemoyenne2024 = parseFloat(document.getElementById("chargemoyenne2024").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+  var chargemoyenne2025 = parseFloat(document.getElementById("chargemoyenne2025").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+  var chargemoyenne2026 = parseFloat(document.getElementById("chargemoyenne2026").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
 
   // Mes calculs
   prixrevient2023Cell.innerText = formatNumber((chargemoyenne2023 * prixkwh2023), 2);
@@ -371,9 +368,9 @@ function remplissageTBLMargesParChargeUnitaire() {
   var prixrevente2025Cell = document.getElementById("prixrevente2025");
   var prixrevente2026Cell = document.getElementById("prixrevente2026");
   var prixvente2023 = parseFloat(document.getElementById("prixvente2023").value);
-  var prixvente2024 = parseFloat(document.getElementById("prixvente2024").innerText.replace("€", "").replace(",", "."));
-  var prixvente2025 = parseFloat(document.getElementById("prixvente2025").innerText.replace("€", "").replace(",", "."));
-  var prixvente2026 = parseFloat(document.getElementById("prixvente2026").innerText.replace("€", "").replace(",", "."));
+  var prixvente2024 = parseFloat(document.getElementById("prixvente2024").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+  var prixvente2025 = parseFloat(document.getElementById("prixvente2025").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+  var prixvente2026 = parseFloat(document.getElementById("prixvente2026").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
 
 
   prixrevente2023Cell.innerText = formatNumber((prixvente2023 * chargemoyenne2023),2);
@@ -385,14 +382,14 @@ function remplissageTBLMargesParChargeUnitaire() {
   var margeunit2024Cell = document.getElementById("margeunit2024");
   var margeunit2025Cell = document.getElementById("margeunit2025");
   var margeunit2026Cell = document.getElementById("margeunit2026");
-  var prixrevente2023 = parseFloat(document.getElementById("prixrevente2023").innerText);
-  var prixrevente2024 = parseFloat(document.getElementById("prixrevente2024").innerText);
-  var prixrevente2025 = parseFloat(document.getElementById("prixrevente2025").innerText);
-  var prixrevente2026 = parseFloat(document.getElementById("prixrevente2026").innerText);
-  var prixrevient2023 = parseFloat(document.getElementById("prixrevient2023").innerText);
-  var prixrevient2024 = parseFloat(document.getElementById("prixrevient2024").innerText);
-  var prixrevient2025 = parseFloat(document.getElementById("prixrevient2025").innerText);
-  var prixrevient2026 = parseFloat(document.getElementById("prixrevient2026").innerText);
+  var prixrevente2023 = parseFloat(document.getElementById("prixrevente2023").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+  var prixrevente2024 = parseFloat(document.getElementById("prixrevente2024").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+  var prixrevente2025 = parseFloat(document.getElementById("prixrevente2025").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+  var prixrevente2026 = parseFloat(document.getElementById("prixrevente2026").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+  var prixrevient2023 = parseFloat(document.getElementById("prixrevient2023").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+  var prixrevient2024 = parseFloat(document.getElementById("prixrevient2024").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+  var prixrevient2025 = parseFloat(document.getElementById("prixrevient2025").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+  var prixrevient2026 = parseFloat(document.getElementById("prixrevient2026").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
   margeunit2023Cell.innerText = formatNumber((prixrevente2023 - prixrevient2023),2);
   margeunit2024Cell.innerText = formatNumber((prixrevente2024 - prixrevient2024),2);
   margeunit2025Cell.innerText = formatNumber((prixrevente2025 - prixrevient2025),2);
@@ -440,29 +437,29 @@ function remplissageTBLMargesAnnuelle() {
 
 
   //variable pour calcul
-  var prixrevente2023 = parseFloat(document.getElementById("prixrevente2023").innerText);
-  var prixrevente2024 = parseFloat(document.getElementById("prixrevente2024").innerText);
-  var prixrevente2025 = parseFloat(document.getElementById("prixrevente2025").innerText);
-  var prixrevente2026 = parseFloat(document.getElementById("prixrevente2026").innerText);
-  var margeunit2023 = parseFloat(document.getElementById("margeunit2023").innerText);
-  var margeunit2024 = parseFloat(document.getElementById("margeunit2024").innerText);
-  var margeunit2025 = parseFloat(document.getElementById("margeunit2025").innerText);
-  var margeunit2026 = parseFloat(document.getElementById("margeunit2026").innerText);
+  var prixrevente2023 = parseFloat(document.getElementById("prixrevente2023").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+  var prixrevente2024 = parseFloat(document.getElementById("prixrevente2024").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+  var prixrevente2025 = parseFloat(document.getElementById("prixrevente2025").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+  var prixrevente2026 = parseFloat(document.getElementById("prixrevente2026").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+  var margeunit2023 = parseFloat(document.getElementById("margeunit2023").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+  var margeunit2024 = parseFloat(document.getElementById("margeunit2024").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+  var margeunit2025 = parseFloat(document.getElementById("margeunit2025").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+  var margeunit2026 = parseFloat(document.getElementById("margeunit2026").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
   var nombredeclientjour2023 = parseInt(document.getElementById("nombredeclientjour2023").value);
   var nombredeclientjour2024 = parseInt(document.getElementById("nombredeclientjour2024").value);
   var nombredeclientjour2025 = parseInt(document.getElementById("nombredeclientjour2025").value);
   var nombredeclientjour2026 = parseInt(document.getElementById("nombredeclientjour2026").value);
-  var totalglobal = parseFloat(document.getElementById("totalglobal").innerText);
+  var totalglobal = parseFloat(document.getElementById("totalglobal").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
 
-  var margeopera2023 = (margeunit2023 * nombredeclientjour2023*24*12)
-  var margeopera2024 = (margeunit2024 * nombredeclientjour2024*24*12)
-  var margeopera2025 = (margeunit2025 * nombredeclientjour2025*24*12)
-  var margeopera2026 = (margeunit2026 * nombredeclientjour2026*24*12)
+  var margeopera2023 = (margeunit2023 * nombredeclientjour2023*30*12)
+  var margeopera2024 = (margeunit2024 * nombredeclientjour2024*30*12)
+  var margeopera2025 = (margeunit2025 * nombredeclientjour2025*30*12)
+  var margeopera2026 = (margeunit2026 * nombredeclientjour2026*30*12)
 
-  var coutevmap2023 = (prixrevente2023 * nombredeclientjour2023*24*12*0.085);
-  var coutevmap2024 = (prixrevente2024 * nombredeclientjour2024*24*12*0.085);
-  var coutevmap2025 = (prixrevente2025 * nombredeclientjour2025*24*12*0.085);
-  var coutevmap2026 = (prixrevente2026 * nombredeclientjour2026*24*12*0.085);
+  var coutevmap2023 = (prixrevente2023 * nombredeclientjour2023*30*12*0.085);
+  var coutevmap2024 = (prixrevente2024 * nombredeclientjour2024*30*12*0.085);
+  var coutevmap2025 = (prixrevente2025 * nombredeclientjour2025*30*12*0.085);
+  var coutevmap2026 = (prixrevente2026 * nombredeclientjour2026*30*12*0.085);
 
   //renvoie au cellules
 
@@ -511,9 +508,9 @@ function remplissageTBLMargesAnnuelle() {
   margebrutcumule2026Cell.innerText = formatNumber(mbcu2026,2)
 
 
-  magenetcumulee2023Cell.innerText = formatNumber((mbcu2023 - (totalglobal)),2);
-  magenetcumulee2024Cell.innerText = formatNumber((mbcu2024 - (totalglobal)),2);
-  magenetcumulee2025Cell.innerText = formatNumber((mbcu2025 - (totalglobal)),2);
+  magenetcumulee2023Cell.innerText = formatNumber((mbcu2023 - (totalglobal * 0.25)),2);
+  magenetcumulee2024Cell.innerText = formatNumber((mbcu2024 - (totalglobal * 0.50)),2);
+  magenetcumulee2025Cell.innerText = formatNumber((mbcu2025 - (totalglobal * 0.75)),2);
   magenetcumulee2026Cell.innerText = formatNumber((mbcu2026 - (totalglobal)),2);
 
   //remplissager retour su rinvestissement

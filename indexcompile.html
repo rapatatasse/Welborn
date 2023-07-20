@@ -1,0 +1,1692 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WelleBorne</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  
+    <style>
+          html {
+            display: flex;
+            justify-content: center;
+          }
+
+          body {
+            max-width: 1080px;
+            padding-top: calc(128px + 64px);
+            font-size: 14px;
+          }
+          .content {
+            display: block;
+          }
+
+          h2 {
+            color: rgb(250, 250, 250);
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-top: 5px;
+            padding: 5px;
+            background-color: rgb(35, 92, 167);
+            margin-bottom: 0px;
+          }
+          .titre_IRV {
+            background-color: rgb(175, 21, 49);
+          }
+          *, ::after, ::before {
+            box-sizing: content-box;; 
+          }
+
+
+          input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid black;
+            border-radius: 5px;
+            box-sizing: border-box;
+          }
+          select {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid black;
+            border-radius: 5px;
+            box-sizing: border-box;
+          }
+
+
+
+          table {
+            width: 100%;
+          }
+
+          td, th {
+            padding-left: 5px;
+            padding-right: 5px;
+          }
+
+          table, th, td {
+            border: 1px solid rgb(228, 228, 228);
+          }
+          td > input {
+            width: 100%;
+            padding: 2px;
+            margin: 0px;
+          }
+          .gris {
+            background-color: rgba(189, 189, 189, 0.74);
+          }
+
+          .cell-none {
+            border: none;
+          }
+
+          td {
+            background-color: #ededed;
+          }
+
+          .banner {
+          width:100%;
+          height: 128px;
+          background-color: black;
+          position: absolute;
+          left:0;
+          top:0;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          }
+
+          .banner img {
+            height: 80%;
+          }
+
+          h1 {
+          color:rgb(0, 0, 0)
+
+          }
+
+
+
+
+          .titretableau {
+            background-color: rgb(31, 128, 255);
+            color: azure;
+            padding: 1%;
+            font-style: normal;
+            font-size: larger;
+          }
+          .marine {
+
+          background-color: rgb(123, 212, 247);
+
+          }
+          .clair {
+
+          background-color:rgb(184, 217, 255);
+
+
+          }
+          td {
+            min-width: 60px;
+          }
+          .info {
+            background-color: orange;
+            color: azure;
+            padding: 1%;
+            font-style: normal;
+            font-size: larger;
+
+          }
+          label {
+            display: block;
+            font: 1rem 'Fira Sans', sans-serif;
+          }
+
+          input,
+          label {
+            margin: 0.4rem 0;
+            text-align: right;
+          }
+          .textright
+          {
+            text-align: right;
+          }
+          .vert1 {
+          background-color: rgb(156, 255, 136);
+
+          }
+          .vertclair {
+          background-color: rgb(204, 247, 232);
+          }
+          .verneutre {
+            background-color: rgb(10, 182, 10);
+          }
+          .vertfonce {
+            background-color: rgb(1, 141, 1);
+          }
+          .bleu1 {
+            background-color: rgb(25, 133, 240);
+            color: white;
+          }
+          .bleu2 {
+            background-color: rgb(5, 123, 197);
+            color: white;
+          }
+          .bleu3 {
+            background-color: rgb(7, 76, 186);
+            color: white;
+          }
+          .bleu4 {
+            background-color: rgb(4, 50, 124);
+            color: white;
+          }
+
+          @media print {
+            .no-print {
+              display: none;
+            }
+            .no-page-break {
+              page-break-inside: avoid;
+            }
+            table {
+              page-break-inside: avoid;
+            }
+            body {
+              margin-top: 0px;
+              padding-top: calc(58px + 8px);
+              font-size: 12px;
+          }
+            .container {
+              max-width: 98%;
+              margin-top: 0px;
+            }
+            .pack > div > input {
+              max-width: 80%;
+              font-size: 80%;
+              border: none;
+              background-color: #ffffff00;
+            }
+            .pack > div > select {
+              max-width: 80%;
+              font-size: 80%;
+              border: none;
+              background-color: none;
+            }
+            .banner {
+              width:100%;
+              height: 50px;
+              background-color: rgb(205, 202, 202);
+              position: absolute;
+              left:0;
+              top:0;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            
+            .banner img {
+              height: 70%;
+            }
+          }
+
+          @media print {
+            .no-print {
+              display: none !important;
+            }
+            .no-page-break {
+              page-break-inside: avoid;
+            }
+            .container {
+              max-width: 98%;
+              margin-top: 10px;
+            }
+
+            .pack > div > input {
+              max-width: 80%;
+              font-size: 80%;
+              border: none;
+              background-color: #ffffff00;
+            }
+            .pack > div > select {
+              max-width: 80%;
+              font-size: 80%;
+              border: none;
+              background-color: none;
+            }
+            .bg-black {
+              background-color: #757474ea !important;
+            }
+          }
+    </style>
+  </head>
+  <header>
+    <div class="banner ">
+      <img src="https://wellborne.fr/wp-content/uploads/2020/07/cropped-WB-Logo-black-%E2%80%93no-circle-%E2%80%93-80.png" class="bg-white p-1" alt="Welleborne">
+    </div>
+  </header>
+  <body>
+    <div class="container">
+
+
+      <div class="d-flex flex-wrap gap-3">
+        <div class="   mb-3">
+          <h2 class="mb-0">Données entrée client</h2>
+          <table class=" ">
+            <tr>
+              <th rowspan="2" class="bleu1">Site type</th>
+              <td >Nombre de clients mensuels</td>
+              <td class="clair"><input type="number" value="27000" id="nbclients" name="nbclients" onchange="refrechfrequentation_nbdeclientparjours()"></td>
+            </tr>
+            <tr>
+                <td class="gris">Temps moyen d'un client (min)</td>
+                <td class="marine"> <input type="number" value="30" id="tempsclient" name="tempsclient" onchange="reload()"  ></td>
+            </tr>
+        
+            <tr>
+              <th rowspan="4" class="bleu2">Abonnement <br> électrique</th>
+              <td class="">Ajout d'un tarif jaune</td>
+              <td class="clair"><label for="ajouttarif"></label>
+                <select name="ajouttarif" id="ajouttarif" onchange="reload()">
+                    <option value="OUI"  >OUI</option>
+                    <option value="NON" >NON</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+            
+              <td class="gris">Type tarif actuel</td>
+              <td class="clair"><label for="tarif"></label>
+
+                <select name="tarif" id="tarif" onchange="reload()">
+                    <option value="8000"  >Tarif jaune</option>
+                    <option value="15000" >Tarif bleu</option>
+                </select>
+              </td>
+            </tr>
+
+
+            <tr>
+              <td>Prix kWh en €</td>
+              <td class="marine"> <input type="number" id="PrixKwh" value="0.160"  name="PrixKwh" onchange="reload()"></td>
+            </tr>
+
+          </table>
+        </div>
+
+        <div class=" ">
+          <h2 class="">Proposition de revente</h2>
+          <table class="">
+            <thead>
+              <th class="gris">Prix kWh moyen </th>
+              <th class="gris">Prix achat €/kWh</th>
+              <th class="gris">Prix vente €/kWh</th>
+              <th class="gris">Marge de revente</th>
+            </thead>
+            <tbody>
+              <!-- Marge de revente = Prix vente Kwh / Prix achats KWH-->
+              <tr>
+                <td class="bleu1">2023</td>
+                <td class="textright" id=prixkwh2023 >   </td>
+                <td class="marine" style="width: 70px;"> <input type="number" value="0.38" id="prixvente2023" class="w-100"  onchange="reload()"></td>
+                <td class="textright"  id=marge2023></td>
+              </tr>
+              <tr>
+                <td class="bleu2">2024 (+9%)*</td>
+                <td  class="textright" id=prixkwh2024>   </td>
+                <td class="textright"  id="prixvente2024"></td>
+                <td class="textright" id=marge2024></td>
+              </tr>
+              <tr>
+                <td class="bleu3">2025 (+12%)*</td>
+                <td class="textright" id=prixkwh2025>   </td>
+                <td  class="textright" id="prixvente2025"></td>
+                <td class="textright" id=marge2025></td>
+              </tr>
+              <tr>
+                <td class="bleu4">2026 (+15%)*</td>
+                <td class="textright" id=prixkwh2026>   </td>
+                <td  class="textright"id="prixvente2026"></td>
+                <td class="textright" id=marge2026></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="fw-lighter fst-italic">* Evolution des tarifs d'éléctricité  en fonction des données nationnales</p>
+        </div>
+      </div>
+
+      <hr>
+
+
+    
+      <div class="choixborne">
+        <h2 class="">Nombre de bornes souhaités</h2>
+        <table>
+          <thead>
+            <tr>
+              <th class="gris">Référence</th>
+              <th class="gris" id="nombrebornes">Nombre de bornes</th>
+              <th class="gris" id="nombredecharge">Nombre de point par charge</th>
+              <th class="gris">Type courant</th>
+              <th class="gris">Type charge</th>
+              <th class="gris">Puissance cumulée</th>
+              <th class="gris">Prix</th>
+            </tr>
+            <!--Ici va s'inserer les ligne choisi avec la fonction JS-->
+            <tbody id="bornes-souhaitees">
+
+
+            </tbody>
+            <tfoot>
+              <tr>
+                <th class="gris">Total</th>
+                <th class="gris textright" id="nombrebornestotal">0</th>
+                <th class="gris">
+                  <div class="text-muted">Total AC <span id="nombrechargeAC"></span></div>
+                  <div class="text-muted">Total DC <span id="nombrechargeDC"></span></div>
+                  <div class="text-muted">Total AC DC <span id="nombrechargeACDC"></span></div>
+                  <div>Total <span id="nombrechargetotal"></span></div>
+                </th>
+                <th class="gris textright" id=""></th>
+                <th class="gris textright" id=""></th>
+                <th class="gris textright" id="puissancecumuleetotal">0</th>
+                <th class="gris textright" id="prixtotal">0</th>
+              </tr>
+            </tfoot>
+
+          </thead>
+        </table>
+      </div>
+
+      <br class="no-print"><br class="no-print">
+
+      <h2 class=" no-print">Choisir votre borne   <button id="toggleButton" class="btn btn-light" onclick="toggleDiv()">
+
+        <span id="arrowIcon" class=" ">v</span>
+
+      </button></h2>
+      <!-- bouto collspace pour afficher ou masquer le tableau -->
+
+
+
+      <div id="myDiv" class="content no-print">
+        <table class="table  table-striped table-hover table-borderless">
+          <thead class="">
+            <th class="bg-black text-white ">Descriptif</th>
+            <th class="bg-black text-white">Référence</th>
+            <th class="bg-black text-white">type charge</th>
+            <th class="bg-black text-white">Installation</th>
+            <th class="bg-black text-white">Nombre de points de charge</th>
+            <th class="bg-black text-white">Puissance cumulée kW</th>
+            <th class="bg-black text-white">Prix</th>
+            <th class="bg-black text-white no-print"></th>
+          </thead>
+
+
+
+          <tr>
+            <td>BORNE 7 KW</td>
+            <td>WB-07S-SS/W</td>
+            <td>AC</td>
+            <td>mural ou sol (pied en sus)</td>
+            <td class="textright"> 1</td>
+            <td class="textright">7</td>
+            <td class="textright">891,67€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>BORNE 7 KW RFID</td>
+            <td>WB-07S-SS/WR</td>
+            <td>AC</td>
+            <td>mural ou sol (pied en sus)</td>
+            <td class="textright" >1  </td>
+            <td class="textright">7</td>
+            <td class="textright">1041,6€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>BORNE 7 KW AVEC PISTOLET</td>
+            <td>WB-07S-P/WR</td>
+            <td>AC</td>
+            <td>mural ou sol (pied en sus)</td>
+            <td class="textright" >1</td>
+            <td class="textright" >7</td>
+            <td class="textright" >1183,33€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>BORNE 11KW</td>
+            <td>WB-11S-SS/WRL</td>
+            <td>AC</td>
+            <td>mural ou sol (pied en sus)</td>
+            <td class="textright" >1</td>
+            <td class="textright">11</td>
+            <td class="textright" >1341,67€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>BORNE 22KW</td>
+            <td>WB-22S-SS/WRL</td>
+            <td>AC</td>
+            <td>mural ou sol (pied en sus)</td>
+            <td class="textright" >1</td>
+            <td class="textright" >22</td>
+            <td class="textright" >1341,67€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>BORNE 22 KW AVEC PISTOLET</td>
+            <td>WB-22S-P/WRL</td>
+            <td>AC</td>
+            <td>mural ou sol (pied en sus)</td>
+            <td class="textright" >1</td>
+            <td class="textright" >22</td>
+            <td class="textright" >1441,66€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>BORNE 44 KW AVEC PISTOLET</td>
+            <td>WB-44S-P/WRL</td>
+            <td>AC</td>
+            <td>mural ou sol (pied en sus)</td>
+            <td class="textright" >1</td>
+            <td class="textright" >44</td>
+            <td class="textright" >2533,33€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>STATION DOUBLE 22KW</td>
+            <td>WB-22D-SS/WRL</td>
+            <td>AC</td>
+            <td>sol</td>
+            <td class="textright" >2</td>
+            <td class="textright" >44</td>
+            <td class="textright" >4491,67€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>STATION DOUBLE 22KW AVEC PISTOLET</td>
+            <td>WB-22D-P/WRL</td>
+            <td>AC</td>
+            <td>sol</td>
+            <td class="textright">2</td>
+            <td class="textright">44</td>
+            <td class="textright">4800€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>BORNE DOUBLE 7KW</td>
+            <td>WB-07D-SSW/WRL</td>
+            <td>AC</td>
+            <td>mural ou sol (pied en sus)</td>
+            <td class="textright" >2</td>
+            <td class="textright" >14</td>
+            <td class="textright" >2775€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>BORNE DOUBLE 22KW</td>
+            <td>WB-22D-SSW/WRL</td>
+            <td>AC</td>
+            <td>mural ou sol (pied en sus)</td>
+            <td class="textright" >2</td>
+            <td class="textright" >44</td>
+            <td class="textright" >4083,33€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>BORNE DC 20KW</td>
+            <td>WB-DC-20S/WRL-ECO</td>
+            <td>DC</td>
+            <td>mural ou sol (pied en sus)</td>
+            <td class="textright" >1</td>
+            <td class="textright" >20</td>
+            <td class="textright" >6578,64€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>BORNE DC 40KW</td>
+            <td>WB-DC-40S/WRL</td>
+            <td>DC</td>
+            <td>mural ou sol (pied en sus)</td>
+            <td class="textright" >1</td>
+            <td class="textright" >40</td>
+            <td class="textright" >9750€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>BORNE DC DOUBLE 40KW</td>
+            <td>WB-DC-40D/WRLC</td>
+            <td>DC</td>
+            <td>mural ou sol (pied en sus)</td>
+            <td class="textright" >2</td>
+            <td class="textright">40</td>
+            <td class="textright" >13550€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>SUPERCHARGEUR 150KW</td>
+            <td>WB-DC-150D/WC</td>
+            <td>DC</td>
+            <td>sol</td>
+            <td class="textright" >2</td>
+            <td class="textright" >150</td>
+            <td class="textright" >58500€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>SUPERCHARGEUR 180KW</td>
+            <td>WB-DC-180D/WC</td>
+            <td>DC</td>
+            <td>sol</td>
+            <td class="textright">2</td>
+            <td class="textright" >180</td>
+            <td class="textright" >64000€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>SUPERCHARGEUR 300KW</td>
+            <td>WB-DC-300D/WC</td>
+            <td>DC</td>
+            <td>sol</td>
+            <td class="textright" >2</td>
+            <td class="textright" >300</td>
+            <td class="textright" >80000€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>SUPERCHARGEUR 360KW</td>
+            <td>WB-DC-360D/WC</td>
+            <td>DC</td>
+            <td>sol</td>
+            <td class="textright" >2</td>
+            <td class="textright" >360</td>
+            <td class="textright" >90000€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>STATION COMBO 44AC + 60 DC DOUBLE</td>
+            <td>WB-DC-AC44S/DC60D/WC</td>
+            <td>AC + DC</td>
+            <td>sol</td>
+            <td class="textright" >3</td>
+            <td class="textright" >124</td>
+            <td class="textright" >27916,67€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>BORNE DC DOUBLE 160KW</td>
+            <td>WB-DC-160D/WC</td>
+            <td>DC</td>
+            <td>sol</td>
+            <td class="textright" >2</td>
+            <td class="textright" >160</td>
+            <td class="textright">51250€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>STATION COMBO 22 DC + 150 DC DOUBLE</td>
+            <td>WB-DC-AC22D-SS/DC150D/WC</td>
+            <td>AC + DC</td>
+            <td>sol</td>
+            <td class="textright" >3</td>
+            <td class="textright" >172</td>
+            <td class="textright" >60000€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>BORNE DC DOUBLE 60KW</td>
+            <td>WB-DC-60D/WC</td>
+            <td>DC</td>
+            <td>sol</td>
+            <td class="textright" >2</td>
+            <td class="textright" >60</td>
+            <td class="textright" >25500€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>BORNE DC DOUBLE 80KW</td>
+            <td>WB-DC-80D/WC</td>
+            <td>DC</td>
+            <td>sol</td>
+            <td class="textright" >2</td>
+            <td class="textright" >80</td>
+            <td class="textright" >31625€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>BORNE DC DOUBLE 100KW</td>
+            <td>WB-DC-100D/WC</td>
+            <td>DC</td>
+            <td>sol</td>
+            <td class="textright" >2</td>
+            <td class="textright" >100</td>
+            <td class="textright" >37750€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>BORNE DC DOUBLE 120KW</td>
+            <td>WB-DC-120D/WC</td>
+            <td>DC</td>
+            <td>sol</td>
+            <td class="textright" >2</td>
+            <td class="textright">120</td>
+            <td class="textright">43875€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>BORNE DC DOUBLE 140KW</td>
+            <td>WB-DC-140D/WC</td>
+            <td>DC</td>
+            <td>sol</td>
+            <td class="textright" >2</td>
+            <td class="textright" >140</td>
+            <td class="textright" >50000€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+          <tr>
+            <td>BORNE DC DOUBLE 160KW</td>
+            <td>WB-DC-160D/WC</td>
+            <td>DC</td>
+            <td>sol</td>
+            <td class="textright" >2</td>
+            <td class="textright" >160</td>
+            <td class="textright" >56000€</td>
+            <td><button class="addrow btn btn-success">+</button></td>
+          </tr>
+        </table>
+      </div>
+      <br>
+      <h2 class="titretableau" style="background-color: #F55517;">ENEDIS</h2>
+        <table>
+          <tr>
+            <td id="texttarif"></td>
+            <td id="tarifValue" class="textright" style="background-color: #fb743e;">0,00€</td>
+          </tr>
+          
+        </table>
+        <i>* coût moyen 2023 estimé sur la base de plusieurs devis ENEDIS. Peu varier selon la complexité du chantier</i>
+        <hr>
+
+        <h2 class="titre_IRV no-page-break">Installation IRVE</h2>
+        <table class="table table-striped">
+          <tr>
+            <td id="genie" class="gris">Genie civil - dalle, tranchée, percement</td>
+            <td><input type = number onchange="reload()" id="IRVE1" ></td>
+          </tr>
+          <tr>
+            <td id="moe" class="gris">MOE électrique - raccordement, ajout armoire électrique, MES</td>
+            <td><input type = number onchange="reload()" id="IRVE2" ></td>
+          </tr>
+          <tr>
+            <td id="etude" class="gris">Etude, signalisation des places, DOE, déplacement…</td>
+            <td><input type = number onchange="reload()" id="IRVE3"></td>
+          </tr>
+          <tr>
+            <td id="attestation" class="gris">Attestation de conformité bureau de contrôle</td>
+            <td><input type = number onchange="reload()" id="IRVE4"></td>
+          </tr>
+          <tr>
+            <td id="contrat"class="gris">Contrat de maintenance annuel (300€/borne AC - 500€/borne DC -600€/ borne AC/DC) - pour 4 ans</td>
+            <td class="textright" id="contrat1"></td>
+          </tr>
+          </tr>
+        </table>
+        <hr>
+        <h2 class="titretableau">EV MAP - SERVICES + MONETISATION</h2>
+        <table>
+          <tr>
+            <td id="D1"class="gris">Service monétisation EVmap (16€/mois/PDC DC) - pour 4 ans</td>
+            <td class="textright" id="DC"></td>
+          </tr>
+          <tr>
+            <td id="AD"class="gris">Service monétisation EVmap (16€/mois/PDC AC) - pour 4 ans</td>
+            <td class="textright" id="AC"></td>
+          </tr>
+          <tr>
+            <td id="AS"class="gris">Service monétisation EVmap (16€/mois/PDC ACDC) - pour 4 ans</td>
+            <td class="textright" id="AC DC"></td>
+          </tr>
+          <tr>
+            <td id="frais"class="gris">Frais activation (60€/ point de charge)</td>
+            <td class="textright" id="Totaltout"></td>
+          </tr>
+        </table>
+        <hr>
+
+        <h2 class="d-flex d-flex justify-content-between bg-black text-white">
+          <div>Total </div>
+          <div><span class="textright" id="totalglobal">  </span> </div>
+        </h2>
+    <br class=" no-print">
+    <br class=" no-print">
+    <h2 class="verneutre no-print">POTENTIEL ANNUEL DE VENTE KWH pour Borne par type "PAYANT"</h2>
+    <table class=" no-print">
+      <thead>
+        <tr>
+          <th class ="vert1" >Année</th>
+          <th class ="vert1" >Temps de charge (heure) par utilisateur</th>
+          <th class ="vert1" >Nombre de points de charges monétisables (Payant)</th>
+          <th class ="vert1" >Nombre de sessions max par heure</th>
+          <th class ="vert1" >Frequentation quotidienne (Nombre de clients mensuels / 24 jour X %EV national)</th>
+          <th class ="vert1" >Nombre de clients 100%EV par jour (9h-19h)</th>
+          <th class ="vert1" >Charge moyenne vendue kWh/utilisateur</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="vertclair">2023</td>
+          <td class="textright" id="tempscharge2023"></td>
+          <td class="textright totalpointdechargesPayant" id="totalpointdechargesPayant"></td>
+          <td class="textright" id="nbsession2023"></td>
+          <td class="textright" id="frequentation2023"></td>
+          <td class="textright" id="">
+            <input type="number" id="nombredeclientjour2023" onchange="reload()">
+          </td>
+          <td class="chargemoyenne textright" id="chargemoyenne2023"></td>
+        </tr>
+        <tr>
+          <td class ="vert1">2024</td>
+          <td class="textright" id="tempscharge2024"></td>
+          <td class="textright totalpointdechargesPayant"></td>
+          <td class="textright" id="nbsession2024"></td>
+          <td class="textright" id="frequentation2024"></td>
+          <td class="textright" id="">
+            <input type="number" id="nombredeclientjour2024" onchange="reload()">
+          </td>
+          <td class="chargemoyenne textright" id="chargemoyenne2024"></td>
+        </tr>
+        <tr>
+          <td class ="verneutre" >2025</td>
+          <td class="textright" id="tempscharge2025"></td>
+          <td class="textright totalpointdechargesPayant"></td>
+          <td class="textright" id="nbsession2025"></td>
+          <td class="textright" id="frequentation2025"></td>
+          <td class="textright" id="">
+            <input type="number" id="nombredeclientjour2025" onchange="reload()">
+          </td>
+          <td class="chargemoyenne textright" id="chargemoyenne2025"></td>
+        </tr>
+        <tr>
+          <td class ="vertfonce">2026</td>
+          <td class="textright" id="tempscharge2026"></td>
+          <td class="textright totalpointdechargesPayant"></td>
+          <td class="textright" id="nbsession2026"></td>
+          <td class="textright" id="frequentation2026"></td>
+          <td class="textright" id="">
+            <input type="number" id="nombredeclientjour2026" onchange="reload()">
+          </td>
+          <td class="chargemoyenne textright" id="chargemoyenne2026"></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <h2 class="verneutre no-print">Marges €HT par charge unitaire</h2>
+    <table class="no-print">
+      <thead>
+        <tr>
+          <th class ="vert1" >Année</th>
+          <th class ="vert1" >Prix de revient €HT par charge unitaire</th>
+          <th class ="vert1" >Prix revente €HT/charge unitaire</th>
+          <th class ="vert1" >Marge €HT/charge unitaire</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="vertclair" >2023</td>
+          <td class="textright" id="prixrevient2023"></td>
+          <td class="textright" id="prixrevente2023"></td>
+          <td class="textright" id="margeunit2023"></td>
+        </tr>
+        <tr>
+          <td class ="vert1">2024</td>
+          <td class="textright" id="prixrevient2024"></td>
+          <td class="textright" id="prixrevente2024"></td>
+          <td class="textright" id="margeunit2024"></td>
+        </tr>
+        <tr>
+          <td class="verneutre" >2025</td>
+          <td class="textright" id="prixrevient2025"></td>
+          <td class="textright" id="prixrevente2025"></td>
+          <td class="textright" id="margeunit2025"></td>
+        </tr>
+        <tr>
+          <td class="vertfonce" >2026</td>
+          <td class="textright" id="prixrevient2026"></td>
+          <td class="textright" id="prixrevente2026"></td>
+          <td class="textright" id="margeunit2026"></td>
+        </tr>
+      </tbody>
+    </table>
+    <br class="no-print">
+    <h2 class="verneutre no-print">Marges €HT annuelles</h2>
+    <table class="no-print">
+      <thead>
+        <tr>
+          <th class ="vert1" >Année</th>
+          <th class ="vert1" >Marge annuelle opérationnelle brute €HT</th>
+          <th class ="vert1" >Coût EV map €HT (8,5% sur volume de vente)</th>
+          <th class ="vert1" >Marge brute annuelle €HT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="vertclair" >2023</td>
+          <td class="textright" id="margeopera2023"></td>
+          <td class="textright" id="coutevmap2023"></td>
+          <td class="textright" id="margebrute2023"></td>
+        </tr>
+        <tr>
+          <td class ="vert1">2024</td>
+          <td class="textright" id="margeopera2024"></td>
+          <td class="textright" id="coutevmap2024"></td>
+          <td class="textright" id="margebrute2024"></td>
+        </tr>
+        <tr>
+          <td class="verneutre" >2025</td>
+          <td class="textright" id="margeopera2025"></td>
+          <td class="textright" id="coutevmap2025"></td>
+          <td class="textright" id="margebrute2025"></td>
+        </tr>
+        <tr>
+          <td class="vertfonce" >2026</td>
+          <td class="textright" id="margeopera2026"></td>
+          <td class="textright" id="coutevmap2026"></td>
+          <td class="textright" id="margebrute2026"></td>
+        </tr>
+      </tbody>
+    </table>
+    <br class="no-print">
+    <h2 class="verneutre">RETOUR SUR INVESTISSEMENT</h2>
+    <table>
+      <thead>
+        <tr>
+          <th class ="vert1" >Année</th>
+          <th class="vert1">Marge annuelle brute cumulée €HT</th>
+          <th class ="vert1">Coût €HT cumulé des travaux (amortissement 48 mois)</th>
+          <th class="vert1">Marge nette €HT cumulée</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="vertclair" >2023</td>
+          <td class="textright" id="margebrutcumule2023"></td>
+          <td class="textright" id="travauxcumulee2023"></td>
+          <td class="textright" id="magenetcumulee2023"></td>
+        </tr>
+        <tr>
+          <td class ="vert1" >2024</td>
+          <td class="textright" id="margebrutcumule2024"></td>
+          <td class="textright" id="travauxcumulee2024"></td>
+          <td class="textright" id="magenetcumulee2024"></td>    </tr>
+        <tr>
+          <td class="verneutre">2025</td>
+          <td class="textright" id="margebrutcumule2025"></td>
+          <td class="textright" id="travauxcumulee2025"></td>
+          <td class="textright" id="magenetcumulee2025"></td>    </tr>
+        <tr>
+          <td class="vertfonce">2026</td>
+          <td class="textright" id="margebrutcumule2026"></td>
+          <td class="textright" id="travauxcumulee2026"></td>
+          <td class="textright" id="magenetcumulee2026"></td>    </tr>
+      </tbody>
+    </table>
+    <hr>
+    <h2 class="d-flex d-flex justify-content-between bg-black text-white ">
+      <div>Temps de retour sur investissement  </div>
+      <div><span class="textright" id="tempsretour">  </span> mois</div>
+    </h2>
+    <br class="no-print">
+    <br class="no-print">
+    <div class="d-flex d-flex justify-content-center no-print m-3 text-center no-print"> 
+      <button id="emailButton" class="btn btn btn-info m-3 no-print">Envoyer demande par email</button>
+      <br>
+      <button class="btn btn-info m-3 no-print" onclick="window.print()">Imprimer</button>
+    </div>
+
+
+
+
+    
+    
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+  <!--script2-->
+  <script>            
+          //affichage du tableau des bornes a choisir
+          function toggleDiv() {
+            var div = document.getElementById("myDiv");
+            var arrowIcon = document.getElementById("arrowIcon");
+
+            if (arrowIcon.innerHTML === "v") {
+              arrowIcon.innerHTML = "&#62;";
+              div.style.display = "none";
+            } else {
+              arrowIcon.innerHTML = "v";
+              div.style.display = "block";
+            }
+          }
+
+          // ecoutes des bouton + du tableau QUELLE TYPE DE BORNE CHOISIR ? ?
+          for (let btn of document.getElementsByClassName('addrow')) {
+            btn.addEventListener('click', function() {
+              ajouterLigne(btn);
+            });
+          }
+          function calcultotalprix() {
+            var elementsPrix = document.getElementsByClassName("prix");
+            var totalPrix = 0.00;
+            var valeur = 0.00;
+            var prixtotalcell = document.getElementById("prixtotal");
+            for (var i = 0; i < elementsPrix.length; i++) {
+              valeur = parseFloat(elementsPrix[i].innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+              console.log("valeur", valeur); 
+              if (!isNaN(valeur)) {
+                totalPrix += valeur;
+                
+              }
+            }
+            prixtotalcell.textContent = formatNumber(totalPrix,2);
+
+          }
+
+
+            // Mettre à jour la valeur dans la balise th
+
+
+
+          //calcul ligne des total
+          function calculerNombreBornesTotal() {
+            // Récupérer tous les éléments input avec name="nombrebornes"
+            var elements = document.getElementsByName("nombrebornes");
+            var total = 0;
+
+
+            // Parcourir les éléments et additionner leurs valeurs
+            for (var i = 0; i < elements.length; i++) {
+              var valeur = parseInt(elements[i].value);
+              if (!isNaN(valeur)) {
+                total += valeur;
+              }
+            }
+            // Mettre à jour la valeur dans la balise th
+            var baliseTotal = document.getElementById("nombrebornestotal");
+            baliseTotal.textContent = total;
+
+            // Mettre à jour le nombre total charges
+            var elementspointdecharges = document.getElementsByName("nombredecharge");
+            var totalpointdecharges = 0;
+
+            for (var i = 0; i < elementspointdecharges.length; i++) {
+              var valeur = parseInt(elementspointdecharges[i].textContent);
+              if (!isNaN(valeur)) {
+                totalpointdecharges += valeur;
+              }
+            }
+
+              var baliseTotal = document.getElementById("nombrechargetotal");
+              var baliseTotalAC = document.getElementById("nombrechargeAC");
+              var baliseTotalDC = document.getElementById("nombrechargeDC");
+              var baliseTotalACDC = document.getElementById("nombrechargeACDC");
+              totalpointdechargesAC = 0;
+              totalpointdechargesDC = 0;
+              totalpointdechargesACDC = 0;
+              totalpointdechargesAbonnement = 0;
+              totalpuissancecumuleAbonnement = 0;
+              totalpointdechargesPayant = 0;
+              totalpuissancecumulePayant =0;
+
+
+              var rows = document.querySelectorAll("#bornes-souhaitees .marine");
+              for (var i = 0; i < rows.length; i += 7) {
+                type = rows[i + 3].textContent;
+                points = parseInt(rows[i + 2].textContent);
+                typecontrat = rows[i + 4].querySelector("select").value;
+                nombredeborne = parseInt(rows[i + 2].textContent)
+                puissanceCumule  = parseInt(rows[i + 5].textContent)
+                
+                if (type === "AC") {
+                  totalpointdechargesAC += points;
+                }
+                if (type === "DC") {
+                  totalpointdechargesDC += points;
+                }
+                if (type === "AC + DC") {
+                  totalpointdechargesACDC += points;
+                }
+                if (typecontrat === "Abonnement") {
+                  totalpointdechargesAbonnement += nombredeborne;
+                  totalpuissancecumuleAbonnement += puissanceCumule
+                }
+                if (typecontrat === "Payant") {
+                  totalpointdechargesPayant += nombredeborne;
+                  totalpuissancecumulePayant += puissanceCumule
+                }
+              }
+
+              let nb_point_charges = document.querySelectorAll(".totalpointdechargesPayant");
+              nb_point_charges.forEach(element => {
+                element.innerText = totalpointdechargesPayant;
+              })
+              var tempsclient = document.getElementById("tempsclient").value
+              //console.log(tempsclient)
+              if ((totalpuissancecumulePayant * tempsclient / 60)>50) {
+                var totalpuissancecumulePayant2023 = 50
+                var totalpuissancecumulePayant2024 = 70
+                var totalpuissancecumulePayant2025 = 80
+                var totalpuissancecumulePayant2026 = 100
+              } else {
+                var totalpuissancecumulePayant2023 = totalpuissancecumulePayant * tempsclient /60
+                var totalpuissancecumulePayant2024 = totalpuissancecumulePayant * tempsclient /60
+                var totalpuissancecumulePayant2025 = totalpuissancecumulePayant * tempsclient /60
+                var totalpuissancecumulePayant2026 = totalpuissancecumulePayant * tempsclient /60
+              }
+              document.getElementById("chargemoyenne2023").innerText = totalpuissancecumulePayant2023.toFixed(2);
+              document.getElementById("chargemoyenne2024").innerText = totalpuissancecumulePayant2024.toFixed(2);
+              document.getElementById("chargemoyenne2025").innerText = totalpuissancecumulePayant2025.toFixed(2);
+              document.getElementById("chargemoyenne2026").innerText = totalpuissancecumulePayant2026.toFixed(2);
+
+
+
+              baliseTotal.textContent = totalpointdecharges;
+              baliseTotalAC.textContent = totalpointdechargesAC;
+              baliseTotalDC.textContent = totalpointdechargesDC;
+              baliseTotalACDC.textContent = totalpointdechargesACDC;
+
+
+              var contrat1 = document.getElementById("contrat1");
+              contrat1.innerText = ((totalpointdechargesAC * 300) + (totalpointdechargesDC * 500) + (totalpointdechargesACDC*600))*4 + "€";
+              var DC = document.getElementById("DC");
+              DC.innerText = (totalpointdechargesDC*16*12*4)+"€";
+              var AC = document.getElementById("AC");
+              AC.innerText = (totalpointdechargesAC*16*12*4)+"€";
+              var ACDC = document.getElementById("AC DC");
+              ACDC.innerText = (totalpointdechargesACDC*16*12*4)+"€";
+              var Totaltout = document.getElementById("Totaltout");
+              Totaltout.innerText = (totalpointdecharges*60)+"€";
+
+            }
+
+          function totalpuissancecumulee() {
+            var elementsPuissanceCumulee = document.getElementsByClassName("puissance_cumulee");
+            var totalPuissanceCumulee = 0;
+
+            for (var i = 0; i < elementsPuissanceCumulee.length; i++) {
+              var valeur = parseInt(elementsPuissanceCumulee[i].innerText);
+              if (!isNaN(valeur)) {
+                totalPuissanceCumulee += valeur;
+              }
+            }
+            var baliseTotal = document.getElementById("puissancecumuleetotal");
+            baliseTotal.textContent = totalPuissanceCumulee;
+            
+          }
+
+
+          //remplissage tbl proposition de revente (prix KWH moyen)
+          function updateMarge2023() {
+            var prixkwh2023Cell = document.getElementById("prixkwh2023");
+            var prixvente2024Cell = document.getElementById("prixvente2024");
+            var prixvente2025Cell = document.getElementById("prixvente2025");
+            var prixvente2026Cell = document.getElementById("prixvente2026");
+            var prixkwh2024Cell = document.getElementById("prixkwh2024");
+            var prixkwh2025Cell = document.getElementById("prixkwh2025");
+            var prixkwh2026Cell = document.getElementById("prixkwh2026");
+            var marge2023Cell = document.getElementById("marge2023");
+            var marge2024Cell = document.getElementById("marge2024");
+            var marge2025Cell = document.getElementById("marge2025");
+            var marge2026Cell = document.getElementById("marge2026");
+            var prixkwh = parseFloat(prixkwhInput.value);
+            var prixkwh2024  = prixkwh + prixkwh* 9/100;
+            var prixkwh2025  = prixkwh2024 + prixkwh2024* 12/100;
+            var prixkwh2026  = prixkwh2025 + prixkwh2025* 15/100;
+
+
+            var prixvente2023 = parseFloat(prixvente2023Input.value);
+            prixvente2024Cell.innerText = formatNumber(prixvente2023,2);
+            prixvente2025Cell.innerText = formatNumber(prixvente2023,2);
+            prixvente2026Cell.innerText = formatNumber(prixvente2023,2);
+
+            if (!isNaN(prixkwh) && !isNaN(prixvente2023)) {
+              var marge2023 = prixvente2023 / prixkwh;
+              marge2023Cell.innerText = formatNumber(marge2023,2);
+              prixkwh2023Cell.innerText = formatNumber(prixkwh,3);
+            }
+            if (!isNaN(prixkwh2024) && !isNaN(prixvente2023)) {
+              var marge2024 = prixvente2023 / prixkwh2024;
+              marge2024Cell.innerText = formatNumber(marge2024,2);
+              prixkwh2024Cell.innerText = formatNumber(prixkwh2024,3);
+            }
+            if (!isNaN(prixkwh2025) && !isNaN(prixvente2023)) {
+              var marge2025 = prixvente2023 / prixkwh2025;
+              marge2025Cell.innerText = formatNumber(marge2025,2);
+              prixkwh2025Cell.innerText = formatNumber(prixkwh2025,3);
+            }
+            if (!isNaN(prixkwh2026) && !isNaN(prixvente2023)) {
+              var marge2026 = prixvente2023 / prixkwh2026;
+              marge2026Cell.innerText = formatNumber(marge2026,2);
+              prixkwh2026Cell.innerText = formatNumber(prixkwh2026,3);
+            }
+
+          }
+
+
+
+
+          //12/15/20
+
+          //calcul pour tableau Proposition de revente
+          var prixkwhInput = document.getElementById("PrixKwh");
+          var prixvente2023Input = document.getElementById("prixvente2023");
+          prixkwhInput.addEventListener("change", updateMarge2023);
+          prixvente2023Input.addEventListener("change", updateMarge2023);
+
+
+          function displayTarifValue() {
+                var tarifSelect = document.getElementById("tarif").value;
+                var tarifValue = document.getElementById("tarifValue");
+                var texttarif = document.getElementById("texttarif");
+                var ajouttarif = document.getElementById("ajouttarif").value;
+
+                if (ajouttarif === "NON") {
+                  tarifValue.innerHTML = "0 €";
+                  texttarif.innerHTML = "Pas de majoration ENEDIS";
+                }
+                else if (tarifSelect === "8000") {
+                  tarifValue.innerHTML = "8000 €";
+                  texttarif.innerHTML = "PDL ENEDIS Tarif Jaune *";
+                } else if (tarifSelect === "15000") {
+                  tarifValue.innerHTML = "15000";
+                  texttarif.innerHTML = "PDL ENEDIS Tarif Bleu *";
+                } else {
+                  tarifValue.innerHTML = "errore select tarif";
+                  texttarif.innerHTML = "errore select tarif";
+                }
+                
+          }
+
+
+          function calculglobal() {
+
+            var elements = [
+              parseFloat(document.getElementById("prixtotal").innerText.replace(/[^\d,.-]/g, '').replace(",", ".")),
+              parseFloat(document.getElementById("tarifValue").innerText.replace(/[^\d,.-]/g, '').replace(",", ".")),
+              parseFloat(document.getElementById("IRVE1").value),
+              parseFloat(document.getElementById("IRVE2").value),
+              parseFloat(document.getElementById("IRVE3").value),
+              parseFloat(document.getElementById("IRVE4").value),
+              parseFloat(document.getElementById("contrat1").innerText.replace(/[^\d,.-]/g, '').replace(",", ".")),
+              parseFloat(document.getElementById("DC").innerText.replace(/[^\d,.-]/g, '').replace(",", ".")),
+              parseFloat(document.getElementById("AC").innerText.replace(/[^\d,.-]/g, '').replace(",", ".")),
+              parseFloat(document.getElementById("AC DC").innerText.replace(/[^\d,.-]/g, '').replace(",", ".")),
+              parseFloat(document.getElementById("Totaltout").innerText.replace(/[^\d,.-]/g, '').replace(",", ".")),
+            ]
+
+            let total = 0;
+            for (let elm of elements) {
+              const val = parseFloat(elm)
+              if (isNaN(val)) continue;
+              total += val;
+              console.log(total + " " + val);
+            }
+
+            document.getElementById("totalglobal").innerText = formatNumber(total,2);
+          }
+
+
+          //rempli tableau POTENTIEL ANNUEL DE VENTE KWH pour Borne par type "PAYANT"
+          function remplissageTBLpotentielannuel() {
+            //1ere colonne
+            var tempscharge2023Cell = document.getElementById("tempscharge2023");
+            var tempscharge2024Cell = document.getElementById("tempscharge2024");
+            var tempscharge2025Cell = document.getElementById("tempscharge2025");
+            var tempscharge2026Cell = document.getElementById("tempscharge2026");
+            var totalpointdechargesPayant = parseInt(document.getElementById("totalpointdechargesPayant").innerText);
+
+            var tempsclient = parseFloat(document.getElementById("tempsclient").value);
+            var tempscharge2023  = tempsclient / 60;
+            var tempscharge2024  = tempsclient / 60;
+            var tempscharge2025  = tempsclient / 60;
+            var tempscharge2026  = tempsclient / 60;
+
+
+            tempscharge2023Cell.innerHTML = tempscharge2023.toFixed(2);
+            tempscharge2024Cell.innerHTML = tempscharge2024.toFixed(2);
+            tempscharge2025Cell.innerHTML = tempscharge2025.toFixed(2);
+            tempscharge2026Cell.innerHTML = tempscharge2026.toFixed(2);
+
+            //calculernbsession 3eme colonne
+            var nbsession2023 = document.getElementById("nbsession2023");
+            var nbsession2024 = document.getElementById("nbsession2024");
+            var nbsession2025 = document.getElementById("nbsession2025");
+            var nbsession2026 = document.getElementById("nbsession2026");
+
+            nbsession2023.innerHTML = (totalpointdechargesPayant/ tempscharge2023);
+            nbsession2024.innerHTML = (totalpointdechargesPayant / tempscharge2024);
+            nbsession2025.innerHTML = (totalpointdechargesPayant / tempscharge2025);
+            nbsession2026.innerHTML = (totalpointdechargesPayant / tempscharge2026);
+            //calculernbsession 4eme colonne
+
+          }
+
+          function refrechfrequentation_nbdeclientparjours() {
+            var frequentation2023Cell = document.getElementById("frequentation2023");
+            var frequentation2024Cell = document.getElementById("frequentation2024");
+            var frequentation2025Cell = document.getElementById("frequentation2025");
+            var frequentation2026Cell = document.getElementById("frequentation2026");
+            var nbclients = parseInt(document.getElementById("nbclients").value);
+            //Part EV seul 202
+            var frequentation2023 = (parseFloat(nbclients / 30) * 2 / 100).toFixed(0);
+            var frequentation2024 = (parseFloat(nbclients / 30) * 4 / 100).toFixed(0);
+            var frequentation2025 = (parseFloat(nbclients / 30) * 6 / 100).toFixed(0);
+            var frequentation2026 = (parseFloat(nbclients / 30) * 9/ 100).toFixed(0);
+            frequentation2023Cell.innerHTML = frequentation2023;
+            frequentation2024Cell.innerHTML = frequentation2024;
+            frequentation2025Cell.innerHTML = frequentation2025;
+            frequentation2026Cell.innerHTML = frequentation2026;
+
+            document.getElementById("nombredeclientjour2023").value = frequentation2023;
+            document.getElementById("nombredeclientjour2024").value = frequentation2024;
+            document.getElementById("nombredeclientjour2025").value = frequentation2025;
+            document.getElementById("nombredeclientjour2026").value = frequentation2026;
+            reload();
+          }
+
+
+          function remplissageTBLMargesParChargeUnitaire() {
+            // Cellules à remplir
+            var prixrevient2023Cell = document.getElementById("prixrevient2023");
+            var prixrevient2024Cell = document.getElementById("prixrevient2024");
+            var prixrevient2025Cell = document.getElementById("prixrevient2025");
+            var prixrevient2026Cell = document.getElementById("prixrevient2026");
+
+            // Cellules utilisées pour le calcul
+            var prixkwh2023 = parseFloat(document.getElementById("prixkwh2023").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            var prixkwh2024 = parseFloat(document.getElementById("prixkwh2024").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            var prixkwh2025 = parseFloat(document.getElementById("prixkwh2025").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            var prixkwh2026 = parseFloat(document.getElementById("prixkwh2026").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            var chargemoyenne2023 = parseFloat(document.getElementById("chargemoyenne2023").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            var chargemoyenne2024 = parseFloat(document.getElementById("chargemoyenne2024").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            var chargemoyenne2025 = parseFloat(document.getElementById("chargemoyenne2025").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            var chargemoyenne2026 = parseFloat(document.getElementById("chargemoyenne2026").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+
+            // Mes calculs
+            prixrevient2023Cell.innerText = formatNumber((chargemoyenne2023 * prixkwh2023), 2);
+            prixrevient2024Cell.innerText = formatNumber((chargemoyenne2024 * prixkwh2024),2);
+            prixrevient2025Cell.innerText = formatNumber((chargemoyenne2025 * prixkwh2025),2);
+            prixrevient2026Cell.innerText = formatNumber((chargemoyenne2026 * prixkwh2026),2);
+            // Cellules à remplir
+            var prixrevente2023Cell = document.getElementById("prixrevente2023");
+            var prixrevente2024Cell = document.getElementById("prixrevente2024");
+            var prixrevente2025Cell = document.getElementById("prixrevente2025");
+            var prixrevente2026Cell = document.getElementById("prixrevente2026");
+            var prixvente2023 = parseFloat(document.getElementById("prixvente2023").value);
+            var prixvente2024 = parseFloat(document.getElementById("prixvente2024").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            var prixvente2025 = parseFloat(document.getElementById("prixvente2025").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            var prixvente2026 = parseFloat(document.getElementById("prixvente2026").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+
+
+            prixrevente2023Cell.innerText = formatNumber((prixvente2023 * chargemoyenne2023),2);
+            prixrevente2024Cell.innerText = formatNumber((prixvente2024 * chargemoyenne2024),2);
+            prixrevente2025Cell.innerText = formatNumber((prixvente2025 * chargemoyenne2025),2);
+            prixrevente2026Cell.innerText = formatNumber((prixvente2026 * chargemoyenne2026),2);
+
+            var margeunit2023Cell = document.getElementById("margeunit2023");
+            var margeunit2024Cell = document.getElementById("margeunit2024");
+            var margeunit2025Cell = document.getElementById("margeunit2025");
+            var margeunit2026Cell = document.getElementById("margeunit2026");
+            var prixrevente2023 = parseFloat(document.getElementById("prixrevente2023").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            var prixrevente2024 = parseFloat(document.getElementById("prixrevente2024").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            var prixrevente2025 = parseFloat(document.getElementById("prixrevente2025").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            var prixrevente2026 = parseFloat(document.getElementById("prixrevente2026").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            var prixrevient2023 = parseFloat(document.getElementById("prixrevient2023").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            var prixrevient2024 = parseFloat(document.getElementById("prixrevient2024").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            var prixrevient2025 = parseFloat(document.getElementById("prixrevient2025").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            var prixrevient2026 = parseFloat(document.getElementById("prixrevient2026").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            margeunit2023Cell.innerText = formatNumber((prixrevente2023 - prixrevient2023),2);
+            margeunit2024Cell.innerText = formatNumber((prixrevente2024 - prixrevient2024),2);
+            margeunit2025Cell.innerText = formatNumber((prixrevente2025 - prixrevient2025),2);
+            margeunit2026Cell.innerText = formatNumber((prixrevente2026 - prixrevient2026),2);
+
+
+          }
+          function remplissageTBLMargesAnnuelle() {
+            //celluel a remplir
+            var margeopera2023Cell = document.getElementById("margeopera2023");
+            var margeopera2024Cell = document.getElementById("margeopera2024");
+            var margeopera2025Cell = document.getElementById("margeopera2025");
+            var margeopera2026Cell = document.getElementById("margeopera2026");
+
+            var margebrute2023Cell = document.getElementById("margebrute2023");
+            var margebrute2024Cell = document.getElementById("margebrute2024");
+            var margebrute2025Cell = document.getElementById("margebrute2025");
+            var margebrute2026Cell = document.getElementById("margebrute2026");
+
+            var coutevmap2023Cell = document.getElementById("coutevmap2023");
+            var coutevmap2024Cell = document.getElementById("coutevmap2024");
+            var coutevmap2025Cell = document.getElementById("coutevmap2025");
+            var coutevmap2026Cell = document.getElementById("coutevmap2026");
+
+
+                ///cellules tbl sur investissement
+                var margebrutcumule2023Cell = document.getElementById("margebrutcumule2023");
+                var margebrutcumule2024Cell = document.getElementById("margebrutcumule2024");
+                var margebrutcumule2025Cell = document.getElementById("margebrutcumule2025");
+                var margebrutcumule2026Cell = document.getElementById("margebrutcumule2026");
+                var travauxcumulee2023Cell = document.getElementById("travauxcumulee2023");
+                var travauxcumulee2024Cell = document.getElementById("travauxcumulee2024");
+                var travauxcumulee2025Cell = document.getElementById("travauxcumulee2025");
+                var travauxcumulee2026Cell = document.getElementById("travauxcumulee2026");
+                var magenetcumulee2023Cell = document.getElementById("magenetcumulee2023");
+                var magenetcumulee2024Cell = document.getElementById("magenetcumulee2024");
+                var magenetcumulee2025Cell = document.getElementById("magenetcumulee2025");
+                var magenetcumulee2026Cell = document.getElementById("magenetcumulee2026");
+                //dernier ligne temps de retour
+                var tempsretourCell = document.getElementById("tempsretour");
+
+
+
+
+
+
+            //variable pour calcul
+            var prixrevente2023 = parseFloat(document.getElementById("prixrevente2023").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            var prixrevente2024 = parseFloat(document.getElementById("prixrevente2024").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            var prixrevente2025 = parseFloat(document.getElementById("prixrevente2025").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            var prixrevente2026 = parseFloat(document.getElementById("prixrevente2026").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            var margeunit2023 = parseFloat(document.getElementById("margeunit2023").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            var margeunit2024 = parseFloat(document.getElementById("margeunit2024").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            var margeunit2025 = parseFloat(document.getElementById("margeunit2025").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            var margeunit2026 = parseFloat(document.getElementById("margeunit2026").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+            var nombredeclientjour2023 = parseInt(document.getElementById("nombredeclientjour2023").value);
+            var nombredeclientjour2024 = parseInt(document.getElementById("nombredeclientjour2024").value);
+            var nombredeclientjour2025 = parseInt(document.getElementById("nombredeclientjour2025").value);
+            var nombredeclientjour2026 = parseInt(document.getElementById("nombredeclientjour2026").value);
+            var totalglobal = parseFloat(document.getElementById("totalglobal").innerText.replace(/[^\d,.-]/g, '').replace(",", "."));
+
+            var margeopera2023 = (margeunit2023 * nombredeclientjour2023*30*12)
+            var margeopera2024 = (margeunit2024 * nombredeclientjour2024*30*12)
+            var margeopera2025 = (margeunit2025 * nombredeclientjour2025*30*12)
+            var margeopera2026 = (margeunit2026 * nombredeclientjour2026*30*12)
+
+            var coutevmap2023 = (prixrevente2023 * nombredeclientjour2023*30*12*0.085);
+            var coutevmap2024 = (prixrevente2024 * nombredeclientjour2024*30*12*0.085);
+            var coutevmap2025 = (prixrevente2025 * nombredeclientjour2025*30*12*0.085);
+            var coutevmap2026 = (prixrevente2026 * nombredeclientjour2026*30*12*0.085);
+
+            //renvoie au cellules
+
+
+            margeopera2023Cell.innerText = formatNumber(margeopera2023,2);
+            margeopera2024Cell.innerText = formatNumber(margeopera2024,2);
+            margeopera2025Cell.innerText = formatNumber(margeopera2025,2);
+            margeopera2026Cell.innerText = formatNumber(margeopera2026,2);
+
+            coutevmap2023Cell.innerText = formatNumber(coutevmap2023,2);
+            coutevmap2024Cell.innerText = formatNumber(coutevmap2024,2);
+            coutevmap2025Cell.innerText = formatNumber(coutevmap2025,2);
+            coutevmap2026Cell.innerText = formatNumber(coutevmap2026,2);
+
+            var margebrut2023 = (margeopera2023 - coutevmap2023)
+            var margebrut2024 = (margeopera2024 - coutevmap2024)
+            var margebrut2025 = (margeopera2025 - coutevmap2025)
+            var margebrut2026 = (margeopera2026 - coutevmap2026)
+
+            margebrute2023Cell.innerText = formatNumber(margebrut2023,2);
+            margebrute2024Cell.innerText = formatNumber(margebrut2024,2);
+            margebrute2025Cell.innerText = formatNumber(margebrut2025,2);
+            margebrute2026Cell.innerText = formatNumber(margebrut2026,2);
+
+
+
+            travauxcumulee2023Cell.innerText = formatNumber((totalglobal * 0.25),2);
+            travauxcumulee2024Cell.innerText = formatNumber((totalglobal * 0.50),2);
+            travauxcumulee2025Cell.innerText = formatNumber((totalglobal * 0.75),2);
+            travauxcumulee2026Cell.innerText = formatNumber((totalglobal),2);
+
+            //remplissage tbl retour sur investissement
+            var mbcu2023 = 0
+            var mbcu2024 = 0
+            var mbcu2025 = 0
+            var mbcu2026 = 0
+
+            mbcu2023 =  margebrut2023;
+            mbcu2024 =  mbcu2023 + margebrut2024;
+            mbcu2025 =   margebrut2023 +margebrut2024 +margebrut2025;
+            mbcu2026 = margebrut2023 +margebrut2024 +margebrut2025+ margebrut2026;
+
+            margebrutcumule2023Cell.innerText = formatNumber(mbcu2023,2)
+            margebrutcumule2024Cell.innerText = formatNumber(mbcu2024,2)
+            margebrutcumule2025Cell.innerText = formatNumber(mbcu2025,2)
+            margebrutcumule2026Cell.innerText = formatNumber(mbcu2026,2)
+
+
+            magenetcumulee2023Cell.innerText = formatNumber((mbcu2023 - (totalglobal * 0.25)),2);
+            magenetcumulee2024Cell.innerText = formatNumber((mbcu2024 - (totalglobal * 0.50)),2);
+            magenetcumulee2025Cell.innerText = formatNumber((mbcu2025 - (totalglobal * 0.75)),2);
+            magenetcumulee2026Cell.innerText = formatNumber((mbcu2026 - (totalglobal)),2);
+
+            //remplissager retour su rinvestissement
+            if (mbcu2026 != 0){
+            tempsretourCell.innerText = (totalglobal * 48 / mbcu2026).toFixed(2);
+            }
+
+
+          }
+
+  </script>
+  <!-- script -->
+  <script>
+            function formatNumber(value, decimals) {
+            // Utiliser la fonction toLocaleString pour ajouter le séparateur des milliers
+            let formattedValue = value.toLocaleString(undefined, {
+              minimumFractionDigits: decimals,
+              maximumFractionDigits: decimals,
+            });
+
+            // Ajouter le symbole "€" à la fin
+            formattedValue += "€";
+
+            return formattedValue;
+          }
+          
+          // bouton + sur tableau QUELLE TYPE DE BORNE CHOISIR ?
+          function ajouterLigne(button) {
+            var row = button.parentNode.parentNode ;
+            var reference = row.cells[0].innerText + " [" + row.cells[1].innerText + "]";
+            var nombrecharge = row.cells[4].innerText;
+            var puissanceCumulee = row.cells[5].innerText;
+            var typecharge = row.cells[2].innerText;
+            var prix = row.cells[6].innerText;
+
+            var tableContainer = document.querySelector('.choixborne');
+            var table = tableContainer.querySelector('#bornes-souhaitees');
+            var newRow = table.insertRow();
+            newRow.classList.add("selectedRows")
+
+            newRow.innerHTML =
+              '<td class="marine" >' + reference + '</td>' +
+              '<td class="marine textright" ><input type="number" name="nombrebornes" min="0" max="10" value="1" data-point-charge="'+nombrecharge+'" data-puissance="'+puissanceCumulee+'" data-prix="'+prix+'" onKeyDown="return false"></td>' +
+              '<td class="marine textright totalpoint" name="nombredecharge">' + nombrecharge + '</td>' +
+              '<td class="marine ">' + typecharge + '</td>' +
+              '<td class="marine ">  <select name="typechargeprix" id="typechargeprix" onchange="reload()"> <option value="Payant">Payant</option><option value="Abonnement" >Abonnement</option></select> </td>' +
+              '<td class="marine  textright puissance_cumulee ">' + puissanceCumulee + '</td>' +
+              '<td class="marine textright prix">' + prix + '</td>';
+
+            tableContainer.scrollTop = tableContainer.scrollHeight;
+
+            // Ajouter le bouton de suppression à la nouvelle ligne
+            var deleteButtonCell = newRow.insertCell();
+            var deleteButton = document.createElement('button');
+            deleteButton.className = 'delrow btn btn-danger no-print';
+            deleteButton.textContent = '-';
+            deleteButton.addEventListener('click', function() {
+              supprimerLigne(this);
+            });
+            deleteButtonCell.appendChild(deleteButton);
+
+            newRow.querySelector("input").addEventListener("change", function() {
+              var input = this;
+
+              var nombreBornes = parseInt(input.value);
+              rowpointdecharge = parseInt(input.getAttribute("data-point-charge"));
+              rowpuissance = parseInt(input.getAttribute("data-point-charge"));
+              rowprix = parseFloat(input.getAttribute("data-prix"));
+
+
+              //var totalPointCell = input.parentNode.nextElementSibling;
+              var totalPointchargeCell = newRow.querySelector('.totalpoint');
+              var puissanceCumuleeCell = newRow.querySelector('.puissance_cumulee');
+              var totalprixCell = newRow.querySelector('.prix');
+
+              var nombrecharges = rowpointdecharge * nombreBornes;
+              totalPointchargeCell.innerText = nombrecharges;
+              puissanceCumuleeCell.innerText = nombreBornes * puissanceCumulee;
+              totalprixCell.innerText =  (rowprix * nombreBornes).toFixed(2)
+
+
+              reload();
+
+            });
+
+            reload();
+            initTypeCharge(newRow);
+
+          }
+
+
+          // bouton - sur tableau Nombre de bornes souhaités ?
+          function supprimerLigne(button) {
+            var row = button.parentNode.parentNode;
+            var table = row.parentNode;
+            table.removeChild(row);
+
+            reload();
+
+          }
+
+          function setChargeValue(row,choice) {
+            let totalpoints = parseInt(row.querySelector(".totalpoint").innerText);
+            if (choice == "Abonnement") {
+              row.dataset.chargeVal = 0;
+            } else {
+              //calcul si "Payant"
+              row.dataset.chargeVal = totalpoints;
+            }
+
+          }
+          function initTypeCharge(row) {
+            let inputs = row.querySelectorAll("input, select");
+            let choice = row.querySelector("[name='typechargeprix']")
+
+            let totalpoints = parseInt(row.querySelector(".totalpoint").innerText);
+            row.dataset.chargeVal = totalpoints;
+
+            for (let input of inputs) {
+              input.addEventListener("change", function(e) {
+                setChargeValue(row,choice.value);
+                getTotalCharges();
+              })
+            }
+
+            getTotalCharges();
+
+          }
+
+          function getTotalCharges() {
+            let nb_point_charges = document.querySelectorAll(".nbpointcharges");
+            let selectedRows = document.querySelectorAll(".selectedRows");
+            let total = 0;
+            for (let row of selectedRows) {
+              total+= parseInt(row.dataset.chargeVal);
+            }
+
+            nb_point_charges.forEach(element => {
+              element.innerText = total;
+            })
+          }
+
+          function displaybtnemail() {
+              // Sélection de l'élément du bouton et de l'élément tbody
+            var emailButton = document.getElementById("emailButton");
+            var tbodyElement = document.getElementById("bornes-souhaitees");
+
+            // Vérification du nombre d'éléments tr dans le tbody lors du chargement de la page
+            
+              var trElements = tbodyElement.getElementsByTagName("tr");
+              if (trElements.length === 0) {
+                emailButton.style.display = "none"; // Masquer le bouton s'il n'y a pas d'éléments tr
+              }
+              else  {
+                emailButton.style.display = "block"; // Afficher le bouton s'il y a des éléments tr
+              }
+              console.log("trElements.length", trElements.length);
+
+          }
+
+
+          function reload() {
+            console.log("reload function")
+            updateMarge2023();
+            calcultotalprix();
+            calculerNombreBornesTotal();
+            totalpuissancecumulee();
+            displayTarifValue();
+            calculglobal();
+            remplissageTBLpotentielannuel();
+            remplissageTBLMargesParChargeUnitaire();
+            remplissageTBLMargesAnnuelle();
+            displaybtnemail();
+
+          }
+
+
+          refrechfrequentation_nbdeclientparjours();
+      
+  </script>
+  <!-- scriptemail -->
+  <script>
+          // script envoie email-->
+
+          document.getElementById("emailButton").addEventListener("click", function() {
+          var borneschoisiElement = document.getElementById("bornes-souhaitees");
+          var trElements = borneschoisiElement.getElementsByTagName("tr");
+          var recipient = "contact@artixium.com";
+          var subject = "Demande de devis Welborn";
+          var body = "";
+          body += 'Bonjour, \n\nJe souhaite recevoir un devis pour la solution Welborn ci dessous: \n\n';
+          body += 'Référence |	Nb bornes |	Nb point par charge |	Type courant	| Type charge |	Puissance cumulée |	Prix \n';
+          for (var i = 0; i < trElements.length; i++) {
+            var tdElements = trElements[i].getElementsByTagName("td");
+            for (var j = 0; j < tdElements.length; j++) {
+              var tdText = tdElements[j].textContent;
+              body += tdText.trim(); // Ajoute le texte du td sans espaces supplémentaires
+          
+              if (j < tdElements.length - 1) {
+                body += " | "; // Ajoute le symbole "|" entre chaque td, sauf le dernier
+              }
+            }
+            body += "\n";
+          }
+          body += 'Total borne souhaité : ' + document.getElementById("prixtotal").innerText + ' \n';
+          body += 'Total Général : ' + document.getElementById("totalglobal").innerText + ' \n';
+          body += '\n Informations complémentaires: \n\n';
+          body += 'Nombre de clients mensuel: ' + document.getElementById("nbclients").value + '\n';
+          body += 'Temps Moyen client: ' + document.getElementById("tempsclient").value + 'min \n';
+          body += "Ajout d'un tarif jaune: " + document.getElementById("ajouttarif").value + " \n";
+          body +=  document.getElementById("texttarif").innerText + ' : ' + document.getElementById("tarifValue").innerText + ' \n';
+          body += 'Prix du kWh : ' + document.getElementById("PrixKwh").value + '€ \n';
+          body += 'temps de retour sur investissement : ' + document.getElementById("tempsretour").innerText + 'mois \n\n';
+          body += 'Cordialement, \n\n';
+
+          var mailtoLink = "mailto:" + recipient + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+        
+          window.open(mailtoLink);
+        });
+
+  </script>
+</body>
+
+</html>
