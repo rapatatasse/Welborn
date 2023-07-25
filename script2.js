@@ -513,6 +513,21 @@ function remplissageTBLMargesAnnuelle() {
   magenetcumulee2025Cell.innerText = formatNumber((mbcu2025 - (totalglobal * 0.75)),2);
   magenetcumulee2026Cell.innerText = formatNumber((mbcu2026 - (totalglobal)),2);
 
+  //colorisation des cellules
+  const magnets = ["magnetcumulee2023", "magnetcumulee2024", "magnetcumulee2025", "magnetcumulee2026"];
+  for (const magnet of magnets) {
+    const magnetCumulee = document.getElementById(magnet);
+    const magnetCumuleeValue = magnetCumulee.innerText.replace(/[^\d,.-]/g, '').replace(",", ".");
+  
+    if (magnetCumuleeValue > 0) {
+      magnetCumulee.classList.add("text-green");
+      magnetCumulee.classList.remove("text-red");
+    } else {
+      magnetCumulee.classList.add("text-red");
+      magnetCumulee.classList.remove("text-green");
+    }
+  }
+
   //remplissager retour su rinvestissement
   if (mbcu2026 != 0){
   tempsretourCell.innerText = (totalglobal * 48 / mbcu2026).toFixed(2);
