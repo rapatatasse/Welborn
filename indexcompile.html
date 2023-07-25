@@ -346,7 +346,7 @@
               <th rowspan="4" class="bleu2">Abonnement <br> électrique</th>
               <td class="">Ajout d'un tarif jaune</td>
               <td class="clair"><label for="ajouttarif"></label>
-                <select name="ajouttarif" id="ajouttarif" onchange="reload()">
+                <select name="ajouttarif" id="ajouttarif" onchange="displayTarifValue()">
                     <option value="OUI"  >OUI</option>
                     <option value="NON" >NON</option>
                 </select>
@@ -357,7 +357,7 @@
               <td class="gris">Type tarif actuel</td>
               <td class="clair"><label for="tarif"></label>
 
-                <select name="tarif" id="tarif" onchange="reload()">
+                <select name="tarif" id="tarif" onchange="displayTarifValue()">
                     <option value="8000"  >Tarif jaune</option>
                     <option value="15000" >Tarif bleu</option>
                 </select>
@@ -760,11 +760,11 @@
         <table>
           <tr>
             <td id="texttarif"></td>
-            <td id="tarifValue" class="textright" style="background-color: #fb743e;">0,00€</td>
+            <td id="" class="textright w-25" style="background-color: #fb743e;"><input type = number onchange="reload()" id="tarifValue" ></td>
           </tr>
           
         </table>
-        <i>* coût moyen 2023 estimé sur la base de plusieurs devis ENEDIS. Peu varier selon la complexité du chantier</i>
+        
         <hr>
 
         <h2 class="titre_IRV no-page-break">Installation IRVE</h2>
@@ -1250,19 +1250,20 @@
                 var ajouttarif = document.getElementById("ajouttarif").value;
 
                 if (ajouttarif === "NON") {
-                  tarifValue.innerHTML = "0 €";
+                  tarifValue.value = 0;
                   texttarif.innerHTML = "Utilisation du tarif existant";
                 }
                 else if (tarifSelect === "8000") {
-                  tarifValue.innerHTML = "8000 €";
-                  texttarif.innerHTML = "PDL ENEDIS Tarif Jaune *";
+                  tarifValue.value = 8000;
+                  texttarif.innerHTML = "PDL ENEDIS Tarif Jaune <br>coût moyen 2023 estimé sur la base de plusieurs devis ENEDIS. Peu varier selon la complexité du chantier";
                 } else if (tarifSelect === "15000") {
-                  tarifValue.innerHTML = "15000";
-                  texttarif.innerHTML = "PDL ENEDIS Tarif Bleu *";
+                  tarifValue.value = 15000;
+                  texttarif.innerHTML = "PDL ENEDIS Tarif Bleu <br>coût moyen 2023 estimé sur la base de plusieurs devis ENEDIS. Peu varier selon la complexité du chantier";
                 } else {
-                  tarifValue.innerHTML = "errore select tarif";
+                  tarifValue.value = "errore select tarif";
                   texttarif.innerHTML = "errore select tarif";
                 }
+                reload();
                 
           }
 
@@ -1271,7 +1272,7 @@
 
             var elements = [
               parseFloat(document.getElementById("prixtotal").innerText.replace(/[^\d,.-]/g, '').replace(",", ".")),
-              parseFloat(document.getElementById("tarifValue").innerText.replace(/[^\d,.-]/g, '').replace(",", ".")),
+              parseFloat(document.getElementById("tarifValue").value),
               parseFloat(document.getElementById("IRVE1").value),
               parseFloat(document.getElementById("IRVE2").value),
               parseFloat(document.getElementById("IRVE3").value),
@@ -1709,7 +1710,6 @@
             calcultotalprix();
             calculerNombreBornesTotal();
             totalpuissancecumulee();
-            displayTarifValue();
             calculglobal();
             remplissageTBLpotentielannuel();
             remplissageTBLMargesParChargeUnitaire();
@@ -1720,6 +1720,7 @@
 
 
           refrechfrequentation_nbdeclientparjours();
+          displayTarifValue(); 
       
   </script>
   <!-- scriptemail -->
@@ -1752,7 +1753,7 @@
           body += 'Nombre de clients mensuel: ' + document.getElementById("nbclients").value + '\n';
           body += 'Temps Moyen client: ' + document.getElementById("tempsclient").value + 'min \n';
           body += "Ajout d'un tarif jaune: " + document.getElementById("ajouttarif").value + " \n";
-          body +=  document.getElementById("texttarif").innerText + ' : ' + document.getElementById("tarifValue").innerText + ' \n';
+          body +=  document.getElementById("texttarif").innerText + ' : ' + document.getElementById("tarifValue").value + ' \n';
           body += 'Prix du kWh : ' + document.getElementById("PrixKwh").value + '€ \n';
           body += 'temps de retour sur investissement : ' + document.getElementById("tempsretour").innerText + 'mois \n\n';
           body += 'Cordialement, \n\n';
